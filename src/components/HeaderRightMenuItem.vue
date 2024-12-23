@@ -3,7 +3,9 @@
     <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
       <router-link :to="{ name: 'admin' }">Admin</router-link>
     </li>
-    <li v-if="authStore.user">Hi, {{ authStore.user?.name }}</li>
+    <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
+      <router-link :to="{ name: 'profile' }">Profile</router-link>
+    </li>
     <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
       <router-link to="#" @click="logout">Logout</router-link>
     </li>
