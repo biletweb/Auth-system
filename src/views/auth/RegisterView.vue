@@ -54,15 +54,13 @@
         </div>
 
         <div class="my-4">
-          <div v-if="data.loading" class="flex justify-center">
-            <Spinner class="w-10" />
-          </div>
           <button
-            v-else
             type="submit"
-            class="w-full rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+            class="flex w-full justify-center rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+            :disabled="data.loading"
           >
-            Register
+            <Spinner v-if="data.loading" class="w-6" />
+            <span v-else>Register</span>
           </button>
         </div>
       </form>

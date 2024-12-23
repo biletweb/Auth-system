@@ -1,11 +1,6 @@
 <template>
   <div>
-    <svg
-      stroke="#000"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      class="stroke-green-500"
-    >
+    <svg stroke="#000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="stroke-white">
       <g>
         <circle cx="12" cy="12" r="9.5" fill="none" stroke-width="3" stroke-linecap="round">
           <animate
