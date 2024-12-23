@@ -1,6 +1,6 @@
 <template>
   <ul class="flex gap-4">
-    <li class="transition duration-300 hover:text-gray-300">
+    <li v-if="authStore.access_token" class="transition duration-300 hover:text-gray-300">
       <router-link :to="{ name: 'admin' }">Admin</router-link>
     </li>
     <li class="transition duration-300 hover:text-gray-300">
@@ -11,3 +11,9 @@
     </li>
   </ul>
 </template>
+
+<script setup>
+import { useAuthStore } from '@/stores/authStore.js'
+
+const authStore = useAuthStore()
+</script>

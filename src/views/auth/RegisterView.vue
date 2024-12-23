@@ -1,10 +1,9 @@
 <template>
   <div class="card mx-auto w-6/12 rounded-lg border bg-white p-4">
     <h1 class="text-3xl font-bold">Register</h1>
-
     <form @submit.prevent="register">
       <div class="my-4">
-        <label for="email">Name<span class="ms-1 text-red-500">*</span></label>
+        <label for="name">Name<span class="ms-1 text-red-500">*</span></label>
         <input
           v-model="data.user.name"
           type="text"
@@ -40,19 +39,25 @@
       </div>
 
       <div class="my-4">
-        <label for="password">Password confirmation<span class="ms-1 text-red-500">*</span></label>
+        <label for="password_confirmation"
+          >Password confirmation<span class="ms-1 text-red-500">*</span></label
+        >
         <input
           v-model="data.user.password_confirmation"
-          type="password"
-          name="password"
-          id="password"
+          type="password_confirmation"
+          name="password_confirmation"
+          id="password_confirmation"
           placeholder="Password confirmation"
           class="w-full rounded-lg border p-2 focus:border-2 focus:border-blue-500 focus:outline-none"
         />
       </div>
 
       <div class="my-4">
+        <div v-if="data.loading" class="flex justify-center">
+          <Spinner class="w-10" />
+        </div>
         <button
+          v-else
           type="submit"
           class="w-full rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
         >
@@ -69,6 +74,7 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { BASE_URL } from '@/helpers/config.js'
 import { useToast } from 'vue-toastification'
+import Spinner from '@/components/Spinner.vue'
 
 const toast = useToast()
 const router = useRouter()
