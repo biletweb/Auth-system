@@ -1,19 +1,21 @@
 <template>
   <ul class="flex gap-4">
     <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
-      <router-link :to="{ name: 'admin' }">Admin</router-link>
+      <router-link :to="{ name: 'admin' }"><i class="pi pi-wrench me-1"></i>Admin</router-link>
     </li>
     <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
-      <router-link :to="{ name: 'profile' }">Profile</router-link>
+      <router-link :to="{ name: 'profile' }"><i class="pi pi-user me-1"></i>Profile</router-link>
     </li>
     <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
-      <router-link to="#" @click="logout">Logout</router-link>
+      <router-link to="#" @click="logout"><i class="pi pi-sign-out me-1"></i>Logout</router-link>
     </li>
     <li v-if="!authStore.user" class="transition duration-300 hover:text-gray-300">
-      <router-link :to="{ name: 'login' }">Login</router-link>
+      <router-link :to="{ name: 'login' }"><i class="pi pi-sign-in me-1"></i>Login</router-link>
     </li>
     <li v-if="!authStore.user" class="transition duration-300 hover:text-gray-300">
-      <router-link :to="{ name: 'register' }">Register</router-link>
+      <router-link :to="{ name: 'register' }"
+        ><i class="pi pi-user-plus me-1"></i>Register</router-link
+      >
     </li>
   </ul>
 </template>
