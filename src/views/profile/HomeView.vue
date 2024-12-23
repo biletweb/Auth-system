@@ -11,7 +11,10 @@
     </div>
   </div>
   <div class="card rounded-lg bg-white p-4">
-    <span class="text-xl"
+    <div v-if="!authStore.user" class="flex justify-center">
+      <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
+    </div>
+    <span v-else class="text-xl"
       >Hello <span class="font-bold">{{ authStore.user?.name }}</span
       >, you are logged in. Email to contact you:
       <span class="font-bold">{{ authStore.user?.email }}</span></span
@@ -21,6 +24,7 @@
 
 <script setup>
 import { useAuthStore } from '@/stores/authStore.js'
+import Spinner from '@/components/Spinner.vue'
 
 const authStore = useAuthStore()
 </script>

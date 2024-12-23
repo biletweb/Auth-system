@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gray-500 py-4 text-white">
+  <footer class="rounded-t-lg bg-gray-500 py-4 text-white">
     <p class="text-center">© {{ currentYear }}, Все права защищены</p>
   </footer>
 </template>
