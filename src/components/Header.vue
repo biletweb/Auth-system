@@ -27,8 +27,10 @@ import { BASE_URL, getConfig } from '@/helpers/config.js'
 import { useToast } from 'vue-toastification'
 import { onMounted, ref } from 'vue'
 import Spinner from '@/components/Spinner.vue'
+import { useRouter } from 'vue-router'
 
 const loading = ref(false)
+const router = useRouter()
 
 onMounted(async () => {
   if (authStore.access_token) {
@@ -47,6 +49,7 @@ const fetchLoggedInUser = async () => {
   } catch (error) {
     if (error.response.status === 401) {
       authStore.clearState()
+      router.push({ name: 'login' })
       toast.error(error.response.data.message, { timeout: 5000 })
     }
   }

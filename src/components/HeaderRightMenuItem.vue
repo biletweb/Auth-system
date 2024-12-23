@@ -37,6 +37,7 @@ const logout = async () => {
   } catch (error) {
     if (error.response.status === 401) {
       authStore.clearState()
+      router.push({ name: 'login' })
       toast.error(error.response.data.message, { timeout: 5000 })
     }
   }
