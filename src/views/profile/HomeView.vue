@@ -1,5 +1,5 @@
 <template>
-  <div>Hello {{ authStore.user.name }}</div>
+  <div>Hello {{ authStore.user?.name }}</div>
 </template>
 
 <script setup>
