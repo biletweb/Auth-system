@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-[calc(100vh-160px)] flex items-center justify-center">
-    <div class="card mx-auto w-6/12 rounded-lg border bg-white p-4">
+    <div class="card mx-auto sm:w-12/12 lg:w-6/12 rounded-lg border bg-white p-4">
       <h1 class="text-3xl font-bold">Register</h1>
       <form @submit.prevent="register">
         <div class="my-4">
