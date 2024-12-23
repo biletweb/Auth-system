@@ -1,9 +1,6 @@
 <template>
   <ul class="flex gap-4">
     <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
-      <router-link :to="{ name: 'admin' }"><i class="pi pi-wrench me-1"></i>Admin</router-link>
-    </li>
-    <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
       <router-link :to="{ name: 'profile' }"><i class="pi pi-user me-1"></i>Profile</router-link>
     </li>
     <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
