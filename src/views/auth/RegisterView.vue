@@ -44,7 +44,7 @@
         >
         <input
           v-model="data.user.password_confirmation"
-          type="password_confirmation"
+          type="password"
           name="password_confirmation"
           id="password_confirmation"
           placeholder="Password confirmation"
