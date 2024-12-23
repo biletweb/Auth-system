@@ -1,11 +1,16 @@
 <template>
-  <header class="bg-blue-500 py-4 text-white">
+  <header class="bg-blue-500 p-4 text-white">
     <div class="flex items-center justify-between">
-      <div class="ms-4 size-10">
-        <HeaderLogo />
+      <div class="flex items-center gap-4">
+        <div>
+          <HeaderLogo />
+        </div>
+        <div>
+          <HeaderLeftMenuItem />
+        </div>
       </div>
-      <div class="me-4">
-        <HeaderMenuItem />
+      <div>
+        <HeaderRightMenuItem />
       </div>
     </div>
   </header>
@@ -13,5 +18,6 @@
 
 <script setup>
 import HeaderLogo from '@/components/HeaderLogo.vue'
-import HeaderMenuItem from '@/components/HeaderMenuItem.vue'
+import HeaderRightMenuItem from '@/components/HeaderRightMenuItem.vue'
+import HeaderLeftMenuItem from '@/components/HeaderLeftMenuItem.vue'
 </script>
