@@ -1,5 +1,5 @@
 <template>
-  <ul class="flex gap-4">
+  <ul class="flex items-center gap-4">
     <li class="transition duration-300 hover:text-gray-300">
       <router-link :to="{ name: 'home' }" class="text-lg">
         <i class="pi pi-home me-1"></i>Home

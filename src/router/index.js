@@ -2,19 +2,19 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import { useAuthStore } from '@/stores/authStore'
 
-function ifUserIsLoggedIn() {
+const ifUserIsLoggedIn = () => {
   if (!localStorage.getItem('access_token')) {
     router.push({ name: 'login' })
   }
 }
 
-function ifUserIsNotLoggedIn() {
+const ifUserIsNotLoggedIn = () => {
   if (localStorage.getItem('access_token')) {
     router.push({ name: 'home' })
   }
 }
 
-function ifUserAdmin() {
+const ifUserAdmin = () => {
   const authStore = useAuthStore()
   if (authStore.user?.role !== 'admin') {
     router.push({ name: 'profile' })

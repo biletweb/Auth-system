@@ -1,11 +1,14 @@
 <template>
-  <ul class="flex gap-4">
+  <ul class="flex items-center gap-4">
     <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
       <router-link :to="{ name: 'profile' }" class="text-lg">
         <i class="pi pi-user me-1"></i>Profile
       </router-link>
     </li>
-    <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
+    <li v-if="loading">
+      <Spinner class="w-5" />
+    </li>
+    <li v-else-if="authStore.user" class="transition duration-300 hover:text-gray-300">
       <router-link to="#" @click="logout" class="text-lg">
         <i class="pi pi-sign-out me-1"></i>Logout
       </router-link>
@@ -29,12 +32,16 @@ import { useToast } from 'vue-toastification'
 import axios from 'axios'
 import { BASE_URL, getConfig } from '@/helpers/config.js'
 import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+import Spinner from '@/components/Spinner.vue'
 
 const authStore = useAuthStore()
 const toast = useToast()
 const router = useRouter()
+const loading = ref(false)
 
 const logout = async () => {
+  loading.value = true
   try {
     const response = await axios.post(`${BASE_URL}/logout`, null, getConfig(authStore.access_token))
     authStore.clearState()
@@ -46,6 +53,8 @@ const logout = async () => {
       router.push({ name: 'login' })
       toast.error(error.response.data.message, { timeout: 5000 })
     }
+  } finally {
+    loading.value = false
   }
 }
 </script>
