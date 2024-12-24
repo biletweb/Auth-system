@@ -63,6 +63,12 @@ const router = createRouter({
       component: () => import('@/views/profile/HomeView.vue'),
       beforeEnter: ifUserIsLoggedIn,
     },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('@/views/profile/SettingsView.vue'),
+      beforeEnter: ifUserIsLoggedIn,
+    },
   ],
 })
 

@@ -9,13 +9,23 @@
         <i class="pi pi-sync ms-2" style="font-size: 25px"></i>
       </button>
     </div>
-    <div v-if="authStore.user?.role === 'admin'">
-      <router-link
-        :to="{ name: 'admin' }"
-        class="font-bold text-red-500 transition duration-300 hover:text-red-600"
-      >
-        <i class="pi pi-wrench me-1"></i>Administration panel
-      </router-link>
+    <div class="flex items-center gap-4">
+      <div v-if="authStore.user?.role === 'admin'">
+        <router-link
+          :to="{ name: 'admin' }"
+          class="font-bold text-red-500 transition duration-300 hover:text-red-600"
+        >
+          <i class="pi pi-wrench me-1"></i>Administration panel
+        </router-link>
+      </div>
+      <div>
+        <router-link
+          :to="{ name: 'settings' }"
+          class="font-bold text-blue-500 transition duration-300 hover:text-blue-600"
+        >
+          <i class="pi pi-cog me-1"></i>Settings
+        </router-link>
+      </div>
     </div>
   </div>
   <div class="card rounded-lg bg-white p-4">
