@@ -4,7 +4,7 @@
       <h1 class="text-3xl font-bold">Login</h1>
       <form @submit.prevent="login">
         <div class="my-4">
-          <label for="email">Email<span class="ms-1 text-red-500">*</span></label>
+          <label for="email">Email<sup class="ms-1 text-red-500">*</sup></label>
           <input
             v-model="data.user.email"
             type="text"
@@ -15,7 +15,7 @@
           />
         </div>
         <div class="my-4">
-          <label for="password">Password<span class="ms-1 text-red-500">*</span></label>
+          <label for="password">Password<sup class="ms-1 text-red-500">*</sup></label>
           <input
             v-model="data.user.password"
             type="password"
