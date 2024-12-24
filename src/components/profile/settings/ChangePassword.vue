@@ -38,6 +38,7 @@
         <button
           type="submit"
           class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+          :disabled="data.loading"
         >
           <Spinner v-if="data.loading" class="w-6" />
           <span v-else>Change password</span>
