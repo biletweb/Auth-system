@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-[calc(100vh-160px)] items-center justify-center">
     <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 lg:w-6/12">
-      <h1 class="text-3xl font-bold">Login</h1>
+      <span class="text-3xl font-bold">Login</span>
       <form @submit.prevent="login">
         <div class="relative my-4">
           <label for="email">Email<sup class="ms-1 text-red-500">*</sup></label>

@@ -20,7 +20,7 @@
       </div>
       <div>
         <router-link
-          :to="{ name: 'settings' }"
+          :to="{ name: 'profile.settings' }"
           class="font-bold text-blue-500 transition duration-300 hover:text-blue-600"
         >
           <i class="pi pi-cog me-1"></i>Settings
