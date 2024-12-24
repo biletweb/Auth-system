@@ -14,7 +14,6 @@
             class="w-full rounded-lg border p-2 focus:border-2 focus:border-blue-500 focus:outline-none"
           />
         </div>
-
         <div class="my-4">
           <label for="password">Password<span class="ms-1 text-red-500">*</span></label>
           <input
@@ -26,7 +25,6 @@
             class="w-full rounded-lg border p-2 focus:border-2 focus:border-blue-500 focus:outline-none"
           />
         </div>
-
         <div class="my-4">
           <button
             type="submit"

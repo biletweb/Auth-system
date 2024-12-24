@@ -22,12 +22,13 @@
     <div v-if="!authStore.user || loading" class="flex justify-center">
       <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
     </div>
-    <span v-else class="text-xl">
-      Hello <span class="font-bold">{{ authStore.user?.name }}</span
-      >, you are logged in. Email to contact you:
-      <span class="font-bold">{{ authStore.user?.email }}</span
-      >, you role is: <span class="font-bold">{{ authStore.user?.role }}</span>
-    </span>
+    <div v-else>
+      <span class="text-xl">Hello </span>
+      <span class="font-bold">{{ authStore.user?.name }}</span>
+      , you are logged in. Email to contact you:
+      <span class="font-bold">{{ authStore.user?.email }}</span>
+      , you role is: <span class="font-bold">{{ authStore.user?.role }}</span>
+    </div>
   </div>
 </template>
 
