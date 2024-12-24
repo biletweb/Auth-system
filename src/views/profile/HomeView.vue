@@ -24,10 +24,10 @@
     </div>
     <div v-else>
       <span class="text-xl">Hello </span>
-      <span class="font-bold">{{ authStore.user?.name }}</span>
-      , you are logged in. Email to contact you:
-      <span class="font-bold">{{ authStore.user?.email }}</span>
-      , you role is: <span class="font-bold">{{ authStore.user?.role }}</span>
+      <span class="font-bold">{{ authStore.user?.name }}</span
+      >, you are logged in. Email to contact you:
+      <span class="font-bold">{{ authStore.user?.email }}</span
+      >, you role is: <span class="font-bold">{{ authStore.user?.role }}</span>
     </div>
   </div>
 </template>
