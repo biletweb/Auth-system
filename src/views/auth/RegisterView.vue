@@ -3,50 +3,62 @@
     <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 lg:w-6/12">
       <h1 class="text-3xl font-bold">Register</h1>
       <form @submit.prevent="register">
-        <div class="my-4">
+        <div class="relative my-4">
           <label for="name">Name<sup class="ms-1 text-red-500">*</sup></label>
+          <div class="absolute left-2.5 top-[34px] text-gray-400">
+            <i class="pi pi-user"></i>
+          </div>
           <input
             v-model="data.user.name"
             type="text"
             name="name"
             id="name"
             placeholder="Name"
-            class="w-full rounded-lg border p-2 focus:border-2 focus:border-blue-500 focus:outline-none"
+            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
-        <div class="my-4">
+        <div class="relative my-4">
           <label for="email">Email<sup class="ms-1 text-red-500">*</sup></label>
+          <div class="absolute left-2.5 top-[34px] text-gray-400">
+            <i class="pi pi-at"></i>
+          </div>
           <input
             v-model="data.user.email"
             type="text"
             name="email"
             id="email"
             placeholder="Email"
-            class="w-full rounded-lg border p-2 focus:border-2 focus:border-blue-500 focus:outline-none"
+            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
-        <div class="my-4">
+        <div class="relative my-4">
           <label for="password">Password<sup class="ms-1 text-red-500">*</sup></label>
+          <div class="absolute left-2.5 top-[34px] text-gray-400">
+            <i class="pi pi-key"></i>
+          </div>
           <input
             v-model="data.user.password"
             type="password"
             name="password"
             id="password"
             placeholder="Password"
-            class="w-full rounded-lg border p-2 focus:border-2 focus:border-blue-500 focus:outline-none"
+            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
-        <div class="my-4">
+        <div class="relative my-4">
           <label for="password_confirmation">
             Password confirmation<sup class="ms-1 text-red-500">*</sup>
           </label>
+          <div class="absolute left-2.5 top-[34px] text-gray-400">
+            <i class="pi pi-key"></i>
+          </div>
           <input
             v-model="data.user.password_confirmation"
             type="password"
             name="password_confirmation"
             id="password_confirmation"
             placeholder="Password confirmation"
-            class="w-full rounded-lg border p-2 focus:border-2 focus:border-blue-500 focus:outline-none"
+            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
         <div class="my-4">
