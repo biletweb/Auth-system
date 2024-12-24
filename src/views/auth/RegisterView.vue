@@ -3,19 +3,35 @@
     <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 lg:w-6/12">
       <span class="text-3xl font-bold">Register</span>
       <form @submit.prevent="register">
-        <div class="relative my-4">
-          <label for="name">Name<sup class="ms-1 text-red-500">*</sup></label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400">
-            <i class="pi pi-user"></i>
+        <div class="my-4 grid grid-cols-2 gap-4">
+          <div class="relative">
+            <label for="name">Name<sup class="ms-1 text-red-500">*</sup></label>
+            <div class="absolute left-2.5 top-[34px] text-gray-400">
+              <i class="pi pi-user"></i>
+            </div>
+            <input
+              v-model="data.user.name"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+              class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            />
           </div>
-          <input
-            v-model="data.user.name"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Name"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-          />
+          <div class="relative">
+            <label for="surname">Surname<sup class="ms-1 text-red-500">*</sup></label>
+            <div class="absolute left-2.5 top-[34px] text-gray-400">
+              <i class="pi pi-user"></i>
+            </div>
+            <input
+              v-model="data.user.surname"
+              type="text"
+              name="surname"
+              id="surname"
+              placeholder="Surname"
+              class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            />
+          </div>
         </div>
         <div class="relative my-4">
           <label for="email">Email<sup class="ms-1 text-red-500">*</sup></label>
@@ -91,6 +107,7 @@ const data = reactive({
   loading: false,
   user: {
     name: '',
+    surname: '',
     email: '',
     password: '',
     password_confirmation: '',
