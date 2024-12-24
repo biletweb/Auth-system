@@ -9,7 +9,7 @@
         <i class="pi pi-sync ms-2" style="font-size: 25px"></i>
       </button>
     </div>
-    <div>
+    <div v-if="authStore.user?.role === 'admin'">
       <router-link
         :to="{ name: 'admin' }"
         class="font-bold text-red-500 transition duration-300 hover:text-red-600"
@@ -25,7 +25,8 @@
     <span v-else class="text-xl">
       Hello <span class="font-bold">{{ authStore.user?.name }}</span
       >, you are logged in. Email to contact you:
-      <span class="font-bold">{{ authStore.user?.email }}</span>
+      <span class="font-bold">{{ authStore.user?.email }}</span
+      >, you role is: <span class="font-bold">{{ authStore.user?.role }}</span>
     </span>
   </div>
 </template>
