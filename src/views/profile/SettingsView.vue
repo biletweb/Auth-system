@@ -106,7 +106,7 @@ const confirmEmail = async () => {
       toast.error(error.response.data.message, { timeout: 5000 })
     }
     if (error.response.status === 429) {
-      toast.error(error.response.data.message, { timeout: 5000 })
+      toast.error('Too many requests. Please try again later.', { timeout: 5000 })
     }
   } finally {
     loading.value = false
