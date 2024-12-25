@@ -4,14 +4,16 @@
     <Spinner v-if="!authStore.user" class="w-7 rounded-full bg-blue-500 p-1" />
     <span v-else class="text-xl font-bold">{{ authStore.user.email }}</span>
   </div>
-  <div v-if="!isEmailVerified" class="my-4 rounded-lg bg-amber-300 p-4 font-bold text-white">
+  <div v-if="!isEmailVerified" class="my-4 rounded-lg bg-amber-300 p-4 font-bold">
     <div class="flex items-center justify-between">
-      <div class="flex items-center">
+      <div class="flex items-center text-blue-500">
         <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
         Please confirm your email. We have sent a security code to the address you provided.
       </div>
       <div>
-        <button class="transition duration-300 hover:text-blue-500">Resend security code</button>
+        <button class="text-blue-500 transition duration-300 hover:text-blue-600">
+          Resend security code
+        </button>
       </div>
     </div>
     <div class="mt-4 flex w-52 gap-4">
@@ -21,7 +23,7 @@
           name="code"
           id="code"
           placeholder="Code"
-          class="w-full rounded-lg border p-2 font-normal text-black focus:border-blue-500 focus:outline-none"
+          class="w-full rounded-lg border p-2 font-normal focus:border-blue-500 focus:outline-none"
         />
       </div>
       <div class="align-bottom">
