@@ -4,7 +4,7 @@
   </div>
   <div class="grid grid-cols-2 gap-4">
     <ChangePassword />
-    <UpdatePersonalInformation />
+    <UpdatePersonalInfo />
     <div class="col-span-2">
       <DeleteAccount />
     </div>
@@ -13,6 +13,6 @@
 
 <script setup>
 import ChangePassword from '@/components/profile/settings/ChangePassword.vue'
-import UpdatePersonalInformation from '@/components/profile/settings/UpdatePersonalInformation.vue'
+import UpdatePersonalInfo from '@/components/profile/settings/UpdatePersonalInfo.vue'
 import DeleteAccount from '@/components/profile/settings/DeleteAccount.vue'
 </script>
