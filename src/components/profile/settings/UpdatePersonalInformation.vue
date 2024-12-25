@@ -4,7 +4,7 @@
     <form @submit.prevent="update">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="name">New name<sup class="ms-1 text-red-500">*</sup></label>
+          <label for="name">Name<sup class="ms-1 text-red-500">*</sup></label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-user"></i>
           </div>
@@ -18,7 +18,7 @@
           />
         </div>
         <div class="relative my-4">
-          <label for="surname"> New surname<sup class="ms-1 text-red-500">*</sup> </label>
+          <label for="surname">Surname<sup class="ms-1 text-red-500">*</sup> </label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-user"></i>
           </div>
