@@ -80,7 +80,7 @@ const confirmEmail = async () => {
   try {
     const response = await axios.post(
       `${BASE_URL}/profile/settings/confirm-email`,
-      securityCode.value,
+      { securityCode: securityCode.value },
       getConfig(authStore.access_token),
     )
     if (response.data.error) {
