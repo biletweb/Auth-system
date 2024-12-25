@@ -44,7 +44,7 @@ watch(
   () => authStore.user,
   (newValue) => {
     if (newValue) {
-      isEmailVerified.value = authStore.user.email_verified_at || null
+      isEmailVerified.value = authStore.user.email_verified_at
     }
   },
   { immediate: true },

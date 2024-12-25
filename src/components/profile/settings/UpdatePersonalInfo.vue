@@ -74,8 +74,8 @@ watch(
   () => authStore.user,
   (newValue) => {
     if (newValue) {
-      data.user.name = newValue.name || ''
-      data.user.surname = newValue.surname || ''
+      data.user.name = newValue.name
+      data.user.surname = newValue.surname
     }
   },
   { immediate: true },
