@@ -1,35 +1,35 @@
 <template>
   <div class="card rounded-lg bg-white p-4 my-4">
-    <span class="text-xl font-bold">Changing your account password</span>
-    <form @submit.prevent="changePassword">
+    <span class="text-xl font-bold">Update personal information</span>
+    <form @submit.prevent="update">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="password">New password<sup class="ms-1 text-red-500">*</sup></label>
+          <label for="name">New name<sup class="ms-1 text-red-500">*</sup></label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
-            <i class="pi pi-key"></i>
+            <i class="pi pi-user"></i>
           </div>
           <input
-            v-model="data.user.password"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="New password"
+            v-model="data.user.name"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
         <div class="relative my-4">
-          <label for="password_confirmation">
-            New password confirmation<sup class="ms-1 text-red-500">*</sup>
+          <label for="surname">
+            New surname<sup class="ms-1 text-red-500">*</sup>
           </label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
-            <i class="pi pi-key"></i>
+            <i class="pi pi-user"></i>
           </div>
           <input
-            v-model="data.user.password_confirmation"
-            type="password"
-            name="password_confirmation"
-            id="password_confirmation"
-            placeholder="New password confirmation"
+            v-model="data.user.surname"
+            type="text"
+            name="surname"
+            id="surname"
+            placeholder="Surname"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
@@ -41,7 +41,7 @@
           :disabled="data.loading"
         >
           <Spinner v-if="data.loading" class="w-6" />
-          <span v-else>Change password</span>
+          <span v-else>Update information</span>
         </button>
       </div>
     </form>
@@ -64,16 +64,16 @@ const authStore = useAuthStore()
 const data = reactive({
   loading: false,
   user: {
-    password: '',
-    password_confirmation: '',
+    name: '',
+    surname: '',
   },
 })
 
-const changePassword = async () => {
+const update = async () => {
   data.loading = true
   try {
     const response = await axios.post(
-      `${BASE_URL}/profile/settings/change-password`,
+      `${BASE_URL}/profile/settings/update-personal-info`,
       data.user,
       getConfig(authStore.access_token),
     )
