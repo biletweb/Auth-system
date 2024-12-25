@@ -59,7 +59,7 @@ const deleteAccount = async () => {
       toast.error(error.response.data.message, { timeout: 5000 })
     }
   } finally {
-    loading.value = true
+    loading.value = false
   }
 }
 </script>
