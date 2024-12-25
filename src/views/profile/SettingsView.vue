@@ -4,7 +4,8 @@
     <Spinner v-if="!authStore.user" class="w-7 rounded-full bg-blue-500 p-1" />
     <span v-else class="text-xl font-bold">{{ authStore.user.email }}</span>
   </div>
-  <div class="my-4 rounded-lg bg-amber-300 p-4 text-white">
+  <div class="my-4 flex items-center rounded-lg bg-amber-300 p-4 font-bold text-white">
+    <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
     Please confirm your email. We have sent a confirmation email to the address you provided.
   </div>
   <div class="grid grid-cols-2 gap-4">
