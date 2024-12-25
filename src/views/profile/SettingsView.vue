@@ -5,7 +5,9 @@
   <div class="grid grid-cols-2 gap-4">
     <ChangePassword />
     <UpdatePersonalInformation />
-    <DeleteAccount />
+    <div class="col-span-2">
+      <DeleteAccount />
+    </div>
   </div>
 </template>
 
