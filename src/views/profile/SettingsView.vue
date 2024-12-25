@@ -10,13 +10,13 @@
   >
     <div class="flex items-center">
       <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
-      Please confirm your email. We have sent a confirmation email to the address you provided.
+      Please confirm your email. We have sent a security code to the address you provided.
     </div>
     <div>
       <button
         class="rounded-lg bg-blue-500 px-4 py-2 font-normal text-white transition duration-300 hover:bg-blue-600"
       >
-        Resend confirmation email
+        Resend
       </button>
     </div>
   </div>
