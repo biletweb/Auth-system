@@ -1,6 +1,6 @@
 <template>
   <div class="card my-4 rounded-lg bg-white p-4">
-    <span class="text-xl font-bold">Update personal information</span>
+    <span class="text-xl font-bold">Updating personal information</span>
     <div v-if="!authStore.user" class="my-4 flex justify-center">
       <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
     </div>
