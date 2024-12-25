@@ -17,21 +17,23 @@
       </div>
     </div>
     <form @submit.prevent="confirmEmail">
-      <div class="mt-4 flex w-60 gap-4">
+      <div class="mt-4 flex gap-4">
         <div>
           <input
             v-model="securityCode"
             type="text"
             name="security_code"
             placeholder="Security code"
-            class="w-full rounded-lg border p-2 font-normal focus:border-blue-500 focus:outline-none"
+            class="w-36 rounded-lg border p-2 font-normal focus:border-blue-500 focus:outline-none"
           />
         </div>
         <div class="align-bottom">
           <button
             class="rounded-lg bg-blue-500 px-4 py-2 font-normal text-white transition duration-300 hover:bg-blue-600"
+            :disabled="loading"
           >
-            Confirm
+            <Spinner v-if="loading" class="w-6" />
+            <span v-else>Confirm</span>
           </button>
         </div>
       </div>
