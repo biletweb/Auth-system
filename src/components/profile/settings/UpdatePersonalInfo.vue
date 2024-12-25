@@ -91,6 +91,8 @@ const update = async () => {
     )
     if (response.data.error) {
       toast.error(response.data.error, { timeout: 5000 })
+    } else if (response.data.warning) {
+      toast.warning(response.data.warning, { timeout: 5000 })
     } else {
       toast.success(response.data.message, { timeout: 5000 })
       authStore.user.name = data.user.name
