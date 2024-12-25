@@ -94,13 +94,18 @@ const confirmEmail = async () => {
       isEmailVerified.value = true
     }
   } catch (error) {
-    const errors = error.response.data.errors
-    let errorMessage = ''
-    errorMessage = Object.values(errors).flat().join('\n')
-    toast.error(errorMessage, { timeout: 5000 })
+    if (error.response.data.errors) {
+      const errors = error.response.data.errors
+      let errorMessage = ''
+      errorMessage = Object.values(errors).flat().join('\n')
+      toast.error(errorMessage, { timeout: 5000 })
+    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
+      toast.error(error.response.data.message, { timeout: 5000 })
+    }
+    if (error.response.status === 429) {
       toast.error(error.response.data.message, { timeout: 5000 })
     }
   } finally {
