@@ -43,6 +43,8 @@ const deleteAccount = async () => {
     )
     if (response.data.error) {
       toast.error(response.data.error, { timeout: 5000 })
+    } else if (response.data.warning) {
+      toast.warning(response.data.warning, { timeout: 5000 })
     } else {
       authStore.clearState()
       router.push({ name: 'login' })
