@@ -90,8 +90,8 @@ const update = async () => {
       toast.error(response.data.error, { timeout: 5000 })
     } else {
       toast.success(response.data.message, { timeout: 5000 })
-      data.user.password = ''
-      data.user.password_confirmation = ''
+      authStore.user.name = data.user.name
+      authStore.user.surname = data.user.surname
     }
   } catch (error) {
     const errors = error.response.data.errors
