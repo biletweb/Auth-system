@@ -2,9 +2,11 @@
   <div class="mb-4">
     <span class="text-3xl font-bold">Settings</span>
   </div>
-  <ChangePassword />
-  <UpdatePersonalInformation />
-  <DeleteAccount />
+  <div class="grid grid-cols-2 gap-4">
+    <ChangePassword />
+    <UpdatePersonalInformation />
+    <DeleteAccount />
+  </div>
 </template>
 
 <script setup>

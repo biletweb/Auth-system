@@ -1,5 +1,5 @@
 <template>
-  <div class="card my-4 rounded-lg bg-white p-4">
+  <div class="card rounded-lg bg-white p-4">
     <span class="text-xl font-bold text-red-500">Deleting an account</span>
     <p class="my-4 font-bold">
       If you delete your account, all your personal data will be deleted and you will not be able to
