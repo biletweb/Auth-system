@@ -5,7 +5,7 @@
     <span v-else class="text-xl font-bold">{{ authStore.user.email }}</span>
   </div>
   <div
-    v-if="!authStore.user?.email_verified_at"
+    v-if="!isEmailVerified"
     class="my-4 flex items-center justify-between rounded-lg bg-amber-300 p-4 font-bold text-white"
   >
     <div class="flex items-center">
@@ -35,6 +35,17 @@ import UpdatePersonalInfo from '@/components/profile/settings/UpdatePersonalInfo
 import DeleteAccount from '@/components/profile/settings/DeleteAccount.vue'
 import Spinner from '@/components/Spinner.vue'
 import { useAuthStore } from '@/stores/authStore.js'
+import { watch, ref } from 'vue'
 
 const authStore = useAuthStore()
+const isEmailVerified = ref(true)
+
+watch(
+  () => authStore.user,
+  (newValue) => {
+    if (newValue) {
+      isEmailVerified.value = authStore.user.email_verified_at || null
+    }
+  },
+)
 </script>
