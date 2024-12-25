@@ -1,5 +1,5 @@
 <template>
-  <div class="card rounded-lg bg-white p-4 my-4">
+  <div class="card my-4 rounded-lg bg-white p-4">
     <span class="text-xl font-bold">Update personal information</span>
     <form @submit.prevent="update">
       <div class="grid grid-cols-2 gap-4">
@@ -18,9 +18,7 @@
           />
         </div>
         <div class="relative my-4">
-          <label for="surname">
-            New surname<sup class="ms-1 text-red-500">*</sup>
-          </label>
+          <label for="surname"> New surname<sup class="ms-1 text-red-500">*</sup> </label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-user"></i>
           </div>
@@ -54,7 +52,7 @@ import { BASE_URL, getConfig } from '@/helpers/config.js'
 import { useAuthStore } from '@/stores/authStore.js'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
-import { reactive } from 'vue'
+import { watch, reactive } from 'vue'
 import Spinner from '@/components/Spinner.vue'
 
 const toast = useToast()
@@ -68,6 +66,17 @@ const data = reactive({
     surname: '',
   },
 })
+
+watch(
+  () => authStore.user,
+  (newValue) => {
+    if (newValue) {
+      data.user.name = newValue.name || ''
+      data.user.surname = newValue.surname || ''
+    }
+  },
+  { immediate: true },
+)
 
 const update = async () => {
   data.loading = true
