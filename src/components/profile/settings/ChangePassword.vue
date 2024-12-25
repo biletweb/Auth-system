@@ -1,5 +1,5 @@
 <template>
-  <div class="card rounded-lg bg-white p-4 my-4">
+  <div class="card my-4 rounded-lg bg-white p-4">
     <span class="text-xl font-bold">Changing your account password</span>
     <form @submit.prevent="changePassword">
       <div class="grid grid-cols-2 gap-4">
