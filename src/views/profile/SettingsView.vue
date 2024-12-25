@@ -47,5 +47,6 @@ watch(
       isEmailVerified.value = authStore.user.email_verified_at || null
     }
   },
+  { immediate: true },
 )
 </script>
