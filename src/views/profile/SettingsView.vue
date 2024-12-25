@@ -89,6 +89,7 @@ const confirmEmail = async () => {
       toast.warning(response.data.warning, { timeout: 5000 })
     } else {
       toast.success(response.data.message, { timeout: 5000 })
+      isEmailVerified.value = true
     }
   } catch (error) {
     const errors = error.response.data.errors
