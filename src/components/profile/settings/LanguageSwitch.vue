@@ -7,10 +7,10 @@
     <div class="my-7 flex gap-2">
       <button type="submit" @click="setLocale('uk')" :disabled="savedLocale === 'uk'">
         <span
-          class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
+          class="rounded-lg p-2 text-white"
           :class="{
             'bg-blue-600 underline underline-offset-4': savedLocale === 'uk',
-            'bg-blue-500': savedLocale !== 'uk',
+            'bg-blue-500 transition duration-300 hover:bg-blue-600': savedLocale !== 'uk',
           }"
         >
           {{ $t('UK') }}
@@ -18,10 +18,10 @@
       </button>
       <button type="submit" @click="setLocale('ru')" :disabled="savedLocale === 'ru'">
         <span
-          class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
+          class="rounded-lg p-2 text-white"
           :class="{
             'bg-blue-600 underline underline-offset-4': savedLocale === 'ru',
-            'bg-blue-500': savedLocale !== 'ru',
+            'bg-blue-500 transition duration-300 hover:bg-blue-600': savedLocale !== 'ru',
           }"
         >
           {{ $t('RU') }}
@@ -29,10 +29,10 @@
       </button>
       <button type="submit" @click="setLocale('en')" :disabled="savedLocale === 'en'">
         <span
-          class="rounded-lg p-2 text-white hover:bg-blue-600"
+          class="rounded-lg p-2 text-white"
           :class="{
             'bg-blue-600 underline underline-offset-4': savedLocale === 'en',
-            'bg-blue-500': savedLocale !== 'en',
+            'bg-blue-500 transition duration-300 hover:bg-blue-600': savedLocale !== 'en',
           }"
         >
           {{ $t('EN') }}
