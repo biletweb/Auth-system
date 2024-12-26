@@ -1,7 +1,7 @@
 import './assets/main.css'
 import 'primeicons/primeicons.css'
 
-import { createApp, ref } from 'vue'
+import { createApp } from 'vue'
 import { createI18n } from 'vue-i18n'
 import { createPinia } from 'pinia'
 import 'vue-toastification/dist/index.css'
@@ -14,14 +14,8 @@ import en from './locales/en.json'
 import ru from './locales/ru.json'
 import uk from './locales/uk.json'
 
-const savedLocale = ref('uk')
-
-if (localStorage.getItem('locale')) {
-  savedLocale.value = localStorage.getItem('locale')
-}
-
 const i18n = createI18n({
-  locale: savedLocale.value,
+  locale: 'uk',
   fallbackLocale: 'en',
   messages: { en, ru, uk },
   globalInjection: true,

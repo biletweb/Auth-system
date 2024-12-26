@@ -56,8 +56,6 @@ onMounted(() => {
 })
 
 const setLocale = async (newLocale) => {
-  locale.value = newLocale
-  localStorage.setItem('locale', newLocale)
   loading.value = true
   try {
     const response = await axios.post(
@@ -68,17 +66,24 @@ const setLocale = async (newLocale) => {
     if (response.data.error) {
       toast.error(response.data.error, { timeout: 5000 })
     } else {
+      locale.value = newLocale
+      localStorage.setItem('locale', newLocale)
       toast.success(response.data.message, { timeout: 5000 })
     }
   } catch (error) {
-    const errors = error.response.data.errors
-    let errorMessage = ''
-    errorMessage = Object.values(errors).flat().join('\n')
-    toast.error(errorMessage, { timeout: 5000 })
+    if (error.response.data.errors) {
+      const errors = error.response.data.errors
+      let errorMessage = ''
+      errorMessage = Object.values(errors).flat().join('\n')
+      toast.error(errorMessage, { timeout: 5000 })
+    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
       toast.error(error.response.data.message, { timeout: 5000 })
+    }
+    if (error.response.status === 429) {
+      toast.error('Too many requests. Please try again later.', { timeout: 5000 })
     }
   } finally {
     loading.value = false
