@@ -11,20 +11,20 @@
           {{ $t('UK') }}
         </span>
       </button>
-      <button type="submit" @click="setLocale('en')" :disabled="savedLocale === 'en'">
-        <span
-          class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
-          :class="{ 'underline underline-offset-4': savedLocale === 'en' }"
-        >
-          {{ $t('EN') }}
-        </span>
-      </button>
       <button type="submit" @click="setLocale('ru')" :disabled="savedLocale === 'ru'">
         <span
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
           :class="{ 'underline underline-offset-4': savedLocale === 'ru' }"
         >
           {{ $t('RU') }}
+        </span>
+      </button>
+      <button type="submit" @click="setLocale('en')" :disabled="savedLocale === 'en'">
+        <span
+          class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
+          :class="{ 'underline underline-offset-4': savedLocale === 'en' }"
+        >
+          {{ $t('EN') }}
         </span>
       </button>
     </div>
