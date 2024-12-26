@@ -1,3 +1,9 @@
 {
-  "Home": "Home"
+  "Home": "Home",
+  "About": "About",
+  "Contacts": "Contacts",
+  "Login": "Login",
+  "Register": "Register",
+  "Logout": "Logout",
+  "Profile": "Profile"
 }
