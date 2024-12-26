@@ -14,7 +14,7 @@ import en from './locales/en.json'
 import ru from './locales/ru.json'
 import uk from './locales/uk.json'
 
-const savedLocale = ref('ru')
+const savedLocale = ref('uk')
 
 if (localStorage.getItem('locale')) {
   savedLocale.value = localStorage.getItem('locale')
