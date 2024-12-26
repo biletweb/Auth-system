@@ -18,6 +18,7 @@
             id="name"
             :placeholder="$t('Name')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'name' }"
           />
         </div>
         <div class="relative my-4">
@@ -32,6 +33,7 @@
             id="surname"
             :placeholder="$t('Surname')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'surname' }"
           />
         </div>
       </div>
@@ -85,6 +87,7 @@ watch(
 
 const update = async () => {
   data.loading = true
+  errorField.value = ''
   try {
     const response = await axios.post(
       `${BASE_URL}/profile/settings/update-personal-info`,
