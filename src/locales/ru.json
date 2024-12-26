@@ -36,5 +36,7 @@
   "The password field must be at least 6 characters.": "Поле пароля должно содержать не менее 6 символов.",
   "Invalid verification code.": "Неверный код подтверждения.",
   "Too many requests. Please try again later.": "Слишком много запросов. Пожалуйста, повторите попытку позже.",
-  "You have successfully verified your email.": "Вы успешно подтвердили свой адрес электронной почты."
+  "You have successfully verified your email.": "Вы успешно подтвердили свой адрес электронной почты.",
+  "It is not possible to delete an account with the administrator role. Please change your role before deleting.": "Удалить учетную запись с ролью администратора невозможно. Пожалуйста, измените свою роль перед удалением.",
+  "Account deleted successfully.": "Аккаунт успешно удален."
 }

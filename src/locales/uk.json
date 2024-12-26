@@ -36,5 +36,7 @@
   "The password field must be at least 6 characters.": "Поле паролю має містити не менше 6 символів.",
   "Invalid verification code.": "Недійсний код підтвердження.",
   "Too many requests. Please try again later.": "Забагато запитів. Спробуйте пізніше.",
-  "You have successfully verified your email.": "Ви успішно підтвердили свою електронну адресу."
+  "You have successfully verified your email.": "Ви успішно підтвердили свою електронну адресу.",
+  "It is not possible to delete an account with the administrator role. Please change your role before deleting.": "Неможливо видалити обліковий запис із роллю адміністратора. Змініть свою роль перед видаленням.",
+  "Account deleted successfully.": "Обліковий запис успішно видалено."
 }
