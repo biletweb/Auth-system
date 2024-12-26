@@ -15,6 +15,7 @@
             id="email"
             :placeholder="$t('Email')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'email' }"
           />
         </div>
         <div class="relative my-4">
@@ -29,6 +30,7 @@
             id="password"
             :placeholder="$t('Password')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'password' }"
           />
         </div>
         <div class="my-4">
@@ -47,7 +49,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { BASE_URL } from '@/helpers/config.js'
@@ -61,6 +63,7 @@ const toast = useToast()
 const router = useRouter()
 const authStore = useAuthStore()
 const { locale } = useI18n()
+const errorField = ref('')
 
 const data = reactive({
   loading: false,
@@ -88,6 +91,7 @@ const login = async () => {
     }
   } catch (error) {
     if (error.response.status === 422) {
+      errorField.value = error.response.data.field
       toast.error(i18n.global.t(error.response.data.error), { timeout: 5000 })
     }
   } finally {
