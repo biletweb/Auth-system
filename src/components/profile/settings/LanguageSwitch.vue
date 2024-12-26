@@ -13,7 +13,7 @@
             'bg-blue-500 transition duration-300 hover:bg-blue-600': savedLocale !== 'uk',
           }"
         >
-          {{ $t('UK') }}
+          UK
         </span>
       </button>
       <button type="submit" @click="setLocale('ru')" :disabled="savedLocale === 'ru'">
@@ -24,7 +24,7 @@
             'bg-blue-500 transition duration-300 hover:bg-blue-600': savedLocale !== 'ru',
           }"
         >
-          {{ $t('RU') }}
+          RU
         </span>
       </button>
       <button type="submit" @click="setLocale('en')" :disabled="savedLocale === 'en'">
@@ -35,7 +35,7 @@
             'bg-blue-500 transition duration-300 hover:bg-blue-600': savedLocale !== 'en',
           }"
         >
-          {{ $t('EN') }}
+          EN
         </span>
       </button>
     </div>

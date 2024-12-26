@@ -12,5 +12,6 @@
   "Name": "Name",
   "Surname": "Surname",
   "Password confirmation": "Password confirmation",
-  "You have successfully logged in.": "You have successfully logged in."
+  "You have successfully logged in.": "You have successfully logged in.",
+  "Changing language": "Changing language"
 }

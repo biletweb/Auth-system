@@ -12,5 +12,6 @@
   "Name": "Имя",
   "Surname": "Фамилия",
   "Password confirmation": "Подтверждение пароля",
-  "You have successfully logged in.": "Вы успешно вошли в систему."
+  "You have successfully logged in.": "Вы успешно вошли в систему.",
+  "Changing language": "Изменение языка"
 }
