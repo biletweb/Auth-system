@@ -4,7 +4,7 @@
     <Spinner v-if="!authStore.user" class="w-7 rounded-full bg-blue-500 p-1" />
     <span v-else class="text-xl font-bold">{{ authStore.user.email }}</span>
   </div>
-  <div v-if="!isEmailVerified" class="my-4 rounded-lg bg-amber-300 p-4">
+  <div v-if="authStore.user && !authStore.user.email_verified_at" class="my-4 rounded-lg bg-amber-300 p-4">
     <div class="flex items-center justify-between">
       <div class="flex items-center text-blue-500">
         <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
@@ -57,28 +57,17 @@ import UpdatePersonalInfo from '@/components/profile/settings/UpdatePersonalInfo
 import DeleteAccount from '@/components/profile/settings/DeleteAccount.vue'
 import Spinner from '@/components/Spinner.vue'
 import { useAuthStore } from '@/stores/authStore.js'
-import { watch, ref } from 'vue'
+import { ref } from 'vue'
 import axios from 'axios'
 import { BASE_URL, getConfig } from '@/helpers/config.js'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
-const isEmailVerified = ref(true)
 const securityCode = ref('')
 const loading = ref(false)
 const toast = useToast()
 const router = useRouter()
-
-watch(
-  () => authStore.user,
-  (newValue) => {
-    if (newValue) {
-      isEmailVerified.value = authStore.user.email_verified_at
-    }
-  },
-  { immediate: true },
-)
 
 const confirmEmail = async () => {
   loading.value = true
@@ -94,7 +83,6 @@ const confirmEmail = async () => {
       toast.warning(response.data.warning, { timeout: 5000 })
     } else {
       toast.success(response.data.message, { timeout: 5000 })
-      isEmailVerified.value = true
       authStore.user.email_verified_at = true
     }
   } catch (error) {
