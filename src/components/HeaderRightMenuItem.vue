@@ -36,12 +36,11 @@ import { ref } from 'vue'
 import Spinner from '@/components/Spinner.vue'
 import { useI18n } from 'vue-i18n'
 
-const { locale } = useI18n()
-
 const authStore = useAuthStore()
 const toast = useToast()
 const router = useRouter()
 const loading = ref(false)
+const { locale } = useI18n()
 
 const logout = async () => {
   loading.value = true

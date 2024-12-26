@@ -27,11 +27,13 @@ import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 import Spinner from '@/components/Spinner.vue'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const toast = useToast()
 const router = useRouter()
 const authStore = useAuthStore()
 const loading = ref(false)
+const { locale } = useI18n()
 
 const deleteAccount = async () => {
   loading.value = true
@@ -47,6 +49,7 @@ const deleteAccount = async () => {
       toast.warning(response.data.warning, { timeout: 5000 })
     } else {
       authStore.clearState()
+      locale.value = 'uk'
       router.push({ name: 'login' })
       toast.success(response.data.message, { timeout: 5000 })
     }
