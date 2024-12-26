@@ -11,7 +11,9 @@
     <div class="flex items-center justify-between">
       <div class="flex items-center text-blue-500">
         <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
-        Please confirm your email. We have sent a security code to the address you provided.
+        {{
+          $t('Please confirm your email. We have sent a verification code to the address you provided.')
+        }}
       </div>
       <div>
         <button
@@ -24,7 +26,7 @@
             v-if="loadingResend"
             class="flex w-5 items-center rounded-full bg-blue-500 p-1"
           />
-          <span v-else>Resend security code</span>
+          <span v-else>{{ $t('Resend verification code') }}</span>
         </button>
       </div>
     </div>
@@ -35,8 +37,8 @@
             v-model="securityCode"
             type="text"
             name="security_code"
-            placeholder="Security code"
-            class="w-36 rounded-lg border p-2 font-normal focus:border-blue-500 focus:outline-none"
+            :placeholder="$t('Verification code')"
+            class="w-44 rounded-lg border p-2 font-normal focus:border-blue-500 focus:outline-none"
           />
         </div>
         <div class="align-bottom">
@@ -46,7 +48,7 @@
             :disabled="loadingConfirm"
           >
             <Spinner v-if="loadingConfirm" class="w-6" />
-            <span v-else>Confirm</span>
+            <span v-else>{{ $t('Confirm') }}</span>
           </button>
         </div>
       </div>

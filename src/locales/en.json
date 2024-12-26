@@ -16,5 +16,9 @@
   "Changing language": "Changing language",
   "Deleting an account": "Deleting an account",
   "If you delete your account, all your personal data will be deleted and you will not be able to regain access.": "If you delete your account, all your personal data will be deleted and you will not be able to regain access.",
-  "Delete account": "Delete account"
+  "Delete account": "Delete account",
+  "Please confirm your email. We have sent a verification code to the address you provided.": "Please confirm your email. We have sent a security code to the address you provided.",
+  "Resend verification code": "Resend security code",
+  "Verification code": "Verification code",
+  "Confirm": "Confirm"
 }
