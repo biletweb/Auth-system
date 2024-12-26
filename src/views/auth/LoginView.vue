@@ -54,10 +54,12 @@ import { BASE_URL } from '@/helpers/config.js'
 import { useToast } from 'vue-toastification'
 import Spinner from '@/components/Spinner.vue'
 import { useAuthStore } from '@/stores/authStore.js'
+import { useI18n } from 'vue-i18n'
 
 const toast = useToast()
 const router = useRouter()
 const authStore = useAuthStore()
+const { locale } = useI18n()
 
 const data = reactive({
   loading: false,
@@ -79,6 +81,7 @@ const login = async () => {
       authStore.setAccessToken(response.data.access_token)
       authStore.setUser(response.data.user)
       localStorage.setItem('locale', authStore.user.locale)
+      locale.value = localStorage.getItem('locale')
       toast.success(response.data.message, { timeout: 5000 })
       router.push({ name: 'home' })
     }
