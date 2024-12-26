@@ -11,5 +11,6 @@
   "All rights reserved": "Всі права захищені",
   "Name": "Ім'я",
   "Surname": "Прізвище",
-  "Password confirmation": "Підтвердження паролю"
+  "Password confirmation": "Підтвердження паролю",
+  "You have successfully logged in.": "Ви успішно увійшли в систему."
 }

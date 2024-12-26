@@ -27,6 +27,8 @@ const i18n = createI18n({
   globalInjection: true,
 })
 
+export { i18n }
+
 const app = createApp(App)
 
 app.use(createPinia())
