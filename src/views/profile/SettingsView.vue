@@ -29,7 +29,7 @@
       </div>
     </div>
     <form @submit.prevent="confirmEmail">
-      <div class="mt-4 flex gap-4">
+      <div class="mt-4 flex items-center gap-4">
         <div>
           <input
             v-model="securityCode"
