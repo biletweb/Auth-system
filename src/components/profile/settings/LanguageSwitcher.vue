@@ -2,7 +2,7 @@
   <div class="card rounded-lg bg-white p-4">
     <span class="text-xl font-bold">{{ $t('Changing your language') }}</span>
 
-    <div class="my-4 flex gap-2">
+    <div class="my-7 flex gap-2">
       <button type="submit" @click="setLocale('uk')" :disabled="savedLocale === 'uk'">
         <span
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
