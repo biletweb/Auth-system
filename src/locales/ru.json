@@ -13,5 +13,8 @@
   "Surname": "Фамилия",
   "Password confirmation": "Подтверждение пароля",
   "You have successfully logged in.": "Вы успешно вошли в систему.",
-  "Changing language": "Изменение языка"
+  "Changing language": "Изменение языка",
+  "Deleting an account": "Удаление аккаунта",
+  "If you delete your account, all your personal data will be deleted and you will not be able to regain access.": "Если вы удалите свой аккаунт, все ваши личные данные будут удалены и вы не сможете восстановить доступ.",
+  "Delete account": "Удалить аккаунт"
 }

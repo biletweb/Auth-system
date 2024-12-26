@@ -13,5 +13,8 @@
   "Surname": "Surname",
   "Password confirmation": "Password confirmation",
   "You have successfully logged in.": "You have successfully logged in.",
-  "Changing language": "Changing language"
+  "Changing language": "Changing language",
+  "Deleting an account": "Deleting an account",
+  "If you delete your account, all your personal data will be deleted and you will not be able to regain access.": "If you delete your account, all your personal data will be deleted and you will not be able to regain access.",
+  "Delete account": "Delete account"
 }

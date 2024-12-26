@@ -1,9 +1,12 @@
 <template>
   <div class="card rounded-lg bg-white p-4">
-    <span class="text-xl font-bold text-red-500">Deleting an account</span>
+    <span class="text-xl font-bold text-red-500">{{ $t('Deleting an account') }}</span>
     <p class="my-4 font-bold">
-      If you delete your account, all your personal data will be deleted and you will not be able to
-      regain access.
+      {{
+        $t(
+          'If you delete your account, all your personal data will be deleted and you will not be able to regain access.',
+        )
+      }}
     </p>
     <div class="flex justify-end">
       <button
@@ -13,7 +16,7 @@
         :disabled="loading"
       >
         <Spinner v-if="loading" class="w-6" />
-        <span v-else>Delete account</span>
+        <span v-else>{{ $t('Delete account') }}</span>
       </button>
     </div>
   </div>
