@@ -51,6 +51,7 @@ import { useAuthStore } from '@/stores/authStore.js'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 import Spinner from '@/components/Spinner.vue'
+import { i18n } from '@/main.js'
 
 const toast = useToast()
 const router = useRouter()
@@ -73,27 +74,21 @@ const setLocale = async (newLocale) => {
       getConfig(authStore.access_token),
     )
     if (response.data.error) {
-      toast.error(response.data.error, { timeout: 5000 })
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000 })
     } else {
       authStore.user.locale = newLocale
       locale.value = newLocale
       localStorage.setItem('locale', newLocale)
-      toast.success(response.data.message, { timeout: 5000 })
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
     }
   } catch (error) {
-    if (error.response.data.errors) {
-      const errors = error.response.data.errors
-      let errorMessage = ''
-      errorMessage = Object.values(errors).flat().join('\n')
-      toast.error(errorMessage, { timeout: 5000 })
-    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
-      toast.error(error.response.data.message, { timeout: 5000 })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
     }
     if (error.response.status === 429) {
-      toast.error('Too many requests. Please try again later.', { timeout: 5000 })
+      toast.error(i18n.global.t('Too many requests. Please try again later.'), { timeout: 5000 })
     }
   } finally {
     loading.value = false

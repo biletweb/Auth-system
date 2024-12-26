@@ -38,5 +38,6 @@
   "Too many requests. Please try again later.": "Too many requests. Please try again later.",
   "You have successfully verified your email.": "You have successfully verified your email.",
   "It is not possible to delete an account with the administrator role. Please change your role before deleting.": "It is not possible to delete an account with the administrator role. Please change your role before deleting.",
-  "Account deleted successfully.": "Account deleted successfully."
+  "Account deleted successfully.": "Account deleted successfully.",
+  "Locale changed successfully.": "Locale changed successfully."
 }
