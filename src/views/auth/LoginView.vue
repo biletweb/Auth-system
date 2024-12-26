@@ -1,10 +1,10 @@
 <template>
   <div class="flex min-h-[calc(100vh-160px)] items-center justify-center">
     <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 lg:w-6/12">
-      <span class="text-3xl font-bold">Login</span>
+      <span class="text-3xl font-bold">{{ $t('Login') }}</span>
       <form @submit.prevent="login">
         <div class="relative my-4">
-          <label for="email">Email<sup class="ms-1 text-red-500">*</sup></label>
+          <label for="email">{{ $t('Email') }}<sup class="ms-1 text-red-500">*</sup></label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-at"></i>
           </div>
@@ -13,12 +13,12 @@
             type="text"
             name="email"
             id="email"
-            placeholder="Email"
+            :placeholder="$t('Email')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
         <div class="relative my-4">
-          <label for="password">Password<sup class="ms-1 text-red-500">*</sup></label>
+          <label for="password">{{ $t('Password') }}<sup class="ms-1 text-red-500">*</sup></label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-key"></i>
           </div>
@@ -27,7 +27,7 @@
             type="password"
             name="password"
             id="password"
-            placeholder="Password"
+            :placeholder="$t('Password')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
@@ -38,7 +38,7 @@
             :disabled="data.loading"
           >
             <Spinner v-if="data.loading" class="w-6" />
-            <span v-else>Login</span>
+            <span v-else>{{ $t('Login') }}</span>
           </button>
         </div>
       </form>

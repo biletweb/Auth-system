@@ -5,5 +5,7 @@
   "Login": "Login",
   "Register": "Register",
   "Logout": "Logout",
-  "Profile": "Profile"
+  "Profile": "Profile",
+  "Password": "Password",
+  "Email": "Email"
 }
