@@ -6,7 +6,7 @@
       <button type="submit" @click="setLocale('uk')" :disabled="savedLocale === 'uk'">
         <span
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
-          :class="{ underline: savedLocale === 'uk' }"
+          :class="{ 'underline underline-offset-4': savedLocale === 'uk' }"
         >
           UK
         </span>
@@ -14,7 +14,7 @@
       <button type="submit" @click="setLocale('en')" :disabled="savedLocale === 'en'">
         <span
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
-          :class="{ underline: savedLocale === 'en' }"
+          :class="{ 'underline underline-offset-4': savedLocale === 'en' }"
         >
           EN
         </span>
@@ -22,7 +22,7 @@
       <button type="submit" @click="setLocale('ru')" :disabled="savedLocale === 'ru'">
         <span
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
-          :class="{ underline: savedLocale === 'ru' }"
+          :class="{ 'underline underline-offset-4': savedLocale === 'ru' }"
         >
           RU
         </span>
