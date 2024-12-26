@@ -38,7 +38,7 @@
           <input
             v-model="verificationCode"
             type="text"
-            name="security_code"
+            name="verificationCode"
             :placeholder="$t('Verification code')"
             class="w-44 rounded-lg border p-2 font-normal focus:border-blue-500 focus:outline-none"
           />
@@ -91,7 +91,7 @@ const confirmEmail = async () => {
   try {
     const response = await axios.post(
       `${BASE_URL}/profile/settings/confirm-email`,
-      { verificationCode: verificationCode.value },
+      { verification_code: verificationCode.value },
       getConfig(authStore.access_token),
     )
     if (response.data.error) {
