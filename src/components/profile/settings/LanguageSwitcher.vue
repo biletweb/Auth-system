@@ -66,6 +66,7 @@ const setLocale = async (newLocale) => {
     if (response.data.error) {
       toast.error(response.data.error, { timeout: 5000 })
     } else {
+      authStore.user.locale = newLocale
       locale.value = newLocale
       localStorage.setItem('locale', newLocale)
       toast.success(response.data.message, { timeout: 5000 })
