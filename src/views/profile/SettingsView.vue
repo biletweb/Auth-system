@@ -4,7 +4,10 @@
     <Spinner v-if="!authStore.user" class="w-7 rounded-full bg-blue-500 p-1" />
     <span v-else class="text-xl font-bold">{{ authStore.user.email }}</span>
   </div>
-  <div v-if="authStore.user && !authStore.user.email_verified_at" class="my-4 rounded-lg bg-amber-300 p-4">
+  <div
+    v-if="authStore.user && !authStore.user.email_verified_at"
+    class="my-4 rounded-lg bg-amber-300 p-4"
+  >
     <div class="flex items-center justify-between">
       <div class="flex items-center text-blue-500">
         <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
@@ -12,9 +15,16 @@
       </div>
       <div>
         <button
+          @click="resendEmail"
+          type="submit"
           class="font-bold text-blue-500 underline transition duration-300 hover:text-blue-600"
+          :disabled="loadingResend"
         >
-          Resend security code
+          <Spinner
+            v-if="loadingResend"
+            class="flex w-5 items-center rounded-full bg-blue-500 p-1"
+          />
+          <span v-else>Resend security code</span>
         </button>
       </div>
     </div>
@@ -33,9 +43,9 @@
           <button
             type="submit"
             class="rounded-lg bg-blue-500 px-4 py-2 font-normal text-white transition duration-300 hover:bg-blue-600"
-            :disabled="loading"
+            :disabled="loadingConfirm"
           >
-            <Spinner v-if="loading" class="w-6" />
+            <Spinner v-if="loadingConfirm" class="w-6" />
             <span v-else>Confirm</span>
           </button>
         </div>
@@ -65,12 +75,13 @@ import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
 const securityCode = ref('')
-const loading = ref(false)
+const loadingConfirm = ref(false)
+const loadingResend = ref(false)
 const toast = useToast()
 const router = useRouter()
 
 const confirmEmail = async () => {
-  loading.value = true
+  loadingConfirm.value = true
   try {
     const response = await axios.post(
       `${BASE_URL}/profile/settings/confirm-email`,
@@ -101,7 +112,40 @@ const confirmEmail = async () => {
       toast.error('Too many requests. Please try again later.', { timeout: 5000 })
     }
   } finally {
-    loading.value = false
+    loadingConfirm.value = false
+  }
+}
+
+const resendEmail = async () => {
+  loadingResend.value = true
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/profile/settings/resend-email`,
+      null,
+      getConfig(authStore.access_token),
+    )
+    if (response.data.error) {
+      toast.error(response.data.error, { timeout: 5000 })
+    } else {
+      toast.success(response.data.message, { timeout: 5000 })
+    }
+  } catch (error) {
+    if (error.response.data.errors) {
+      const errors = error.response.data.errors
+      let errorMessage = ''
+      errorMessage = Object.values(errors).flat().join('\n')
+      toast.error(errorMessage, { timeout: 5000 })
+    }
+    if (error.response.status === 401) {
+      authStore.clearState()
+      router.push({ name: 'login' })
+      toast.error(error.response.data.message, { timeout: 5000 })
+    }
+    if (error.response.status === 429) {
+      toast.error('Too many requests. Please try again later.', { timeout: 5000 })
+    }
+  } finally {
+    loadingResend.value = false
   }
 }
 </script>
