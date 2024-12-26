@@ -28,5 +28,6 @@
   "New password confirmation": "New password confirmation",
   "Change password": "Change password",
   "Settings": "Settings",
-  "Administration panel": "Administration panel"
+  "Administration panel": "Administration panel",
+  "Invalid credentials.": "Invalid credentials."
 }

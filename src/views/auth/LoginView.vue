@@ -77,7 +77,7 @@ const login = async () => {
   try {
     const response = await axios.post(`${BASE_URL}/login`, data.user)
     if (response.data.error) {
-      toast.error(response.data.error, { timeout: 5000 })
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000 })
     } else {
       authStore.setAccessToken(response.data.access_token)
       authStore.setUser(response.data.user)

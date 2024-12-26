@@ -28,5 +28,6 @@
   "New password confirmation": "Подтверждение нового пароля",
   "Change password": "Изменить пароль",
   "Settings": "Настройки",
-  "Administration panel": "Панель администратора"
+  "Administration panel": "Панель администратора",
+  "Invalid credentials.": "Неверные учетные данные."
 }

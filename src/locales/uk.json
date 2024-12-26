@@ -28,5 +28,6 @@
   "New password confirmation": "Підтвердження нового паролю",
   "Change password": "Змінити пароль",
   "Settings": "Налаштування",
-  "Administration panel": "Панель адміністратора"
+  "Administration panel": "Панель адміністратора",
+  "Invalid credentials.": "Недійсні облікові дані."
 }
