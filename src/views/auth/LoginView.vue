@@ -88,10 +88,7 @@ const login = async () => {
     }
   } catch (error) {
     if (error.response.status === 422) {
-      const errors = error.response.data.errors
-      let errorMessage = ''
-      errorMessage = Object.values(errors).flat().join('\n')
-      toast.error(errorMessage, { timeout: 5000 })
+      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000 })
     }
   } finally {
     data.loading = false

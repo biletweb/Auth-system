@@ -29,5 +29,8 @@
   "Change password": "Change password",
   "Settings": "Settings",
   "Administration panel": "Administration panel",
-  "Invalid credentials.": "Invalid credentials."
+  "Invalid credentials.": "Invalid credentials.",
+  "The email field is required.": "The email field is required.",
+  "The password field is required.": "The password field is required.",
+  "The email field must be a valid email address.": "The email field must be a valid email address."
 }

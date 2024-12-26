@@ -29,5 +29,8 @@
   "Change password": "Змінити пароль",
   "Settings": "Налаштування",
   "Administration panel": "Панель адміністратора",
-  "Invalid credentials.": "Недійсні облікові дані."
+  "Invalid credentials.": "Недійсні облікові дані.",
+  "The email field is required.": "Поле електронної пошти є обов'язковим.",
+  "The password field is required.": "Поле паролю є обов'язковим.",
+  "The email field must be a valid email address.": "Поле електронної пошти має бути дійсним адресом електронної пошти."
 }

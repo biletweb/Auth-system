@@ -29,5 +29,8 @@
   "Change password": "Изменить пароль",
   "Settings": "Настройки",
   "Administration panel": "Панель администратора",
-  "Invalid credentials.": "Неверные учетные данные."
+  "Invalid credentials.": "Неверные учетные данные.",
+  "The email field is required.": "Поле электронной почты обязательно для заполнения.",
+  "The password field is required.": "Поле пароля обязательно для заполнения.",
+  "The email field must be a valid email address.": "Поле электронной почты должно быть действительным адресом электронной почты."
 }
