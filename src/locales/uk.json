@@ -8,5 +8,8 @@
   "Profile": "Профіль",
   "Password": "Пароль",
   "Email": "Електронна пошта",
-  "All rights reserved": "Всі права захищені"
+  "All rights reserved": "Всі права захищені",
+  "Name": "Ім'я",
+  "Surname": "Прізвище",
+  "Password confirmation": "Підтвердження паролю"
 }

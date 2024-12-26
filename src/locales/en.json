@@ -8,5 +8,8 @@
   "Profile": "Profile",
   "Password": "Password",
   "Email": "Email",
-  "All rights reserved": "All rights reserved"
+  "All rights reserved": "All rights reserved",
+  "Name": "Name",
+  "Surname": "Surname",
+  "Password confirmation": "Password confirmation"
 }
