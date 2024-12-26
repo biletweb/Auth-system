@@ -34,6 +34,9 @@ import { BASE_URL, getConfig } from '@/helpers/config.js'
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 import Spinner from '@/components/Spinner.vue'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 
 const authStore = useAuthStore()
 const toast = useToast()
@@ -45,8 +48,9 @@ const logout = async () => {
   try {
     const response = await axios.post(`${BASE_URL}/logout`, null, getConfig(authStore.access_token))
     authStore.clearState()
-    toast.success(response.data.message, { timeout: 5000 })
+    locale.value = 'uk'
     router.push({ name: 'login' })
+    toast.success(response.data.message, { timeout: 5000 })
   } catch (error) {
     if (error.response.status === 401) {
       authStore.clearState()
