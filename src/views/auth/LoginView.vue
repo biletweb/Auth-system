@@ -77,6 +77,7 @@ const data = reactive({
 
 const login = async () => {
   data.loading = true
+  errorField.value = ''
   try {
     const response = await axios.post(`${BASE_URL}/login`, data.user)
     if (response.data.error) {
