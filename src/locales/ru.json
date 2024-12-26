@@ -42,5 +42,6 @@
   "Locale changed successfully.": "Язык успешно изменен.",
   "The surname field is required.": "Поле фамилии обязательно для заполнения.",
   "Personal information updated successfully.": "Личная информация успешно обновлена.",
-  "No changes were made.": "Никаких изменений не произошло."
+  "No changes were made.": "Никаких изменений не произошло.",
+  "The name field is required.": "Поле имени обязательно для заполнения."
 }

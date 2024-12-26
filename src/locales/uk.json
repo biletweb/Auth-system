@@ -42,5 +42,6 @@
   "Locale changed successfully.": "Мова успішно змінена.",
   "The surname field is required.": "Поле прізвище є обов'язковим.",
   "Personal information updated successfully.": "Особиста інформація успішно оновлена.",
-  "No changes were made.": "Жодних змін не внесено."
+  "No changes were made.": "Жодних змін не внесено.",
+  "The name field is required.": "Поле ім'я є обов'язковим."
 }
