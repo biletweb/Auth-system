@@ -40,8 +40,8 @@
   "It is not possible to delete an account with the administrator role. Please change your role before deleting.": "Удалить учетную запись с ролью администратора невозможно. Пожалуйста, измените свою роль перед удалением.",
   "Account deleted successfully.": "Аккаунт успешно удален.",
   "Locale changed successfully.": "Язык успешно изменен.",
-  "The surname field is required.": "Поле фамилии обязательно для заполнения.",
+  "The surname field is required.": "Поле фамилия обязательно для заполнения.",
   "Personal information updated successfully.": "Личная информация успешно обновлена.",
   "No changes were made.": "Никаких изменений не произошло.",
-  "The name field is required.": "Поле имени обязательно для заполнения."
+  "The name field is required.": "Поле имя обязательно для заполнения."
 }
