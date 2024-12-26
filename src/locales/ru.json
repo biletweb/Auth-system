@@ -20,5 +20,7 @@
   "Please confirm your email. We have sent a verification code to the address you provided.": "Пожалуйста, подтвердите свой адрес электронной почты. Мы отправили код подтверждения на указанный вами адрес.",
   "Resend verification code": "Повторно отправить код подтверждения",
   "Verification code": "Код подтверждения",
-  "Confirm": "Подтвердить"
+  "Confirm": "Подтвердить",
+  "Updating personal information": "Обновление личной информации",
+  "Update information": "Обновить информацию"
 }

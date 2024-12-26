@@ -1,13 +1,13 @@
 <template>
   <div class="card rounded-lg bg-white p-4">
-    <span class="text-xl font-bold">Updating personal information</span>
+    <span class="text-xl font-bold">{{ $t('Updating personal information') }}</span>
     <div v-if="!authStore.user" class="my-4 flex justify-center">
       <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
     </div>
     <form v-else @submit.prevent="update">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="name">Name<sup class="ms-1 text-red-500">*</sup></label>
+          <label for="name">{{ $t('Name') }}<sup class="ms-1 text-red-500">*</sup></label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-user"></i>
           </div>
@@ -16,12 +16,12 @@
             type="text"
             name="name"
             id="name"
-            placeholder="Name"
+            :placeholder="$t('Name')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
         <div class="relative my-4">
-          <label for="surname">Surname<sup class="ms-1 text-red-500">*</sup> </label>
+          <label for="surname">{{ $t('Surname') }}<sup class="ms-1 text-red-500">*</sup> </label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-user"></i>
           </div>
@@ -30,7 +30,7 @@
             type="text"
             name="surname"
             id="surname"
-            placeholder="Surname"
+            :placeholder="$t('Surname')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
@@ -42,7 +42,7 @@
           :disabled="data.loading"
         >
           <Spinner v-if="data.loading" class="w-6" />
-          <span v-else>Update information</span>
+          <span v-else>{{ $t('Update information') }}</span>
         </button>
       </div>
     </form>
