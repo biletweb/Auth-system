@@ -1,10 +1,10 @@
 <template>
   <div class="card rounded-lg bg-white p-4">
-    <span class="text-xl font-bold">Changing account password</span>
+    <span class="text-xl font-bold">{{ $t('Changing account password') }}</span>
     <form @submit.prevent="changePassword">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="password">New password<sup class="ms-1 text-red-500">*</sup></label>
+          <label for="password">{{ $t('New password') }}<sup class="ms-1 text-red-500">*</sup></label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-key"></i>
           </div>
@@ -13,13 +13,13 @@
             type="password"
             name="password"
             id="password"
-            placeholder="New password"
+            :placeholder="$t('New password')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
         <div class="relative my-4">
           <label for="password_confirmation">
-            New password confirmation<sup class="ms-1 text-red-500">*</sup>
+            {{ $t('New password confirmation') }}<sup class="ms-1 text-red-500">*</sup>
           </label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-key"></i>
@@ -29,7 +29,7 @@
             type="password"
             name="password_confirmation"
             id="password_confirmation"
-            placeholder="New password confirmation"
+            :placeholder="$t('New password confirmation')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
           />
         </div>
@@ -41,7 +41,7 @@
           :disabled="data.loading"
         >
           <Spinner v-if="data.loading" class="w-6" />
-          <span v-else>Change password</span>
+          <span v-else>{{ $t('Change password') }}</span>
         </button>
       </div>
     </form>

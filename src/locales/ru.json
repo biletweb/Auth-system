@@ -22,5 +22,10 @@
   "Verification code": "Код подтверждения",
   "Confirm": "Подтвердить",
   "Updating personal information": "Обновление личной информации",
-  "Update information": "Обновить информацию"
+  "Update information": "Обновить информацию",
+  "Changing account password": "Изменение пароля аккаунта",
+  "New password": "Новый пароль",
+  "New password confirmation": "Подтверждение нового пароля",
+  "Change password": "Изменить пароль",
+  "Settings": "Настройки"
 }

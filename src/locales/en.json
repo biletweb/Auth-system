@@ -22,5 +22,10 @@
   "Verification code": "Verification code",
   "Confirm": "Confirm",
   "Updating personal information": "Updating personal information",
-  "Update information": "Update information"
+  "Update information": "Update information",
+  "Changing account password": "Changing account password",
+  "New password": "New password",
+  "New password confirmation": "New password confirmation",
+  "Change password": "Change password",
+  "Settings": "Settings"
 }
