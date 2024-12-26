@@ -27,5 +27,6 @@
   "New password": "Новый пароль",
   "New password confirmation": "Подтверждение нового пароля",
   "Change password": "Изменить пароль",
-  "Settings": "Настройки"
+  "Settings": "Настройки",
+  "Administration panel": "Панель администратора"
 }
