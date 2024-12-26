@@ -39,5 +39,8 @@
   "You have successfully verified your email.": "Ви успішно підтвердили свою електронну адресу.",
   "It is not possible to delete an account with the administrator role. Please change your role before deleting.": "Неможливо видалити обліковий запис із роллю адміністратора. Змініть свою роль перед видаленням.",
   "Account deleted successfully.": "Обліковий запис успішно видалено.",
-  "Locale changed successfully.": "Мова успішно змінена."
+  "Locale changed successfully.": "Мова успішно змінена.",
+  "The surname field is required.": "Поле прізвище є обов'язковим.",
+  "Personal information updated successfully.": "Особиста інформація успішно оновлена.",
+  "No changes were made.": "Жодних змін не внесено."
 }

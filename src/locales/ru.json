@@ -39,5 +39,8 @@
   "You have successfully verified your email.": "Вы успешно подтвердили свой адрес электронной почты.",
   "It is not possible to delete an account with the administrator role. Please change your role before deleting.": "Удалить учетную запись с ролью администратора невозможно. Пожалуйста, измените свою роль перед удалением.",
   "Account deleted successfully.": "Аккаунт успешно удален.",
-  "Locale changed successfully.": "Язык успешно изменен."
+  "Locale changed successfully.": "Язык успешно изменен.",
+  "The surname field is required.": "Поле фамилии обязательно для заполнения.",
+  "Personal information updated successfully.": "Личная информация успешно обновлена.",
+  "No changes were made.": "Никаких изменений не произошло."
 }
