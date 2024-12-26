@@ -78,6 +78,7 @@ import axios from 'axios'
 import { BASE_URL, getConfig } from '@/helpers/config.js'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
+import { i18n } from '@/main.js'
 
 const authStore = useAuthStore()
 const verificationCode = ref('')
@@ -95,28 +96,22 @@ const confirmEmail = async () => {
       getConfig(authStore.access_token),
     )
     if (response.data.error) {
-      toast.error(response.data.error, { timeout: 5000 })
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000 })
     } else if (response.data.warning) {
-      toast.warning(response.data.warning, { timeout: 5000 })
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {
-      toast.success(response.data.message, { timeout: 5000 })
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
       authStore.user.email_verified_at = true
       verificationCode.value = ''
     }
   } catch (error) {
-    if (error.response.data.errors) {
-      const errors = error.response.data.errors
-      let errorMessage = ''
-      errorMessage = Object.values(errors).flat().join('\n')
-      toast.error(errorMessage, { timeout: 5000 })
-    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
       toast.error(error.response.data.message, { timeout: 5000 })
     }
     if (error.response.status === 429) {
-      toast.error('Too many requests. Please try again later.', { timeout: 5000 })
+      toast.error(i18n.global.t('Too many requests. Please try again later.'), { timeout: 5000 })
     }
   } finally {
     loadingConfirm.value = false

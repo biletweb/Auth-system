@@ -33,5 +33,7 @@
   "The email field is required.": "The email field is required.",
   "The password field is required.": "The password field is required.",
   "The email field must be a valid email address.": "The email field must be a valid email address.",
-  "The password field must be at least 6 characters.": "The password field must be at least 6 characters."
+  "The password field must be at least 6 characters.": "The password field must be at least 6 characters.",
+  "Invalid verification code.": "Invalid verification code.",
+  "Too many requests. Please try again later.": "Too many requests. Please try again later."
 }
