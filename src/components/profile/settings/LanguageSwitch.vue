@@ -8,7 +8,10 @@
       <button type="submit" @click="setLocale('uk')" :disabled="savedLocale === 'uk'">
         <span
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
-          :class="{ 'underline underline-offset-4': savedLocale === 'uk' }"
+          :class="{
+            'bg-blue-600 underline underline-offset-4': savedLocale === 'uk',
+            'bg-blue-500': savedLocale !== 'uk',
+          }"
         >
           {{ $t('UK') }}
         </span>
@@ -16,15 +19,21 @@
       <button type="submit" @click="setLocale('ru')" :disabled="savedLocale === 'ru'">
         <span
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
-          :class="{ 'underline underline-offset-4': savedLocale === 'ru' }"
+          :class="{
+            'bg-blue-600 underline underline-offset-4': savedLocale === 'ru',
+            'bg-blue-500': savedLocale !== 'ru',
+          }"
         >
           {{ $t('RU') }}
         </span>
       </button>
       <button type="submit" @click="setLocale('en')" :disabled="savedLocale === 'en'">
         <span
-          class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
-          :class="{ 'underline underline-offset-4': savedLocale === 'en' }"
+          class="rounded-lg p-2 text-white hover:bg-blue-600"
+          :class="{
+            'bg-blue-600 underline underline-offset-4': savedLocale === 'en',
+            'bg-blue-500': savedLocale !== 'en',
+          }"
         >
           {{ $t('EN') }}
         </span>
