@@ -78,6 +78,7 @@ const login = async () => {
     } else {
       authStore.setAccessToken(response.data.access_token)
       authStore.setUser(response.data.user)
+      localStorage.setItem('locale', authStore.user.locale)
       toast.success(response.data.message, { timeout: 5000 })
       router.push({ name: 'home' })
     }
