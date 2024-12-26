@@ -35,5 +35,6 @@
   "The email field must be a valid email address.": "Поле електронної пошти має бути дійсним адресом електронної пошти.",
   "The password field must be at least 6 characters.": "Поле паролю має містити не менше 6 символів.",
   "Invalid verification code.": "Недійсний код підтвердження.",
-  "Too many requests. Please try again later.": "Забагато запитів. Спробуйте пізніше."
+  "Too many requests. Please try again later.": "Забагато запитів. Спробуйте пізніше.",
+  "You have successfully verified your email.": "Ви успішно підтвердили свою електронну адресу."
 }
