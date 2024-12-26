@@ -1,7 +1,7 @@
 <template>
   <div class="card rounded-lg bg-white p-4">
     <div class="flex items-center justify-between">
-      <span class="text-xl font-bold">{{ $t('Changing your language') }}</span>
+      <span class="text-xl font-bold">{{ $t('Changing language') }}</span>
       <Spinner v-if="loading" class="w-7 rounded-full bg-blue-500 p-1" />
     </div>
     <div class="my-7 flex gap-2">

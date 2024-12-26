@@ -1,6 +1,6 @@
 <template>
   <div class="card rounded-lg bg-white p-4">
-    <span class="text-xl font-bold">Changing your account password</span>
+    <span class="text-xl font-bold">Changing account password</span>
     <form @submit.prevent="changePassword">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
