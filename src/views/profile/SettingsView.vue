@@ -95,6 +95,7 @@ const confirmEmail = async () => {
     } else {
       toast.success(response.data.message, { timeout: 5000 })
       isEmailVerified.value = true
+      authStore.user.email_verified_at = true
     }
   } catch (error) {
     if (error.response.data.errors) {
