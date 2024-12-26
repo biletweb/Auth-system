@@ -6,7 +6,7 @@
   </div>
   <div
     v-if="authStore.user && !authStore.user.email_verified_at"
-    class="my-4 rounded-lg bg-amber-300 p-4"
+    class="my-4 rounded-lg bg-amber-300 p-4 shadow"
   >
     <div class="flex items-center justify-between">
       <div class="flex items-center text-blue-500">
@@ -53,11 +53,11 @@
     </form>
   </div>
   <div class="grid grid-cols-2 gap-4">
-    <UpdatePersonalInfo />
-    <ChangePassword />
-    <LanguageSwitch />
+    <UpdatePersonalInfo class="shadow" />
+    <ChangePassword class="shadow" />
+    <LanguageSwitch class="shadow" />
     <!-- <div class="col-span-2"> -->
-    <DeleteAccount />
+    <DeleteAccount class="shadow" />
     <!-- </div> -->
   </div>
 </template>

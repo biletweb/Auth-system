@@ -1,6 +1,6 @@
 <template>
   <div class="flex min-h-[calc(100vh-160px)] items-center justify-center">
-    <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 lg:w-6/12">
+    <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 shadow lg:w-6/12">
       <span class="text-3xl font-bold">{{ $t('Register') }}</span>
       <form @submit.prevent="register">
         <div class="my-4 grid grid-cols-2 gap-4">
