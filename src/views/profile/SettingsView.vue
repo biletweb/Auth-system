@@ -12,7 +12,9 @@
       <div class="flex items-center text-blue-500">
         <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
         {{
-          $t('Please confirm your email. We have sent a verification code to the address you provided.')
+          $t(
+            'Please confirm your email. We have sent a verification code to the address you provided.',
+          )
         }}
       </div>
       <div>
@@ -34,7 +36,7 @@
       <div class="mt-4 flex items-center gap-4">
         <div>
           <input
-            v-model="securityCode"
+            v-model="verificationCode"
             type="text"
             name="security_code"
             :placeholder="$t('Verification code')"
@@ -78,7 +80,7 @@ import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
-const securityCode = ref('')
+const verificationCode = ref('')
 const loadingConfirm = ref(false)
 const loadingResend = ref(false)
 const toast = useToast()
@@ -89,7 +91,7 @@ const confirmEmail = async () => {
   try {
     const response = await axios.post(
       `${BASE_URL}/profile/settings/confirm-email`,
-      { securityCode: securityCode.value },
+      { verificationCode: verificationCode.value },
       getConfig(authStore.access_token),
     )
     if (response.data.error) {
@@ -99,7 +101,7 @@ const confirmEmail = async () => {
     } else {
       toast.success(response.data.message, { timeout: 5000 })
       authStore.user.email_verified_at = true
-      securityCode.value = ''
+      verificationCode.value = ''
     }
   } catch (error) {
     if (error.response.data.errors) {
