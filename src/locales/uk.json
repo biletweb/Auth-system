@@ -32,5 +32,6 @@
   "Invalid credentials.": "Недійсні облікові дані.",
   "The email field is required.": "Поле електронної пошти є обов'язковим.",
   "The password field is required.": "Поле паролю є обов'язковим.",
-  "The email field must be a valid email address.": "Поле електронної пошти має бути дійсним адресом електронної пошти."
+  "The email field must be a valid email address.": "Поле електронної пошти має бути дійсним адресом електронної пошти.",
+  "The password field must be at least 6 characters.": "Поле паролю має містити не менше 6 символів."
 }

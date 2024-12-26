@@ -32,5 +32,6 @@
   "Invalid credentials.": "Неверные учетные данные.",
   "The email field is required.": "Поле электронной почты обязательно для заполнения.",
   "The password field is required.": "Поле пароля обязательно для заполнения.",
-  "The email field must be a valid email address.": "Поле электронной почты должно быть действительным адресом электронной почты."
+  "The email field must be a valid email address.": "Поле электронной почты должно быть действительным адресом электронной почты.",
+  "The password field must be at least 6 characters.": "Поле пароля должно содержать не менее 6 символов."
 }
