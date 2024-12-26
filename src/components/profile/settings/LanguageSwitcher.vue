@@ -1,6 +1,6 @@
 <template>
   <div class="card rounded-lg bg-white p-4">
-    <span class="text-xl font-bold">Changing your language</span>
+    <span class="text-xl font-bold">{{ $t('Changing your language') }}</span>
 
     <div class="my-4 flex gap-2">
       <button type="submit" @click="setLocale('uk')" :disabled="savedLocale === 'uk'">
@@ -8,7 +8,7 @@
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
           :class="{ 'underline underline-offset-4': savedLocale === 'uk' }"
         >
-          UK
+          {{ $t('UK') }}
         </span>
       </button>
       <button type="submit" @click="setLocale('en')" :disabled="savedLocale === 'en'">
@@ -16,7 +16,7 @@
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
           :class="{ 'underline underline-offset-4': savedLocale === 'en' }"
         >
-          EN
+          {{ $t('EN') }}
         </span>
       </button>
       <button type="submit" @click="setLocale('ru')" :disabled="savedLocale === 'ru'">
@@ -24,7 +24,7 @@
           class="rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600"
           :class="{ 'underline underline-offset-4': savedLocale === 'ru' }"
         >
-          RU
+          {{ $t('RU') }}
         </span>
       </button>
     </div>
