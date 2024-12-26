@@ -53,12 +53,12 @@
     </form>
   </div>
   <div class="grid grid-cols-2 gap-4">
-    <ChangePassword />
     <UpdatePersonalInfo />
+    <ChangePassword />
     <LanguageSwitch />
-    <div class="col-span-2">
-      <DeleteAccount />
-    </div>
+    <!-- <div class="col-span-2"> -->
+    <DeleteAccount />
+    <!-- </div> -->
   </div>
 </template>
 
