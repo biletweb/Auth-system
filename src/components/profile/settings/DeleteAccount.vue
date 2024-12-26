@@ -4,7 +4,7 @@
     <p class="my-4 font-bold">
       {{
         $t(
-          'If you delete your account, all your personal data will be deleted and you will not be able to regain access.',
+          'If you delete your account, all your personal information will be deleted and you will not be able to regain access.',
         )
       }}
     </p>
