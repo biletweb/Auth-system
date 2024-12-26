@@ -55,7 +55,7 @@
   <div class="grid grid-cols-2 gap-4">
     <ChangePassword />
     <UpdatePersonalInfo />
-    <LanguageSwitcher />
+    <LanguageSwitch />
     <div class="col-span-2">
       <DeleteAccount />
     </div>
@@ -65,7 +65,7 @@
 <script setup>
 import ChangePassword from '@/components/profile/settings/ChangePassword.vue'
 import UpdatePersonalInfo from '@/components/profile/settings/UpdatePersonalInfo.vue'
-import LanguageSwitcher from '@/components/profile/settings/LanguageSwitcher.vue'
+import LanguageSwitch from '@/components/profile/settings/LanguageSwitch.vue'
 import DeleteAccount from '@/components/profile/settings/DeleteAccount.vue'
 import Spinner from '@/components/Spinner.vue'
 import { useAuthStore } from '@/stores/authStore.js'
