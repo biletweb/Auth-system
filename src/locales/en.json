@@ -55,5 +55,7 @@
   "Menu": "Menu",
   "Role": "Role",
   "Registered": "Registered",
-  "Locale": "Locale"
+  "Locale": "Locale",
+  "Administrator": "Administrator",
+  "User": "User"
 }

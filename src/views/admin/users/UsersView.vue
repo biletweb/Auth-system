@@ -35,7 +35,10 @@
             <i v-else class="pi pi-times-circle ms-1 text-red-500"></i>
           </p>
         </td>
-        <td class="border border-slate-300 p-4 text-slate-500">{{ user.role }}</td>
+        <td class="border border-slate-300 p-4 text-slate-500">
+          <p v-if="user.role === 'admin'" class="text-red-500">{{ $t('Administrator') }}</p>
+          <p v-if="user.role === 'user'">{{ $t('User') }}</p>
+        </td>
         <td class="border border-slate-300 p-4 text-slate-500 uppercase">{{ user.locale }}</td>
         <td class="border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
       </tr>
