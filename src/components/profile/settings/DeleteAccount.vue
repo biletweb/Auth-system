@@ -42,18 +42,18 @@ const deleteAccount = async () => {
   try {
     const response = await axios.post(`${BASE_URL}/profile/settings/delete-account`, null, getConfig(authStore.access_token))
     if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       authStore.clearState()
       locale.value = 'uk'
       router.push({ name: 'login' })
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } catch (error) {
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
-      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loading.value = false

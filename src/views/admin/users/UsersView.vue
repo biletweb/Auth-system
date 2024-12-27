@@ -122,7 +122,7 @@ const fetchUsers = async () => {
       ...getConfig(authStore.access_token),
     })
     if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
       offset.value += limit // Обновляем смещение
@@ -134,7 +134,7 @@ const fetchUsers = async () => {
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
-      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loading.value = false
@@ -143,11 +143,11 @@ const fetchUsers = async () => {
 
 const searchUsers = async () => {
   if (searchInput.value === '') {
-    toast.error(i18n.global.t('Please enter a search query.'), { timeout: 5000 })
+    toast.error(i18n.global.t('Please enter a search query.'), { timeout: 5000, pauseOnFocusLoss: true })
     return
   }
   if (searchInput.value.length <= 2) {
-    toast.error(i18n.global.t('Search query must be at least 3 characters.'), { timeout: 5000 })
+    toast.error(i18n.global.t('Search query must be at least 3 characters.'), { timeout: 5000, pauseOnFocusLoss: true })
     return
   }
   loadingSearchUsers.value = true
@@ -160,26 +160,26 @@ const searchUsers = async () => {
       ...getConfig(authStore.access_token),
     })
     if (response.data.error) {
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000 })
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
     } else if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       users.value = response.data.users
       if (response.data.users.length === 0) {
-        toast.error(i18n.global.t('No users found.'), { timeout: 5000 })
+        toast.error(i18n.global.t('No users found.'), { timeout: 5000, pauseOnFocusLoss: true })
       } else {
-        toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), { timeout: 5000 })
+        toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), { timeout: 5000, pauseOnFocusLoss: true })
       }
     }
   } catch (error) {
     if (error.response.status === 422) {
       errorField.value = error.response.data.field
-      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000 })
+      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
     }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
-      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loadingSearchUsers.value = false
