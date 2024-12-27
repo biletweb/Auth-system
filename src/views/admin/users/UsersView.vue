@@ -19,11 +19,15 @@
         <div class="absolute left-2.5 top-2.5 text-gray-400"><i class="pi pi-search"></i></div>
         <input
           v-model="searchInput"
+          ref="inputSearchRef"
           type="text"
           name="searchInput"
           :placeholder="$t('Search users...')"
-          class="w-full rounded-lg border p-2 pl-8 shadow focus:border-blue-500 focus:outline-none"
+          class="w-full rounded-lg border p-2 pl-8 pr-8 shadow focus:border-blue-500 focus:outline-none"
         />
+        <div v-if="searchInput" class="absolute right-2.5 top-2.5 text-gray-400 hover:cursor-pointer hover:text-gray-500">
+          <i class="pi pi-eraser" @click="clearSearchInput"></i>
+        </div>
       </div>
       <button
         type="submit"
@@ -99,6 +103,7 @@ const loading = ref(false)
 const loadingSearchUsers = ref(false)
 const users = ref([])
 const searchInput = ref('')
+const inputSearchRef = ref(null)
 const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
 const limit = 10 // Количество пользователей за раз
@@ -169,5 +174,10 @@ const searchUsers = async () => {
   } finally {
     loadingSearchUsers.value = false
   }
+}
+
+const clearSearchInput = () => {
+  searchInput.value = ''
+  inputSearchRef.value?.focus()
 }
 </script>
