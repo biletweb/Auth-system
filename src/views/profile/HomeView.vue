@@ -22,7 +22,6 @@
       </div>
     </div>
   </div>
-  <div class="card rounded-lg bg-white p-4">Block #1</div>
 </template>
 
 <script setup>
