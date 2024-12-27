@@ -3,18 +3,18 @@
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-4">
         <div><HeaderLogo /></div>
-        <div><HeaderLeftMenuItem /></div>
+        <div><HeaderLeftMenuItems /></div>
       </div>
       <Spinner v-if="loading" class="w-5" />
-      <div v-else><HeaderRightMenuItem /></div>
+      <div v-else><HeaderRightMenuItems /></div>
     </div>
   </header>
 </template>
 
 <script setup>
 import HeaderLogo from '@/components/HeaderLogo.vue'
-import HeaderRightMenuItem from '@/components/HeaderRightMenuItem.vue'
-import HeaderLeftMenuItem from '@/components/HeaderLeftMenuItem.vue'
+import HeaderRightMenuItems from '@/components/HeaderRightMenuItems.vue'
+import HeaderLeftMenuItems from '@/components/HeaderLeftMenuItems.vue'
 import { useAuthStore } from '@/stores/authStore.js'
 import axios from 'axios'
 import { BASE_URL, getConfig } from '@/helpers/config.js'
