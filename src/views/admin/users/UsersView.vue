@@ -191,7 +191,8 @@ const searchUsers = async () => {
 
 const clearSearchInput = () => {
   searchInput.value = ''
-  inputSearchRef.value?.focus()
+  users.value = []
   fetchUsers()
+  inputSearchRef.value?.focus()
 }
 </script>
