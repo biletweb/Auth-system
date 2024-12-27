@@ -20,6 +20,7 @@
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Surname') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Email') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Role') }}</th>
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Registered') }}</th>
       </tr>
     </thead>
@@ -31,6 +32,7 @@
           <p class="flex items-center">test@gmail.com <i class="pi pi-check-circle ms-1 text-green-500"></i></p>
         </td>
         <td class="border border-slate-300 p-4 text-slate-500">admin</td>
+        <td class="border border-slate-300 p-4 text-slate-500">RU</td>
         <td class="border border-slate-300 p-4 text-slate-500">25.01.2023 10:00</td>
       </tr>
       <tr>
@@ -40,6 +42,7 @@
           <p class="flex items-center">test2@gmail.com <i class="pi pi-times-circle ms-1 text-red-500"></i></p>
         </td>
         <td class="border border-slate-300 p-4 text-slate-500">user</td>
+        <td class="border border-slate-300 p-4 text-slate-500">UA</td>
         <td class="border border-slate-300 p-4 text-slate-500">25.01.2023 12:34</td>
       </tr>
     </tbody>
