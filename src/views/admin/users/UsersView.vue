@@ -40,7 +40,7 @@
     </div>
   </form>
 
-  <table class="w-full border-collapse overflow-hidden rounded-lg border border-slate-400 bg-white text-sm shadow">
+  <table class="w-full border-collapse overflow-hidden border border-slate-400 bg-white text-sm shadow">
     <thead class="bg-slate-50">
       <tr>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Name') }}</th>
@@ -168,7 +168,10 @@ const searchUsers = async () => {
       if (response.data.users.length === 0) {
         toast.error(i18n.global.t('No users found.'), { timeout: 5000, pauseOnFocusLoss: true })
       } else {
-        toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), { timeout: 5000, pauseOnFocusLoss: true })
+        toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
+          timeout: 5000,
+          pauseOnFocusLoss: true,
+        })
       }
     }
   } catch (error) {
