@@ -27,9 +27,9 @@
     <button
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
-      :disabled="loading"
+      :disabled="loadingSearchUsers"
     >
-      <Spinner v-if="loading" class="w-6" />
+      <Spinner v-if="loadingSearchUsers" class="w-6" />
       <span v-else>{{ $t('Search') }}</span>
     </button>
   </div>
@@ -95,6 +95,7 @@ const router = useRouter()
 const authStore = useAuthStore()
 const toast = useToast()
 const loading = ref(false)
+const loadingSearchUsers = ref(false)
 const users = ref([])
 const offset = ref(0) // Текущий сдвиг
 const limit = 10 // Количество пользователей за раз
