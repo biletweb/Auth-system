@@ -46,5 +46,6 @@
   "The name field is required.": "Поле имя обязательно для заполнения.",
   "The password field confirmation does not match.": "Подтверждение поля пароля не совпадает.",
   "Account has been created successfully! Please confirm your email. We have sent a verification code to the address you provided.": "Аккаунт успешно создан! Пожалуйста, подтвердите свой адрес электронной почты. Мы отправили код подтверждения на указанный вами адрес.",
-  "The email has already been taken.": "Этот адрес электронной почты уже используется."
+  "The email has already been taken.": "Этот адрес электронной почты уже используется.",
+  "Password changed successfully.": "Пароль успешно изменен."
 }

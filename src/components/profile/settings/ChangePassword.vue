@@ -4,7 +4,9 @@
     <form @submit.prevent="changePassword">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="password">{{ $t('New password') }}<sup class="ms-1 text-red-500">*</sup></label>
+          <label for="password"
+            >{{ $t('New password') }}<sup class="ms-1 text-red-500">*</sup></label
+          >
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-key"></i>
           </div>
@@ -15,6 +17,7 @@
             id="password"
             :placeholder="$t('New password')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'password' }"
           />
         </div>
         <div class="relative my-4">
@@ -31,6 +34,7 @@
             id="password_confirmation"
             :placeholder="$t('New password confirmation')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'password' }"
           />
         </div>
       </div>
@@ -54,12 +58,14 @@ import { BASE_URL, getConfig } from '@/helpers/config.js'
 import { useAuthStore } from '@/stores/authStore.js'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import Spinner from '@/components/Spinner.vue'
+import { i18n } from '@/main.js'
 
 const toast = useToast()
 const router = useRouter()
 const authStore = useAuthStore()
+const errorField = ref('')
 
 const data = reactive({
   loading: false,
@@ -71,28 +77,29 @@ const data = reactive({
 
 const changePassword = async () => {
   data.loading = true
+  errorField.value = ''
   try {
     const response = await axios.post(
       `${BASE_URL}/profile/settings/change-password`,
       data.user,
       getConfig(authStore.access_token),
     )
-    if (response.data.error) {
-      toast.error(response.data.error, { timeout: 5000 })
+    if (response.data.warning) {
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {
-      toast.success(response.data.message, { timeout: 5000 })
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
       data.user.password = ''
       data.user.password_confirmation = ''
     }
   } catch (error) {
-    const errors = error.response.data.errors
-    let errorMessage = ''
-    errorMessage = Object.values(errors).flat().join('\n')
-    toast.error(errorMessage, { timeout: 5000 })
+    if (error.response.status === 422) {
+      errorField.value = error.response.data.field
+      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000 })
+    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
-      toast.error(error.response.data.message, { timeout: 5000 })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
     }
   } finally {
     data.loading = false
