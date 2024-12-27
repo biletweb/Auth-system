@@ -30,8 +30,7 @@
         class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
         :disabled="loadingSearchUsers"
       >
-        <Spinner v-if="loadingSearchUsers" class="w-6" />
-        <span v-else>{{ $t('Search') }}</span>
+        <span>{{ $t('Search') }}</span>
       </button>
     </div>
   </form>
@@ -69,7 +68,7 @@
   </table>
   <div class="mt-4 text-center">
     <button
-      v-if="!loading && hasMore && !loadingSearchUsers"
+      v-if="!loading && hasMore"
       @click="fetchUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
@@ -79,7 +78,7 @@
     </button>
   </div>
   <div class="my-4 flex justify-center">
-    <Spinner v-if="loading" class="w-10 rounded-full bg-blue-500 p-1 text-white" />
+    <Spinner v-if="loading || loadingSearchUsers" class="w-10 rounded-full bg-blue-500 p-1 text-white" />
   </div>
 </template>
 
@@ -138,12 +137,12 @@ const fetchUsers = async () => {
 
 const searchUsers = async () => {
   loadingSearchUsers.value = true
-  offset.value = 0
-  hasMore.value = true
   users.value = []
+  offset.value = 0
+  hasMore.value = false
   try {
     const response = await axios.get(`${BASE_URL}/admin/users/search`, {
-      params: { offset: offset.value, limit, search: searchInput.value },
+      params: { search: searchInput.value },
       ...getConfig(authStore.access_token),
     })
     if (response.data.error) {
