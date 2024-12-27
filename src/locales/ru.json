@@ -59,5 +59,7 @@
   "Administrator": "Администратор",
   "User": "Пользователь",
   "Load more": "Загрузить ещё",
-  "You do not have permission to view this page.": "У вас нет разрешения на просмотр этой страницы."
+  "You do not have permission to view this page.": "У вас нет разрешения на просмотр этой страницы.",
+  "Search users...": "Поиск пользователей...",
+  "Search": "Поиск"
 }

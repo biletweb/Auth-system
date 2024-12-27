@@ -13,6 +13,27 @@
     </div>
   </div>
 
+  <div class="my-4 flex items-center gap-4">
+    <div class="relative w-full">
+      <div class="absolute left-2.5 top-2.5 text-gray-400"><i class="pi pi-search"></i></div>
+      <input
+        v-model="searchUsers"
+        type="text"
+        name="search"
+        :placeholder="$t('Search users...')"
+        class="w-full rounded-lg border p-2 pl-8 shadow focus:border-blue-500 focus:outline-none"
+      />
+    </div>
+    <button
+      type="submit"
+      class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+      :disabled="loading"
+    >
+      <Spinner v-if="loading" class="w-6" />
+      <span v-else>{{ $t('Search') }}</span>
+    </button>
+  </div>
+
   <table class="w-full border-collapse overflow-hidden rounded-lg border border-slate-400 bg-white text-sm shadow">
     <thead class="bg-slate-50">
       <tr>
