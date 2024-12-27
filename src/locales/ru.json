@@ -49,5 +49,6 @@
   "The email has already been taken.": "Этот адрес электронной почты уже используется.",
   "Password changed successfully.": "Пароль успешно изменен.",
   "Verification code has been sent.": "Код подтверждения отправлен.",
-  "You have successfully logged out.": "Вы успешно вышли из системы."
+  "You have successfully logged out.": "Вы успешно вышли из системы.",
+  "Unauthenticated.": "Время действия вашей сессии истекло. Авторизуйтесь, чтобы продолжить."
 }
