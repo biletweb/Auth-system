@@ -99,9 +99,9 @@ const update = async () => {
     } else if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
       authStore.user.name = data.user.name
       authStore.user.surname = data.user.surname
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
     }
   } catch (error) {
     if (error.response.status === 422) {

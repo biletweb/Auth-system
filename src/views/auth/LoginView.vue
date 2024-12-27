@@ -5,9 +5,7 @@
       <form @submit.prevent="login">
         <div class="relative my-4">
           <label for="email">{{ $t('Email') }}<sup class="ms-1 text-red-500">*</sup></label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400">
-            <i class="pi pi-at"></i>
-          </div>
+          <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-at"></i></div>
           <input
             v-model="data.user.email"
             type="text"
@@ -15,16 +13,12 @@
             id="email"
             :placeholder="$t('Email')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{
-              'border-red-500': errorField === 'email' || errorField === 'email, password',
-            }"
+            :class="{ 'border-red-500': errorField === 'email' || errorField === 'email, password' }"
           />
         </div>
         <div class="relative my-4">
           <label for="password">{{ $t('Password') }}<sup class="ms-1 text-red-500">*</sup></label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400">
-            <i class="pi pi-key"></i>
-          </div>
+          <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-key"></i></div>
           <input
             v-model="data.user.password"
             type="password"
@@ -32,9 +26,7 @@
             id="password"
             :placeholder="$t('Password')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{
-              'border-red-500': errorField === 'password' || errorField === 'email, password',
-            }"
+            :class="{ 'border-red-500': errorField === 'password' || errorField === 'email, password' }"
           />
         </div>
         <div class="my-4">
@@ -91,8 +83,8 @@ const login = async () => {
       authStore.setUser(response.data.user)
       localStorage.setItem('locale', authStore.user.locale)
       locale.value = localStorage.getItem('locale')
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
       router.push({ name: 'home' })
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
     }
   } catch (error) {
     if (error.response.status === 422) {

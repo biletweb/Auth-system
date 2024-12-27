@@ -1,15 +1,12 @@
 import './assets/main.css'
 import 'primeicons/primeicons.css'
-
 import { createApp, ref } from 'vue'
 import { createI18n } from 'vue-i18n'
 import { createPinia } from 'pinia'
 import 'vue-toastification/dist/index.css'
 import Toast from 'vue-toastification'
-
 import App from './App.vue'
 import router from './router'
-
 import en from './locales/en.json'
 import ru from './locales/ru.json'
 import uk from './locales/uk.json'

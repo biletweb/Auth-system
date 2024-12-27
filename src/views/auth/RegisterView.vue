@@ -6,9 +6,7 @@
         <div class="my-4 grid grid-cols-2 gap-4">
           <div class="relative">
             <label for="name">{{ $t('Name') }}<sup class="ms-1 text-red-500">*</sup></label>
-            <div class="absolute left-2.5 top-[34px] text-gray-400">
-              <i class="pi pi-user"></i>
-            </div>
+            <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-user"></i></div>
             <input
               v-model="data.user.name"
               type="text"
@@ -21,9 +19,7 @@
           </div>
           <div class="relative">
             <label for="surname">{{ $t('Surname') }}<sup class="ms-1 text-red-500">*</sup></label>
-            <div class="absolute left-2.5 top-[34px] text-gray-400">
-              <i class="pi pi-user"></i>
-            </div>
+            <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-user"></i></div>
             <input
               v-model="data.user.surname"
               type="text"
@@ -37,9 +33,7 @@
         </div>
         <div class="relative my-4">
           <label for="email">{{ $t('Email') }}<sup class="ms-1 text-red-500">*</sup></label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400">
-            <i class="pi pi-at"></i>
-          </div>
+          <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-at"></i></div>
           <input
             v-model="data.user.email"
             type="text"
@@ -52,9 +46,7 @@
         </div>
         <div class="relative my-4">
           <label for="password">{{ $t('Password') }}<sup class="ms-1 text-red-500">*</sup></label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400">
-            <i class="pi pi-key"></i>
-          </div>
+          <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-key"></i></div>
           <input
             v-model="data.user.password"
             type="password"
@@ -66,12 +58,8 @@
           />
         </div>
         <div class="relative my-4">
-          <label for="password_confirmation">
-            {{ $t('Password confirmation') }}<sup class="ms-1 text-red-500">*</sup>
-          </label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400">
-            <i class="pi pi-key"></i>
-          </div>
+          <label for="password_confirmation"> {{ $t('Password confirmation') }}<sup class="ms-1 text-red-500">*</sup> </label>
+          <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-key"></i></div>
           <input
             v-model="data.user.password_confirmation"
             type="password"
@@ -126,10 +114,8 @@ const register = async () => {
   errorField.value = ''
   try {
     const response = await axios.post(`${BASE_URL}/register`, data.user)
-    toast.success(i18n.global.t(response.data.message), {
-      timeout: 5000,
-    })
     router.push({ name: 'login' })
+    toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
   } catch (error) {
     if (error.response.status === 422) {
       errorField.value = error.response.data.field

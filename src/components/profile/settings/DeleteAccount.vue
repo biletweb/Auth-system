@@ -3,9 +3,7 @@
     <span class="text-xl font-bold text-red-500">{{ $t('Deleting an account') }}</span>
     <p class="my-4 font-bold">
       {{
-        $t(
-          'If you delete your account, all your personal information will be deleted and you will not be able to regain access.',
-        )
+        $t('If you delete your account, all your personal information will be deleted and you will not be able to regain access.')
       }}
     </p>
     <div class="flex justify-end">
@@ -42,11 +40,7 @@ const { locale } = useI18n()
 const deleteAccount = async () => {
   loading.value = true
   try {
-    const response = await axios.post(
-      `${BASE_URL}/profile/settings/delete-account`,
-      null,
-      getConfig(authStore.access_token),
-    )
+    const response = await axios.post(`${BASE_URL}/profile/settings/delete-account`, null, getConfig(authStore.access_token))
     if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {

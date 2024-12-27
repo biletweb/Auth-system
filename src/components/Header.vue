@@ -2,17 +2,11 @@
   <header class="rounded-b-lg bg-blue-500 p-4 text-white">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <div>
-          <HeaderLogo />
-        </div>
-        <div>
-          <HeaderLeftMenuItem />
-        </div>
+        <div><HeaderLogo /></div>
+        <div><HeaderLeftMenuItem /></div>
       </div>
       <Spinner v-if="loading" class="w-5" />
-      <div v-else>
-        <HeaderRightMenuItem />
-      </div>
+      <div v-else><HeaderRightMenuItem /></div>
     </div>
   </header>
 </template>
@@ -28,6 +22,7 @@ import { useToast } from 'vue-toastification'
 import { onMounted, ref } from 'vue'
 import Spinner from '@/components/Spinner.vue'
 import { useRouter } from 'vue-router'
+import { i18n } from '@/main.js'
 
 const loading = ref(false)
 const router = useRouter()
@@ -50,7 +45,7 @@ const fetchLoggedInUser = async () => {
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
-      toast.error(error.response.data.message, { timeout: 5000 })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
     }
   }
 }

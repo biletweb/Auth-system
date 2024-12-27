@@ -4,18 +4,11 @@
     <Spinner v-if="!authStore.user" class="w-7 rounded-full bg-blue-500 p-1" />
     <span v-else class="text-xl font-bold">{{ authStore.user.email }}</span>
   </div>
-  <div
-    v-if="authStore.user && !authStore.user.email_verified_at"
-    class="my-4 rounded-lg bg-amber-300 p-4 shadow"
-  >
+  <div v-if="authStore.user && !authStore.user.email_verified_at" class="my-4 rounded-lg bg-amber-300 p-4 shadow">
     <div class="flex items-center justify-between">
       <div class="flex items-center text-blue-500">
         <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
-        {{
-          $t(
-            'Please confirm your email. We have sent a verification code to the address you provided.',
-          )
-        }}
+        {{ $t('Please confirm your email. We have sent a verification code to the address you provided.') }}
       </div>
       <div>
         <button
@@ -24,10 +17,7 @@
           class="font-bold text-blue-500 underline transition duration-300 hover:text-blue-600"
           :disabled="loadingResend"
         >
-          <Spinner
-            v-if="loadingResend"
-            class="flex w-5 items-center rounded-full bg-blue-500 p-1"
-          />
+          <Spinner v-if="loadingResend" class="flex w-5 items-center rounded-full bg-blue-500 p-1" />
           <span v-else>{{ $t('Resend verification code') }}</span>
         </button>
       </div>
@@ -60,9 +50,7 @@
     <UpdatePersonalInfo class="shadow" />
     <ChangePassword class="shadow" />
     <LanguageSwitch class="shadow" />
-    <!-- <div class="col-span-2"> -->
     <DeleteAccount class="shadow" />
-    <!-- </div> -->
   </div>
 </template>
 
@@ -100,9 +88,9 @@ const confirmEmail = async () => {
     } else if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
       authStore.user.email_verified_at = true
       verificationCode.value = ''
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
     }
   } catch (error) {
     if (error.response.status === 401) {
@@ -121,11 +109,7 @@ const confirmEmail = async () => {
 const resendEmail = async () => {
   loadingResend.value = true
   try {
-    const response = await axios.post(
-      `${BASE_URL}/profile/settings/resend-email`,
-      null,
-      getConfig(authStore.access_token),
-    )
+    const response = await axios.post(`${BASE_URL}/profile/settings/resend-email`, null, getConfig(authStore.access_token))
     toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
   } catch (error) {
     if (error.response.status === 429) {

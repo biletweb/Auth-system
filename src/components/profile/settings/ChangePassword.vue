@@ -4,9 +4,7 @@
     <form @submit.prevent="changePassword">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="password"
-            >{{ $t('New password') }}<sup class="ms-1 text-red-500">*</sup></label
-          >
+          <label for="password"> {{ $t('New password') }}<sup class="ms-1 text-red-500">*</sup></label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-key"></i>
           </div>
@@ -21,9 +19,7 @@
           />
         </div>
         <div class="relative my-4">
-          <label for="password_confirmation">
-            {{ $t('New password confirmation') }}<sup class="ms-1 text-red-500">*</sup>
-          </label>
+          <label for="password_confirmation"> {{ $t('New password confirmation') }}<sup class="ms-1 text-red-500">*</sup></label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-key"></i>
           </div>
@@ -87,9 +83,9 @@ const changePassword = async () => {
     if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
       data.user.password = ''
       data.user.password_confirmation = ''
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
     }
   } catch (error) {
     if (error.response.status === 422) {

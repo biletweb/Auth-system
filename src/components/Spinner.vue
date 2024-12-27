@@ -22,13 +22,7 @@
             repeatCount="indefinite"
           />
         </circle>
-        <animateTransform
-          attributeName="transform"
-          type="rotate"
-          dur="2s"
-          values="0 12 12;360 12 12"
-          repeatCount="indefinite"
-        />
+        <animateTransform attributeName="transform" type="rotate" dur="2s" values="0 12 12;360 12 12" repeatCount="indefinite" />
       </g>
     </svg>
   </div>

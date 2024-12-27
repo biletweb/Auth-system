@@ -7,13 +7,11 @@ import Footer from '@/components/Footer.vue'
 <template>
   <div class="container mx-auto flex min-h-screen flex-col">
     <Header />
-
     <main class="flex-grow">
       <div class="my-4">
         <RouterView />
       </div>
     </main>
-
     <Footer />
   </div>
 </template>
