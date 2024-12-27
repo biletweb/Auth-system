@@ -37,6 +37,9 @@
       </tr>
     </tbody>
   </table>
+  <div class="my-4 flex justify-center">
+    <Spinner v-if="loading" class="w-10 rounded-full bg-blue-500 p-1 text-white" />
+  </div>
 </template>
 
 <script setup>
@@ -47,6 +50,7 @@ import { useAuthStore } from '@/stores/authStore.js'
 import { useToast } from 'vue-toastification'
 import { i18n } from '@/main.js'
 import { useRouter } from 'vue-router'
+import Spinner from '@/components/Spinner.vue'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -62,7 +66,11 @@ const fetchUser = async () => {
   loading.value = true
   try {
     const response = await axios.get(`${BASE_URL}/admin/users`, getConfig(authStore.access_token))
-    users.value = response.data.users
+    if (response.data.warning) {
+      toast.error(i18n.global.t(response.data.warning), { timeout: 5000 })
+    } else {
+      users.value = response.data.users
+    }
   } catch (error) {
     if (error.response.status === 422) {
       toast.error(i18n.global.t(error.response.data.error), { timeout: 5000 })
