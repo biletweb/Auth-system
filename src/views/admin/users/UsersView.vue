@@ -25,26 +25,55 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="border border-slate-300 p-4 text-slate-500">Игорь</td>
-        <td class="border border-slate-300 p-4 text-slate-500">Билет</td>
+      <tr v-for="user in users" :key="user.id">
+        <td class="border border-slate-300 p-4 text-slate-500">{{ user.name }}</td>
+        <td class="border border-slate-300 p-4 text-slate-500">{{ user.surname }}</td>
         <td class="border border-slate-300 p-4 text-slate-500">
-          <p class="flex items-center">test@gmail.com <i class="pi pi-check-circle ms-1 text-green-500"></i></p>
+          <p class="flex items-center">{{ user.email }} <i class="pi pi-check-circle ms-1 text-green-500"></i></p>
         </td>
-        <td class="border border-slate-300 p-4 text-slate-500">admin</td>
-        <td class="border border-slate-300 p-4 text-slate-500">RU</td>
-        <td class="border border-slate-300 p-4 text-slate-500">25.01.2023 10:00</td>
-      </tr>
-      <tr>
-        <td class="border border-slate-300 p-4 text-slate-500">Вероника</td>
-        <td class="border border-slate-300 p-4 text-slate-500">Давыдова</td>
-        <td class="border border-slate-300 p-4 text-slate-500">
-          <p class="flex items-center">test2@gmail.com <i class="pi pi-times-circle ms-1 text-red-500"></i></p>
-        </td>
-        <td class="border border-slate-300 p-4 text-slate-500">user</td>
-        <td class="border border-slate-300 p-4 text-slate-500">UA</td>
-        <td class="border border-slate-300 p-4 text-slate-500">25.01.2023 12:34</td>
+        <td class="border border-slate-300 p-4 text-slate-500">{{ user.role }}</td>
+        <td class="border border-slate-300 p-4 text-slate-500">{{ user.locale }}</td>
+        <td class="border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
       </tr>
     </tbody>
   </table>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { BASE_URL, getConfig } from '@/helpers/config.js'
+import { useAuthStore } from '@/stores/authStore.js'
+import { useToast } from 'vue-toastification'
+import { i18n } from '@/main.js'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const authStore = useAuthStore()
+const toast = useToast()
+const loading = ref(false)
+const users = ref([])
+
+onMounted(() => {
+  fetchUser()
+})
+
+const fetchUser = async () => {
+  loading.value = true
+  try {
+    const response = await axios.get(`${BASE_URL}/admin/users`, getConfig(authStore.access_token))
+    users.value = response.data.users
+  } catch (error) {
+    if (error.response.status === 422) {
+      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000 })
+    }
+    if (error.response.status === 401) {
+      authStore.clearState()
+      router.push({ name: 'login' })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
+    }
+  } finally {
+    loading.value = false
+  }
+}
+</script>
