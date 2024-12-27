@@ -63,5 +63,7 @@
   "Search users...": "Поиск пользователей...",
   "Search": "Поиск",
   "No users found.": "Пользователи не найдены.",
-  "Users found:": "Найдено пользователей: {count}"
+  "Users found:": "Найдено пользователей: {count}",
+  "Please enter a search query.": "Пожалуйста, введите запрос для поиска.",
+  "Search query must be at least 3 characters.": "Запрос для поиска должен содержать не менее 3 символов."
 }

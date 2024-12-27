@@ -63,5 +63,7 @@
   "Search users...": "Search users...",
   "Search": "Search",
   "No users found.": "No users found.",
-  "Users found:": "Users found: {count}"
+  "Users found:": "Users found: {count}",
+  "Please enter a search query.": "Please enter a search query.",
+  "Search query must be at least 3 characters.": "Search query must be at least 3 characters."
 }

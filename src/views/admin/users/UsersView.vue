@@ -141,6 +141,14 @@ const fetchUsers = async () => {
 }
 
 const searchUsers = async () => {
+  if (searchInput.value === '') {
+    toast.error(i18n.global.t('Please enter a search query.'), { timeout: 5000 })
+    return
+  }
+  if (searchInput.value.length <= 2) {
+    toast.error(i18n.global.t('Search query must be at least 3 characters.'), { timeout: 5000 })
+    return
+  }
   loadingSearchUsers.value = true
   users.value = []
   offset.value = 0
@@ -156,9 +164,10 @@ const searchUsers = async () => {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {
       users.value = response.data.users
-      toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), { timeout: 5000 })
       if (response.data.users.length === 0) {
         toast.error(i18n.global.t('No users found.'), { timeout: 5000 })
+      } else {
+        toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), { timeout: 5000 })
       }
     }
   } catch (error) {

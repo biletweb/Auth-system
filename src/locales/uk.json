@@ -63,5 +63,7 @@
   "Search users...": "Пошук користувачів...",
   "Search": "Пошук",
   "No users found.": "Користувачі не знайдені.",
-  "Users found:": "Знайдено користувачів: {count}"
+  "Users found:": "Знайдено користувачів: {count}",
+  "Please enter a search query.": "Будь ласка, введіть запит для пошуку.",
+  "Search query must be at least 3 characters.": "Запит для пошуку повинен містити не менше 3 символів."
 }
