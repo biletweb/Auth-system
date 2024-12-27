@@ -27,14 +27,18 @@
       <tr>
         <td class="border border-slate-300 p-4 text-slate-500">Игорь</td>
         <td class="border border-slate-300 p-4 text-slate-500">Билет</td>
-        <td class="border border-slate-300 p-4 text-slate-500">test@gmail.com</td>
+        <td class="border border-slate-300 p-4 text-slate-500">
+          <p class="flex items-center">test@gmail.com <i class="pi pi-check-circle ms-1 text-green-500"></i></p>
+        </td>
         <td class="border border-slate-300 p-4 text-slate-500">admin</td>
         <td class="border border-slate-300 p-4 text-slate-500">25.01.2023 10:00</td>
       </tr>
       <tr>
         <td class="border border-slate-300 p-4 text-slate-500">Вероника</td>
         <td class="border border-slate-300 p-4 text-slate-500">Давыдова</td>
-        <td class="border border-slate-300 p-4 text-slate-500">test2@gmail.com</td>
+        <td class="border border-slate-300 p-4 text-slate-500">
+          <p class="flex items-center">test2@gmail.com <i class="pi pi-times-circle ms-1 text-red-500"></i></p>
+        </td>
         <td class="border border-slate-300 p-4 text-slate-500">user</td>
         <td class="border border-slate-300 p-4 text-slate-500">25.01.2023 12:34</td>
       </tr>
