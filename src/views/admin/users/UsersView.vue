@@ -13,26 +13,28 @@
     </div>
   </div>
 
-  <div class="my-4 flex items-center gap-4">
-    <div class="relative w-full">
-      <div class="absolute left-2.5 top-2.5 text-gray-400"><i class="pi pi-search"></i></div>
-      <input
-        v-model="searchUsers"
-        type="text"
-        name="search"
-        :placeholder="$t('Search users...')"
-        class="w-full rounded-lg border p-2 pl-8 shadow focus:border-blue-500 focus:outline-none"
-      />
+  <form @submit.prevent="searchUsers">
+    <div class="my-4 flex items-center gap-4">
+      <div class="relative w-full">
+        <div class="absolute left-2.5 top-2.5 text-gray-400"><i class="pi pi-search"></i></div>
+        <input
+          v-model="searchInput"
+          type="text"
+          name="searchInput"
+          :placeholder="$t('Search users...')"
+          class="w-full rounded-lg border p-2 pl-8 shadow focus:border-blue-500 focus:outline-none"
+        />
+      </div>
+      <button
+        type="submit"
+        class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+        :disabled="loadingSearchUsers"
+      >
+        <Spinner v-if="loadingSearchUsers" class="w-6" />
+        <span v-else>{{ $t('Search') }}</span>
+      </button>
     </div>
-    <button
-      type="submit"
-      class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
-      :disabled="loadingSearchUsers"
-    >
-      <Spinner v-if="loadingSearchUsers" class="w-6" />
-      <span v-else>{{ $t('Search') }}</span>
-    </button>
-  </div>
+  </form>
 
   <table class="w-full border-collapse overflow-hidden rounded-lg border border-slate-400 bg-white text-sm shadow">
     <thead class="bg-slate-50">
@@ -67,7 +69,7 @@
   </table>
   <div class="mt-4 text-center">
     <button
-      v-if="!loading && hasMore"
+      v-if="!loading && hasMore && !loadingSearchUsers"
       @click="fetchUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
@@ -97,6 +99,8 @@ const toast = useToast()
 const loading = ref(false)
 const loadingSearchUsers = ref(false)
 const users = ref([])
+const searchInput = ref('')
+const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
 const limit = 10 // Количество пользователей за раз
 const hasMore = ref(true) // Флаг для проверки, есть ли еще данные для загрузки
@@ -129,6 +133,38 @@ const fetchUsers = async () => {
     }
   } finally {
     loading.value = false
+  }
+}
+
+const searchUsers = async () => {
+  loadingSearchUsers.value = true
+  offset.value = 0
+  hasMore.value = true
+  users.value = []
+  try {
+    const response = await axios.get(`${BASE_URL}/admin/users/search`, {
+      params: { offset: offset.value, limit, search: searchInput.value },
+      ...getConfig(authStore.access_token),
+    })
+    if (response.data.error) {
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000 })
+    } else if (response.data.warning) {
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
+    } else {
+      users.value = response.data.users
+    }
+  } catch (error) {
+    if (error.response.status === 422) {
+      errorField.value = error.response.data.field
+      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000 })
+    }
+    if (error.response.status === 401) {
+      authStore.clearState()
+      router.push({ name: 'login' })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
+    }
+  } finally {
+    loadingSearchUsers.value = false
   }
 }
 </script>
