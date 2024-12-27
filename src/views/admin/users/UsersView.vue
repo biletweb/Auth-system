@@ -39,11 +39,23 @@
           <p v-if="user.role === 'admin'" class="text-red-500">{{ $t('Administrator') }}</p>
           <p v-if="user.role === 'user'">{{ $t('User') }}</p>
         </td>
-        <td class="border border-slate-300 p-4 text-slate-500 uppercase">{{ user.locale }}</td>
+        <td class="border border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
         <td class="border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
       </tr>
     </tbody>
   </table>
+  <div class="mt-4 text-center">
+    <button
+      v-if="!loading"
+      @click="loadUsers"
+      type="submit"
+      class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
+      :disabled="loadingUsers"
+    >
+      <Spinner v-if="loadingUsers" class="w-6" />
+      <span v-else>{{ $t('Load more') }}</span>
+    </button>
+  </div>
   <div class="my-4 flex justify-center">
     <Spinner v-if="loading" class="w-10 rounded-full bg-blue-500 p-1 text-white" />
   </div>
@@ -63,6 +75,7 @@ const router = useRouter()
 const authStore = useAuthStore()
 const toast = useToast()
 const loading = ref(false)
+const loadingUsers = ref(false)
 const users = ref([])
 
 onMounted(() => {
