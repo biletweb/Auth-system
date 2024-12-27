@@ -50,5 +50,6 @@
   "Password changed successfully.": "Пароль успішно змінено.",
   "Verification code has been sent.": "Код підтвердження надіслано.",
   "You have successfully logged out.": "Ви успішно вийшли з системи.",
-  "Unauthenticated.": "Час дії вашої сесії минув. Авторизуйтесь, щоб продовжити."
+  "Unauthenticated.": "Час дії вашої сесії минув. Авторизуйтесь, щоб продовжити.",
+  "Users": "Користувачі"
 }

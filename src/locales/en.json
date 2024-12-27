@@ -50,5 +50,6 @@
   "Password changed successfully.": "Password changed successfully.",
   "Verification code has been sent.": "Verification code has been sent.",
   "You have successfully logged out.": "You have successfully logged out.",
-  "Unauthenticated.": "Unauthenticated."
+  "Unauthenticated.": "Unauthenticated.",
+  "Users": "Users"
 }
