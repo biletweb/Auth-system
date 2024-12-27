@@ -2,19 +2,19 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import { useAuthStore } from '@/stores/authStore'
 
-const ifUserIsLoggedIn = () => {
+const isLoggedIn = () => {
   if (!localStorage.getItem('access_token')) {
     router.push({ name: 'login' })
   }
 }
 
-const ifUserIsNotLoggedIn = () => {
+const isNotLoggedIn = () => {
   if (localStorage.getItem('access_token')) {
     router.push({ name: 'home' })
   }
 }
 
-const ifUserAdmin = () => {
+const adminRole = () => {
   const authStore = useAuthStore()
   if (authStore.user?.role !== 'admin') {
     router.push({ name: 'profile' })
@@ -43,37 +43,37 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('@/views/auth/LoginView.vue'),
-      beforeEnter: ifUserIsNotLoggedIn,
+      beforeEnter: isNotLoggedIn,
     },
     {
       path: '/register',
       name: 'register',
       component: () => import('@/views/auth/RegisterView.vue'),
-      beforeEnter: ifUserIsNotLoggedIn,
+      beforeEnter: isNotLoggedIn,
     },
     {
       path: '/admin',
       name: 'admin',
       component: () => import('@/views/admin/HomeView.vue'),
-      beforeEnter: ifUserAdmin,
+      beforeEnter: adminRole,
     },
     {
       path: '/admin/users',
       name: 'admin.users',
       component: () => import('@/views/admin/users/UsersView.vue'),
-      beforeEnter: ifUserAdmin,
+      beforeEnter: adminRole,
     },
     {
       path: '/profile',
       name: 'profile',
       component: () => import('@/views/profile/HomeView.vue'),
-      beforeEnter: ifUserIsLoggedIn,
+      beforeEnter: isLoggedIn,
     },
     {
       path: '/profile/settings',
       name: 'profile.settings',
       component: () => import('@/views/profile/SettingsView.vue'),
-      beforeEnter: ifUserIsLoggedIn,
+      beforeEnter: isLoggedIn,
     },
   ],
 })
