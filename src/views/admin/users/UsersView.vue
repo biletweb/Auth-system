@@ -47,13 +47,12 @@
   <div class="mt-4 text-center">
     <button
       v-if="!loading"
-      @click="loadUsers"
+      @click="fetchUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
-      :disabled="loadingUsers"
+      :disabled="loading"
     >
-      <Spinner v-if="loadingUsers" class="w-6" />
-      <span v-else>{{ $t('Load more') }}</span>
+      {{ $t('Load more') }}
     </button>
   </div>
   <div class="my-4 flex justify-center">
@@ -75,26 +74,28 @@ const router = useRouter()
 const authStore = useAuthStore()
 const toast = useToast()
 const loading = ref(false)
-const loadingUsers = ref(false)
 const users = ref([])
+const offset = ref(0) // Текущий сдвиг
+const limit = 1 // Количество пользователей за раз
 
 onMounted(() => {
-  fetchUser()
+  fetchUsers()
 })
 
-const fetchUser = async () => {
+const fetchUsers = async () => {
   loading.value = true
   try {
-    const response = await axios.get(`${BASE_URL}/admin/users`, getConfig(authStore.access_token))
+    const response = await axios.get(`${BASE_URL}/admin/users`, {
+      params: { offset: offset.value, limit },
+      ...getConfig(authStore.access_token),
+    })
     if (response.data.warning) {
-      toast.error(i18n.global.t(response.data.warning), { timeout: 5000 })
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {
-      users.value = response.data.users
+      users.value = [...users.value, ...response.data.users]
+      offset.value += limit
     }
   } catch (error) {
-    if (error.response.status === 422) {
-      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000 })
-    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
