@@ -23,7 +23,7 @@
           type="text"
           name="searchInput"
           :placeholder="$t('Search users...')"
-          class="w-full rounded-lg border p-2 pl-8 pr-8 shadow focus:border-blue-500 focus:outline-none"
+          class="w-full border border-slate-300 p-2 pl-8 pr-8 shadow focus:border-blue-500 focus:outline-none"
         />
         <div v-if="searchInput" class="absolute right-2.5 top-2.5 text-gray-400 hover:cursor-pointer hover:text-gray-500">
           <i class="pi pi-eraser" @click="clearSearchInput"></i>
