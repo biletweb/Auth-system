@@ -126,11 +126,7 @@ const resendEmail = async () => {
       null,
       getConfig(authStore.access_token),
     )
-    if (response.data.error) {
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000 })
-    } else {
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
-    }
+    toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
   } catch (error) {
     if (error.response.status === 429) {
       toast.error(i18n.global.t('Too many requests. Please try again later.'), { timeout: 5000 })
