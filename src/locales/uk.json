@@ -61,5 +61,7 @@
   "Load more": "Завантажити ще",
   "You do not have permission to view this page.": "Ви не маєте дозволу на перегляд цієї сторінки.",
   "Search users...": "Пошук користувачів...",
-  "Search": "Пошук"
+  "Search": "Пошук",
+  "No users found.": "Користувачі не знайдені.",
+  "Users found:": "Знайдено користувачів: {count}"
 }

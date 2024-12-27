@@ -151,6 +151,10 @@ const searchUsers = async () => {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {
       users.value = response.data.users
+      toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), { timeout: 5000 })
+      if (response.data.users.length === 0) {
+        toast.error(i18n.global.t('No users found.'), { timeout: 5000 })
+      }
     }
   } catch (error) {
     if (error.response.status === 422) {

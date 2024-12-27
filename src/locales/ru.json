@@ -61,5 +61,7 @@
   "Load more": "Загрузить ещё",
   "You do not have permission to view this page.": "У вас нет разрешения на просмотр этой страницы.",
   "Search users...": "Поиск пользователей...",
-  "Search": "Поиск"
+  "Search": "Поиск",
+  "No users found.": "Пользователи не найдены.",
+  "Users found:": "Найдено пользователей: {count}"
 }

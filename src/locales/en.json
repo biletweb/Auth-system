@@ -61,5 +61,7 @@
   "Load more": "Load more",
   "You do not have permission to view this page.": "You do not have permission to view this page.",
   "Search users...": "Search users...",
-  "Search": "Search"
+  "Search": "Search",
+  "No users found.": "No users found.",
+  "Users found:": "Users found: {count}"
 }
