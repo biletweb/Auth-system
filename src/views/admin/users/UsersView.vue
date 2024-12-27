@@ -46,7 +46,7 @@
   </table>
   <div class="mt-4 text-center">
     <button
-      v-if="!loading"
+      v-if="!loading && hasMore"
       @click="fetchUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
@@ -76,7 +76,8 @@ const toast = useToast()
 const loading = ref(false)
 const users = ref([])
 const offset = ref(0) // Текущий сдвиг
-const limit = 1 // Количество пользователей за раз
+const limit = 10 // Количество пользователей за раз
+const hasMore = ref(true) // Флаг для проверки, есть ли еще данные для загрузки
 
 onMounted(() => {
   fetchUsers()
@@ -92,8 +93,11 @@ const fetchUsers = async () => {
     if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000 })
     } else {
-      users.value = [...users.value, ...response.data.users]
-      offset.value += limit
+      users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
+      offset.value += limit // Обновляем смещение
+      if (response.data.users.length < limit) {
+        hasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
+      }
     }
   } catch (error) {
     if (error.response.status === 401) {
