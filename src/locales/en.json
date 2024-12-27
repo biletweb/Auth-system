@@ -52,5 +52,7 @@
   "You have successfully logged out.": "You have successfully logged out.",
   "Unauthenticated.": "Unauthenticated.",
   "Users": "Users",
-  "Menu": "Menu"
+  "Menu": "Menu",
+  "Role": "Role",
+  "Registered": "Registered"
 }
