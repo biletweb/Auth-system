@@ -32,7 +32,7 @@
           <p class="flex items-center">
             {{ user.email }}
             <i v-if="user.email_verified_at" class="pi pi-check-circle ms-1 text-green-500"></i>
-            <i v-else class="pi pi-times-circle ms-1 text-red-500"></i>
+            <i v-else class="pi pi-times-circle ms-1 text-yellow-500"></i>
           </p>
         </td>
         <td class="border border-slate-300 p-4 text-slate-500">
