@@ -16,6 +16,7 @@
               id="name"
               :placeholder="$t('Name')"
               class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+              :class="{ 'border-red-500': errorField === 'name' }"
             />
           </div>
           <div class="relative">
@@ -30,6 +31,7 @@
               id="surname"
               :placeholder="$t('Surname')"
               class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+              :class="{ 'border-red-500': errorField === 'surname' }"
             />
           </div>
         </div>
@@ -45,6 +47,7 @@
             id="email"
             :placeholder="$t('Email')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'email' }"
           />
         </div>
         <div class="relative my-4">
@@ -59,6 +62,7 @@
             id="password"
             :placeholder="$t('Password')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'password' }"
           />
         </div>
         <div class="relative my-4">
@@ -75,6 +79,7 @@
             id="password_confirmation"
             :placeholder="$t('Password confirmation')"
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'password' }"
           />
         </div>
         <div class="my-4">
@@ -93,15 +98,17 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { BASE_URL } from '@/helpers/config.js'
 import { useToast } from 'vue-toastification'
 import Spinner from '@/components/Spinner.vue'
+import { i18n } from '@/main.js'
 
 const toast = useToast()
 const router = useRouter()
+const errorField = ref('')
 
 const data = reactive({
   loading: false,
@@ -116,18 +123,17 @@ const data = reactive({
 
 const register = async () => {
   data.loading = true
+  errorField.value = ''
   try {
     const response = await axios.post(`${BASE_URL}/register`, data.user)
-    toast.success(response.data.message, {
+    toast.success(i18n.global.t(response.data.message), {
       timeout: 5000,
     })
     router.push({ name: 'login' })
   } catch (error) {
     if (error.response.status === 422) {
-      const errors = error.response.data.errors
-      let errorMessage = ''
-      errorMessage = Object.values(errors).flat().join('\n')
-      toast.error(errorMessage, { timeout: 5000 })
+      errorField.value = error.response.data.field
+      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000 })
     }
   } finally {
     data.loading = false

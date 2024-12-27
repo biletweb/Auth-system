@@ -43,5 +43,8 @@
   "The surname field is required.": "The surname field is required.",
   "Personal information updated successfully.": "Personal information updated successfully.",
   "No changes were made.": "No changes were made.",
-  "The name field is required.": "The name field is required."
+  "The name field is required.": "The name field is required.",
+  "The password field confirmation does not match.": "The password field confirmation does not match.",
+  "Account has been created successfully! Please confirm your email. We have sent a verification code to the address you provided.": "Account has been created successfully! Please confirm your email. We have sent a verification code to the address you provided.",
+  "The email has already been taken.": "The email has already been taken."
 }
