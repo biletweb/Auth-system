@@ -4,7 +4,10 @@
     <Spinner v-if="!authStore.user" class="w-7 rounded-full bg-blue-500 p-1" />
     <span v-else class="text-xl font-bold">{{ authStore.user.email }}</span>
   </div>
-  <div v-if="authStore.user && !authStore.user.email_verified_at" class="my-4 rounded-lg bg-amber-300 p-4 shadow">
+  <div
+    v-if="authStore.user && !authStore.user.email_verified_at && authStore.user.email !== 'test@example.com'"
+    class="my-4 rounded-lg bg-amber-300 p-4 shadow"
+  >
     <div class="flex items-center justify-between">
       <div class="flex items-center text-blue-500">
         <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
