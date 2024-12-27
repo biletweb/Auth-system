@@ -51,5 +51,6 @@
   "Verification code has been sent.": "Код підтвердження надіслано.",
   "You have successfully logged out.": "Ви успішно вийшли з системи.",
   "Unauthenticated.": "Час дії вашої сесії минув. Авторизуйтесь, щоб продовжити.",
-  "Users": "Користувачі"
+  "Users": "Користувачі",
+  "Menu": "Меню"
 }

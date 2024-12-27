@@ -58,6 +58,12 @@ const router = createRouter({
       beforeEnter: ifUserAdmin,
     },
     {
+      path: '/admin/users',
+      name: 'admin.users',
+      component: () => import('@/views/admin/users/UsersView.vue'),
+      beforeEnter: ifUserAdmin,
+    },
+    {
       path: '/profile',
       name: 'profile',
       component: () => import('@/views/profile/HomeView.vue'),
