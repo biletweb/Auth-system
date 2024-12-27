@@ -48,5 +48,6 @@
   "Account has been created successfully! Please confirm your email. We have sent a verification code to the address you provided.": "Аккаунт успешно создан! Пожалуйста, подтвердите свой адрес электронной почты. Мы отправили код подтверждения на указанный вами адрес.",
   "The email has already been taken.": "Этот адрес электронной почты уже используется.",
   "Password changed successfully.": "Пароль успешно изменен.",
-  "Verification code has been sent.": "Код подтверждения отправлен."
+  "Verification code has been sent.": "Код подтверждения отправлен.",
+  "You have successfully logged out.": "Вы успешно вышли из системы."
 }
