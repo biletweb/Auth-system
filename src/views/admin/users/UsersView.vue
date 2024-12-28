@@ -54,7 +54,7 @@
                 @click="filteringUsersRole('admin')"
                 class="pi pi-filter ms-1 cursor-pointer text-slate-500 hover:text-slate-600"
               ></i>
-              <span class="ms-1 text-red-500 font-normal cursor-default">{{ $t('Administrator') }}</span>
+              <span class="ms-1 cursor-default font-normal text-red-500">{{ $t('Administrator') }}</span>
             </div>
           </div>
         </th>
@@ -151,10 +151,14 @@ const fetchUsers = async () => {
       params: { offset: offset.value, limit },
       ...getConfig(authStore.access_token),
     })
-    users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
-    offset.value += limit // Обновляем смещение
-    if (response.data.users.length < limit) {
-      hasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
+    if (response.data.warning) {
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
+      offset.value += limit // Обновляем смещение
+      if (response.data.users.length < limit) {
+        hasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
+      }
     }
   } catch (error) {
     if (error.response.status === 401) {
@@ -179,10 +183,12 @@ const searchUsers = async () => {
       params: { search: searchInput.value },
       ...getConfig(authStore.access_token),
     })
-    users.value = response.data.users
-    if (response.data.users.length === 0) {
+    if (response.data.warning) {
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
+    } else if (response.data.users.length === 0) {
       toast.error(i18n.global.t('No users found.'), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
+      users.value = response.data.users
       toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
         timeout: 5000,
         pauseOnFocusLoss: true,
@@ -217,13 +223,17 @@ const changeRole = async (userId) => {
   changeRoleUserId.value = userId
   try {
     const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id: userId }, getConfig(authStore.access_token))
-    const updatedUser = response.data.user
-    // Ищем пользователя в локальном списке и обновляем его данные
-    const index = users.value.findIndex((user) => user.id === userId)
-    if (index !== -1) {
-      users.value[index] = { ...users.value[index], ...updatedUser }
+    if (response.data.warning) {
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      const updatedUser = response.data.user
+      // Ищем пользователя в локальном списке и обновляем его данные
+      const index = users.value.findIndex((user) => user.id === userId)
+      if (index !== -1) {
+        users.value[index] = { ...users.value[index], ...updatedUser }
+      }
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
-    toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
   } catch (error) {
     if (error.response.status === 422) {
       errorField.value = error.response.data.field
@@ -254,11 +264,15 @@ const filteringUsersRole = async (role) => {
       params: { filter: role },
       ...getConfig(authStore.access_token),
     })
-    users.value = response.data.users
-    toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
-      timeout: 5000,
-      pauseOnFocusLoss: true,
-    })
+    if (response.data.warning) {
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      users.value = response.data.users
+      toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
+        timeout: 5000,
+        pauseOnFocusLoss: true,
+      })
+    }
   } catch (error) {
     if (error.response.status === 422) {
       errorField.value = error.response.data.field
