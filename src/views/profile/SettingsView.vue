@@ -18,9 +18,9 @@
           @click="resendEmail"
           type="submit"
           class="font-bold text-blue-500 underline transition duration-300 hover:text-blue-600"
-          :disabled="loadingResend"
+          :disabled="loadingResendEmail"
         >
-          <Spinner v-if="loadingResend" class="flex w-5 items-center rounded-full bg-blue-500 p-1" />
+          <Spinner v-if="loadingResendEmail" class="flex w-5 items-center rounded-full bg-blue-500 p-1" />
           <span v-else>{{ $t('Resend verification code') }}</span>
         </button>
       </div>
@@ -40,9 +40,9 @@
           <button
             type="submit"
             class="rounded-lg bg-blue-500 px-4 py-2 font-normal text-white transition duration-300 hover:bg-blue-600"
-            :disabled="loadingConfirm"
+            :disabled="loadingConfirmEmail"
           >
-            <Spinner v-if="loadingConfirm" class="w-6" />
+            <Spinner v-if="loadingConfirmEmail" class="w-6" />
             <span v-else>{{ $t('Confirm') }}</span>
           </button>
         </div>
@@ -73,13 +73,13 @@ import { i18n } from '@/main.js'
 
 const authStore = useAuthStore()
 const verificationCode = ref('')
-const loadingConfirm = ref(false)
-const loadingResend = ref(false)
+const loadingConfirmEmail = ref(false)
+const loadingResendEmail = ref(false)
 const toast = useToast()
 const router = useRouter()
 
 const confirmEmail = async () => {
-  loadingConfirm.value = true
+  loadingConfirmEmail.value = true
   try {
     const response = await axios.post(
       `${BASE_URL}/profile/settings/confirm-email`,
@@ -105,12 +105,12 @@ const confirmEmail = async () => {
       toast.error(i18n.global.t('Too many requests. Please try again later.'), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
-    loadingConfirm.value = false
+    loadingConfirmEmail.value = false
   }
 }
 
 const resendEmail = async () => {
-  loadingResend.value = true
+  loadingResendEmail.value = true
   try {
     const response = await axios.post(`${BASE_URL}/profile/settings/resend-email`, null, getConfig(authStore.access_token))
     toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
@@ -119,7 +119,7 @@ const resendEmail = async () => {
       toast.error(i18n.global.t('Too many requests. Please try again later.'), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
-    loadingResend.value = false
+    loadingResendEmail.value = false
   }
 }
 </script>
