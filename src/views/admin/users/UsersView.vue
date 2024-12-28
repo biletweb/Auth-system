@@ -254,6 +254,7 @@ const changeRole = async (id) => {
 
 const filteringUsersRole = async (role) => {
   loadingFilteringUsersRole.value = true
+  searchInput.value = ''
   users.value = []
   offset.value = 0
   hasMore.value = false
