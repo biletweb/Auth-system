@@ -1,6 +1,6 @@
 <template>
   <footer class="rounded-t-lg bg-gray-500 py-4 text-white">
-    <p class="text-center text-lg">© {{ currentYear }}, {{ $t('All rights reserved') }}</p>
+    <div class="text-center text-lg">© {{ currentYear }}, {{ $t('All rights reserved') }}</div>
   </footer>
 </template>
 
