@@ -47,10 +47,16 @@
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Surname') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Email') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">
-          <p class="flex items-center">
+          <div class="flex items-center justify-between">
             {{ $t('Role') }}
-            <i @click="filteringUsersRole('admin')" class="pi pi-wrench ms-1 cursor-pointer text-red-400 hover:text-red-500"></i>
-          </p>
+            <div class="flex items-center">
+              <i
+                @click="filteringUsersRole('admin')"
+                class="pi pi-filter ms-1 cursor-pointer text-slate-500 hover:text-slate-600"
+              ></i>
+              <span class="ms-1 text-red-500 font-normal cursor-default">{{ $t('Administrator') }}</span>
+            </div>
+          </div>
         </th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Registered') }}</th>
@@ -61,14 +67,14 @@
         <td class="border border-slate-300 p-4 text-slate-500">{{ user.name }}</td>
         <td class="border border-slate-300 p-4 text-slate-500">{{ user.surname }}</td>
         <td class="border border-slate-300 p-4 text-slate-500">
-          <p class="flex items-center">
+          <div class="flex items-center">
             {{ user.email }}
             <i v-if="user.email_verified_at" class="pi pi-check-circle ms-1 text-green-500"></i>
             <i v-else class="pi pi-times-circle ms-1 text-yellow-500"></i>
-          </p>
+          </div>
         </td>
         <td class="border border-slate-300 p-4 text-slate-500">
-          <p v-if="user.role === 'admin'" class="flex items-center text-red-500">
+          <div v-if="user.role === 'admin'" class="flex items-center text-red-500">
             {{ $t('Administrator') }}
             <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
             <i
@@ -76,8 +82,8 @@
               @click="changeRole(user.id)"
               class="pi pi-user ms-1 cursor-pointer text-slate-500 hover:text-slate-600"
             ></i>
-          </p>
-          <p v-if="user.role === 'user'" class="flex items-center">
+          </div>
+          <div v-if="user.role === 'user'" class="flex items-center">
             {{ $t('User') }}
             <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
             <i
@@ -85,7 +91,7 @@
               @click="changeRole(user.id)"
               class="pi pi-wrench ms-1 cursor-pointer text-red-500 opacity-75 hover:text-red-600"
             ></i>
-          </p>
+          </div>
         </td>
         <td class="border border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
         <td class="border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
