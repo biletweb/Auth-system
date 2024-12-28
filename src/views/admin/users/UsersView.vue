@@ -40,7 +40,7 @@
     </div>
   </form>
 
-  <div v-if="loading || loadingSearchUsers" class="my-4 flex justify-center">
+  <div v-if="loading || loadingSearchUsers || loadingFilteringUsersRole" class="my-4 flex justify-center">
     <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
   </div>
 
@@ -53,7 +53,7 @@
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">
           <p class="flex items-center">
             {{ $t('Role') }}
-            <i @click="searchAdmin" class="pi pi-wrench ms-1 cursor-pointer text-red-500 hover:text-red-600"></i>
+            <i @click="filteringUsersRole('admin')" class="pi pi-wrench ms-1 cursor-pointer text-red-500 hover:text-red-600"></i>
           </p>
         </th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
@@ -121,6 +121,7 @@ const toast = useToast()
 const loading = ref(false)
 const loadingSearchUsers = ref(false)
 const loadingChangeUserRole = ref(false)
+const loadingFilteringUsersRole = ref(false)
 const users = ref([])
 const changeRoleUserId = ref(null)
 const searchInput = ref('')
@@ -251,8 +252,37 @@ const changeRole = async (id) => {
   }
 }
 
-const searchAdmin = async () => {
-  searchInput.value = 'admin'
-  await searchUsers()
+const filteringUsersRole = async (role) => {
+  loadingFilteringUsersRole.value = true
+  users.value = []
+  offset.value = 0
+  hasMore.value = false
+  try {
+    const response = await axios.get(`${BASE_URL}/admin/users/filter`, {
+      params: { filter: role },
+      ...getConfig(authStore.access_token),
+    })
+    if (response.data.warning) {
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      users.value = response.data.users
+      toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
+        timeout: 5000,
+        pauseOnFocusLoss: true,
+      })
+    }
+  } catch (error) {
+    if (error.response.status === 422) {
+      errorField.value = error.response.data.field
+      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+    }
+    if (error.response.status === 401) {
+      authStore.clearState()
+      router.push({ name: 'login' })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    }
+  } finally {
+    loadingFilteringUsersRole.value = false
+  }
 }
 </script>

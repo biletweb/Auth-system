@@ -67,5 +67,6 @@
   "Please enter a search query.": "Будь ласка, введіть запит для пошуку.",
   "Search query must be at least 3 characters.": "Запит для пошуку повинен містити не менше 3 символів.",
   "Too many users satisfy this request. Refine your search query.": "Надто багато користувачів задовольняють цей запит. Уточніть свій пошуковий запит.",
-  "User role changed successfully.": "Роль користувача змінено успішно."
+  "User role changed successfully.": "Роль користувача змінено успішно.",
+  "The selected filter is invalid.": "Вибраний фільтр недійсний."
 }
