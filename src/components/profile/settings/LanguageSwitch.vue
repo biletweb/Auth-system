@@ -4,9 +4,9 @@
       <span class="text-xl font-bold">{{ $t('Changing language') }}</span>
       <Spinner v-if="loading" class="w-7 rounded-full bg-blue-500 p-1" />
     </div>
-    <div class="my-7 flex gap-2">
+    <div class="my-6 flex gap-2">
       <button type="submit" @click="setLocale('uk')" :disabled="savedLocale === 'uk'">
-        <span
+        <div
           class="rounded-lg p-2 text-white"
           :class="{
             'bg-blue-600 underline underline-offset-4': savedLocale === 'uk',
@@ -14,10 +14,10 @@
           }"
         >
           UK
-        </span>
+        </div>
       </button>
       <button type="submit" @click="setLocale('ru')" :disabled="savedLocale === 'ru'">
-        <span
+        <div
           class="rounded-lg p-2 text-white"
           :class="{
             'bg-blue-600 underline underline-offset-4': savedLocale === 'ru',
@@ -25,10 +25,10 @@
           }"
         >
           RU
-        </span>
+        </div>
       </button>
       <button type="submit" @click="setLocale('en')" :disabled="savedLocale === 'en'">
-        <span
+        <div
           class="rounded-lg p-2 text-white"
           :class="{
             'bg-blue-600 underline underline-offset-4': savedLocale === 'en',
@@ -36,7 +36,7 @@
           }"
         >
           EN
-        </span>
+        </div>
       </button>
     </div>
   </div>
@@ -73,14 +73,10 @@ const setLocale = async (newLocale) => {
       { locale: newLocale },
       getConfig(authStore.access_token),
     )
-    if (response.data.error) {
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    } else {
-      authStore.user.locale = newLocale
-      locale.value = newLocale
-      localStorage.setItem('locale', newLocale)
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
-    }
+    authStore.user.locale = newLocale
+    locale.value = newLocale
+    localStorage.setItem('locale', newLocale)
+    toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
   } catch (error) {
     if (error.response.status === 401) {
       authStore.clearState()
