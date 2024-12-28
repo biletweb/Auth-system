@@ -173,9 +173,7 @@ const searchUsers = async () => {
       params: { search: searchInput.value },
       ...getConfig(authStore.access_token),
     })
-    if (response.data.error) {
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    } else if (response.data.warning) {
+    if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       users.value = response.data.users
@@ -217,8 +215,8 @@ const changeRole = async (id) => {
   changeRoleUserId.value = id
   try {
     const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id }, getConfig(authStore.access_token))
-    if (response.data.error) {
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+    if (response.data.warning) {
+      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       const updatedUser = response.data.user
       // Ищем пользователя в локальном списке и обновляем его данные
