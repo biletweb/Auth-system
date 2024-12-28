@@ -142,14 +142,10 @@ const fetchUsers = async () => {
       params: { offset: offset.value, limit },
       ...getConfig(authStore.access_token),
     })
-    if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
-    } else {
-      users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
-      offset.value += limit // Обновляем смещение
-      if (response.data.users.length < limit) {
-        hasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
-      }
+    users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
+    offset.value += limit // Обновляем смещение
+    if (response.data.users.length < limit) {
+      hasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
     }
   } catch (error) {
     if (error.response.status === 401) {
@@ -163,35 +159,25 @@ const fetchUsers = async () => {
 }
 
 const searchUsers = async () => {
-  if (searchInput.value === '') {
-    toast.error(i18n.global.t('Please enter a search query.'), { timeout: 5000, pauseOnFocusLoss: true })
-    return
-  }
-  if (searchInput.value.length <= 2) {
-    toast.error(i18n.global.t('Search query must be at least 3 characters.'), { timeout: 5000, pauseOnFocusLoss: true })
-    return
-  }
   loadingSearchUsers.value = true
-  users.value = []
-  offset.value = 0
-  hasMore.value = false
+  if (searchInput.value !== '' && searchInput.value > 2) {
+    users.value = []
+    offset.value = 0
+    hasMore.value = false
+  }
   try {
     const response = await axios.get(`${BASE_URL}/admin/users/search`, {
       params: { search: searchInput.value },
       ...getConfig(authStore.access_token),
     })
-    if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
+    users.value = response.data.users
+    if (response.data.users.length === 0) {
+      toast.error(i18n.global.t('No users found.'), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
-      users.value = response.data.users
-      if (response.data.users.length === 0) {
-        toast.error(i18n.global.t('No users found.'), { timeout: 5000, pauseOnFocusLoss: true })
-      } else {
-        toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
-          timeout: 5000,
-          pauseOnFocusLoss: true,
-        })
-      }
+      toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
+        timeout: 5000,
+        pauseOnFocusLoss: true,
+      })
     }
   } catch (error) {
     if (error.response.status === 422) {
@@ -222,17 +208,13 @@ const changeRole = async (id) => {
   changeRoleUserId.value = id
   try {
     const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id }, getConfig(authStore.access_token))
-    if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
-    } else {
-      const updatedUser = response.data.user
-      // Ищем пользователя в локальном списке и обновляем его данные
-      const index = users.value.findIndex((user) => user.id === id)
-      if (index !== -1) {
-        users.value[index] = { ...users.value[index], ...updatedUser }
-      }
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    const updatedUser = response.data.user
+    // Ищем пользователя в локальном списке и обновляем его данные
+    const index = users.value.findIndex((user) => user.id === id)
+    if (index !== -1) {
+      users.value[index] = { ...users.value[index], ...updatedUser }
     }
+    toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
   } catch (error) {
     if (error.response.status === 422) {
       errorField.value = error.response.data.field
@@ -263,15 +245,11 @@ const filteringUsersRole = async (role) => {
       params: { filter: role },
       ...getConfig(authStore.access_token),
     })
-    if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
-    } else {
-      users.value = response.data.users
-      toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
-        timeout: 5000,
-        pauseOnFocusLoss: true,
-      })
-    }
+    users.value = response.data.users
+    toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
+      timeout: 5000,
+      pauseOnFocusLoss: true,
+    })
   } catch (error) {
     if (error.response.status === 422) {
       errorField.value = error.response.data.field
