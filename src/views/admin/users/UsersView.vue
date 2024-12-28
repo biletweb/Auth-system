@@ -121,7 +121,7 @@ const searchInput = ref('')
 const inputSearchRef = ref(null)
 const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
-const limit = 1 // Количество пользователей за раз
+const limit = 10 // Количество пользователей за раз
 const hasMore = ref(true) // Флаг для проверки, есть ли еще данные для загрузки
 
 onMounted(() => {
