@@ -35,7 +35,7 @@
         :class="{ 'opacity-50': loadingSearchUsers }"
         :disabled="loadingSearchUsers"
       >
-        <span>{{ $t('Search') }}</span>
+        {{ $t('Search') }}
       </button>
     </div>
   </form>
