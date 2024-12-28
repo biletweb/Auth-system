@@ -50,7 +50,12 @@
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Name') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Surname') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Email') }}</th>
-        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Role') }}</th>
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">
+          <p class="flex items-center">
+            {{ $t('Role') }}
+            <i @click="searchAdmin" class="pi pi-wrench ms-1 cursor-pointer text-red-500 hover:text-red-600"></i>
+          </p>
+        </th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Registered') }}</th>
       </tr>
@@ -244,5 +249,10 @@ const changeRole = async (id) => {
     changeRoleUserId.value = null
     loadingChangeUserRole.value = false
   }
+}
+
+const searchAdmin = async () => {
+  searchInput.value = 'admin'
+  await searchUsers()
 }
 </script>
