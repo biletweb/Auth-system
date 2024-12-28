@@ -49,8 +49,7 @@
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">
           <div class="flex items-center">
             {{ $t('Role') }}
-            <i @click="filteringUsersRole('admin')" class="pi pi-wrench ms-2 cursor-pointer text-red-400 hover:text-red-500"></i>
-            <i @click="filteringUsersRole('user')" class="pi pi-user ms-2 cursor-pointer text-slate-500 hover:text-slate-600"></i>
+            <i @click="filteringUsersRole('admin')" class="pi pi-wrench ms-1 cursor-pointer text-red-400 hover:text-red-500"></i>
           </div>
         </th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
