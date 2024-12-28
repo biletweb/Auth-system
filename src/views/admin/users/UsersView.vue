@@ -160,7 +160,7 @@ const fetchUsers = async () => {
 
 const searchUsers = async () => {
   loadingSearchUsers.value = true
-  if (searchInput.value !== '' && searchInput.value > 2) {
+  if (searchInput.value !== '' && searchInput.value.length >= 3) {
     users.value = []
     offset.value = 0
     hasMore.value = false
@@ -203,14 +203,14 @@ const clearSearchInput = () => {
   inputSearchRef.value?.focus()
 }
 
-const changeRole = async (id) => {
+const changeRole = async (userId) => {
   loadingChangeUserRole.value = true
-  changeRoleUserId.value = id
+  changeRoleUserId.value = userId
   try {
-    const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id }, getConfig(authStore.access_token))
+    const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id: userId }, getConfig(authStore.access_token))
     const updatedUser = response.data.user
     // Ищем пользователя в локальном списке и обновляем его данные
-    const index = users.value.findIndex((user) => user.id === id)
+    const index = users.value.findIndex((user) => user.id === userId)
     if (index !== -1) {
       users.value[index] = { ...users.value[index], ...updatedUser }
     }
