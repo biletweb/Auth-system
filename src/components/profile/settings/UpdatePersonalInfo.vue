@@ -94,9 +94,7 @@ const update = async () => {
       data.user,
       getConfig(authStore.access_token),
     )
-    if (response.data.error) {
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    } else if (response.data.warning) {
+    if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       authStore.user.name = data.user.name
