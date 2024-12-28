@@ -40,7 +40,11 @@
     </div>
   </form>
 
-  <table class="w-full border-collapse overflow-hidden border border-slate-400 bg-white text-sm shadow">
+  <div v-if="loading || loadingSearchUsers" class="my-4 flex justify-center">
+    <Spinner class="w-10 rounded-full bg-blue-500 p-1 text-white" />
+  </div>
+
+  <table v-else class="w-full border-collapse overflow-hidden border border-slate-400 bg-white text-sm shadow">
     <thead class="bg-slate-50">
       <tr>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Name') }}</th>
@@ -93,9 +97,6 @@
     >
       {{ $t('Load more') }}
     </button>
-  </div>
-  <div class="my-4 flex justify-center">
-    <Spinner v-if="loading || loadingSearchUsers" class="w-10 rounded-full bg-blue-500 p-1 text-white" />
   </div>
 </template>
 
