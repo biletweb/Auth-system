@@ -53,7 +53,10 @@
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">
           <p class="flex items-center">
             {{ $t('Role') }}
-            <i @click="filteringUsersRole('admin')" class="pi pi-wrench ms-1 cursor-pointer text-red-500 hover:text-red-600"></i>
+            <i
+              @click="filteringUsersRole('admin')"
+              class="pi pi-wrench ms-1 cursor-pointer text-red-500 opacity-75 hover:text-red-600"
+            ></i>
           </p>
         </th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
@@ -84,7 +87,11 @@
           <p v-if="user.role === 'user'" class="flex items-center">
             {{ $t('User') }}
             <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
-            <i v-else @click="changeRole(user.id)" class="pi pi-wrench ms-1 cursor-pointer text-red-500 hover:text-red-600"></i>
+            <i
+              v-else
+              @click="changeRole(user.id)"
+              class="pi pi-wrench ms-1 cursor-pointer text-red-500 opacity-75 hover:text-red-600"
+            ></i>
           </p>
         </td>
         <td class="border border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
