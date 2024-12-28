@@ -66,5 +66,6 @@
   "Users found:": "Users found: {count}",
   "Please enter a search query.": "Please enter a search query.",
   "Search query must be at least 3 characters.": "Search query must be at least 3 characters.",
-  "Too many users satisfy this request. Refine your search query.": "Too many users satisfy this request. Refine your search query."
+  "Too many users satisfy this request. Refine your search query.": "Too many users satisfy this request. Refine your search query.",
+  "User role changed successfully.": "User role changed successfully."
 }

@@ -66,5 +66,6 @@
   "Users found:": "Найдено пользователей: {count}",
   "Please enter a search query.": "Пожалуйста, введите запрос для поиска.",
   "Search query must be at least 3 characters.": "Запрос для поиска должен содержать не менее 3 символов.",
-  "Too many users satisfy this request. Refine your search query.": "Слишком много пользователей удовлетворяют этот запрос. Уточните ваш поисковый запрос."
+  "Too many users satisfy this request. Refine your search query.": "Слишком много пользователей удовлетворяют этот запрос. Уточните ваш поисковый запрос.",
+  "User role changed successfully.": "Роль пользователя успешно изменена."
 }

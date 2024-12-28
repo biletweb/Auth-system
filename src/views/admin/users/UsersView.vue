@@ -63,8 +63,20 @@
           </p>
         </td>
         <td class="border border-slate-300 p-4 text-slate-500">
-          <p v-if="user.role === 'admin'" class="text-red-500">{{ $t('Administrator') }}</p>
-          <p v-if="user.role === 'user'">{{ $t('User') }}</p>
+          <p v-if="user.role === 'admin'" class="flex items-center text-red-500">
+            {{ $t('Administrator') }}
+            <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
+            <i
+              v-else-if="user.id !== authStore.user.id"
+              @click="changeRole(user.id)"
+              class="pi pi-user ms-1 cursor-pointer text-slate-500 hover:text-slate-600"
+            ></i>
+          </p>
+          <p v-if="user.role === 'user'" class="flex items-center">
+            {{ $t('User') }}
+            <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
+            <i v-else @click="changeRole(user.id)" class="pi pi-wrench ms-1 cursor-pointer text-red-500 hover:text-red-600"></i>
+          </p>
         </td>
         <td class="border border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
         <td class="border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
@@ -102,12 +114,14 @@ const authStore = useAuthStore()
 const toast = useToast()
 const loading = ref(false)
 const loadingSearchUsers = ref(false)
+const loadingChangeUserRole = ref(false)
 const users = ref([])
+const changeRoleUserId = ref(null)
 const searchInput = ref('')
 const inputSearchRef = ref(null)
 const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
-const limit = 10 // Количество пользователей за раз
+const limit = 1 // Количество пользователей за раз
 const hasMore = ref(true) // Флаг для проверки, есть ли еще данные для загрузки
 
 onMounted(() => {
@@ -196,5 +210,37 @@ const clearSearchInput = () => {
   hasMore.value = true
   fetchUsers()
   inputSearchRef.value?.focus()
+}
+
+const changeRole = async (id) => {
+  loadingChangeUserRole.value = true
+  changeRoleUserId.value = id
+  try {
+    const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id }, getConfig(authStore.access_token))
+    if (response.data.error) {
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      const updatedUser = response.data.user
+      // Ищем пользователя в локальном списке и обновляем его данные
+      const index = users.value.findIndex((user) => user.id === id)
+      if (index !== -1) {
+        users.value[index] = { ...users.value[index], ...updatedUser }
+      }
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    }
+  } catch (error) {
+    if (error.response.status === 422) {
+      errorField.value = error.response.data.field
+      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+    }
+    if (error.response.status === 401) {
+      authStore.clearState()
+      router.push({ name: 'login' })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    }
+  } finally {
+    changeRoleUserId.value = null
+    loadingChangeUserRole.value = false
+  }
 }
 </script>
