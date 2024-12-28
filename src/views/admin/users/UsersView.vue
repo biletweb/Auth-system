@@ -41,7 +41,7 @@
   </form>
 
   <div v-if="loading || loadingSearchUsers" class="my-4 flex justify-center">
-    <Spinner class="w-10 rounded-full bg-blue-500 p-1 text-white" />
+    <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
   </div>
 
   <table v-else class="w-full border-collapse overflow-hidden border border-slate-400 bg-white text-sm shadow">
