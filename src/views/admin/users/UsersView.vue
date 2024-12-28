@@ -51,13 +51,11 @@
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Surname') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Email') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">
-          <p class="flex items-center">
+          <div class="flex items-center">
             {{ $t('Role') }}
-            <i
-              @click="filteringUsersRole('admin')"
-              class="pi pi-wrench ms-1 cursor-pointer text-red-500 opacity-75 hover:text-red-600"
-            ></i>
-          </p>
+            <i @click="filteringUsersRole('admin')" class="pi pi-wrench ms-1 cursor-pointer text-red-400 hover:text-red-500"></i>
+            <i @click="filteringUsersRole('user')" class="pi pi-user ms-2 cursor-pointer text-slate-500 hover:text-slate-600"></i>
+          </div>
         </th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Registered') }}</th>
