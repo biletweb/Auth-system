@@ -167,7 +167,7 @@
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
       :disabled="loadingSortBy"
     >
-      {{ $t('Load more2') }}
+      {{ $t('Load more') }}
     </button>
   </div>
   <div v-if="loading || loadingUserSearch || loadingSortBy" class="my-4 flex justify-center">
