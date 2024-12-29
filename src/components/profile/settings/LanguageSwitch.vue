@@ -5,7 +5,12 @@
       <Spinner v-if="loading" class="w-7 rounded-full bg-blue-500 p-1" />
     </div>
     <div class="my-6 flex gap-2">
-      <button type="submit" @click="setLocale('uk')" :disabled="savedLocale === 'uk'">
+      <button
+        v-tooltip="{ content: $t('Ukranian'), distance: 10 }"
+        type="submit"
+        @click="setLocale('uk')"
+        :disabled="savedLocale === 'uk'"
+      >
         <div
           class="rounded-lg p-2 text-white"
           :class="{
@@ -16,7 +21,12 @@
           UK
         </div>
       </button>
-      <button type="submit" @click="setLocale('ru')" :disabled="savedLocale === 'ru'">
+      <button
+        v-tooltip="{ content: $t('Russian'), distance: 10 }"
+        type="submit"
+        @click="setLocale('ru')"
+        :disabled="savedLocale === 'ru'"
+      >
         <div
           class="rounded-lg p-2 text-white"
           :class="{
@@ -27,7 +37,12 @@
           RU
         </div>
       </button>
-      <button type="submit" @click="setLocale('en')" :disabled="savedLocale === 'en'">
+      <button
+        v-tooltip="{ content: $t('English'), distance: 10 }"
+        type="submit"
+        @click="setLocale('en')"
+        :disabled="savedLocale === 'en'"
+      >
         <div
           class="rounded-lg p-2 text-white"
           :class="{
