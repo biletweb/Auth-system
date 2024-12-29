@@ -55,19 +55,23 @@
               </div>
               <div
                 v-if="showUserRoleFilter"
-                class="absolute start-1.5 z-10 mt-2 w-56 rounded-lg border border-gray-100 bg-white shadow"
+                class="absolute start-1.5 z-10 mt-2 rounded-lg border border-gray-100 bg-white shadow"
               >
                 <div class="p-2">
-                  <span
+                  <button
+                    @click="sortBy('admin')"
+                    type="button"
                     class="flex cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-red-500 hover:bg-gray-50 hover:text-red-600"
                   >
                     {{ $t('Administrator') }}<i class="pi pi-wrench ms-1"></i>
-                  </span>
-                  <span
+                  </button>
+                  <button
+                    @click="sortBy('user')"
+                    type="button"
                     class="flex cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
                   >
                     {{ $t('User') }}<i class="pi pi-user ms-1"></i>
-                  </span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -124,7 +128,7 @@
       {{ $t('Load more') }}
     </button>
   </div>
-  <div v-if="loading || loadingSearchUsers || loadingUserRoleByFilter" class="my-4 flex justify-center">
+  <div v-if="loading || loadingSearchUsers || loadingSortBy" class="my-4 flex justify-center">
     <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
   </div>
 </template>
@@ -145,7 +149,7 @@ const toast = useToast()
 const loading = ref(false)
 const loadingSearchUsers = ref(false)
 const loadingChangeUserRole = ref(false)
-const loadingUserRoleByFilter = ref(false)
+const loadingSortBy = ref(false)
 const users = ref([])
 const changeRoleUserId = ref(null)
 const searchInput = ref('')
@@ -273,15 +277,16 @@ const toggleUserRoleFilter = () => {
   showUserRoleFilter.value = !showUserRoleFilter.value
 }
 
-const filteringUsersRole = async (role) => {
-  loadingUserRoleByFilter.value = true
+const sortBy = async (value) => {
+  loadingSortBy.value = true
+  showUserRoleFilter.value = false
   searchInput.value = ''
   users.value = []
   offset.value = 0
   hasMore.value = false
   try {
-    const response = await axios.get(`${BASE_URL}/admin/users/filter`, {
-      params: { filter: role },
+    const response = await axios.get(`${BASE_URL}/admin/users/sort-by`, {
+      params: { sort: value },
       ...getConfig(authStore.access_token),
     })
     if (response.data.warning) {
@@ -304,7 +309,7 @@ const filteringUsersRole = async (role) => {
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
-    loadingUserRoleByFilter.value = false
+    loadingSortBy.value = false
   }
 }
 </script>
