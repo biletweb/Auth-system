@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <form @submit.prevent="searchUsers">
+  <form @submit.prevent="userSearch">
     <div class="my-4 flex items-center gap-4">
       <div class="relative w-full">
         <div class="absolute left-2.5 top-2.5 text-gray-400"><i class="pi pi-search"></i></div>
@@ -238,7 +238,7 @@ const getUsers = async () => {
   }
 }
 
-const searchUsers = async () => {
+const userSearch = async () => {
   if (searchInput.value !== '' && searchInput.value.length >= 3) {
     loadingUserSearch.value = true
     users.value = []
