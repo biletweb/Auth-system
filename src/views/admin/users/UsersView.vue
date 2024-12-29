@@ -134,6 +134,15 @@
     >
       {{ $t('Load more') }}
     </button>
+    <button
+      v-if="!loadingSortBy && orderByHasMore && !hasMore && sortByValue"
+      @click="sortBy(sortByValue)"
+      type="submit"
+      class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
+      :disabled="loadingSortBy"
+    >
+      {{ $t('Load more') }}
+    </button>
   </div>
   <div v-if="loading || loadingSearchUsers || loadingSortBy" class="my-4 flex justify-center">
     <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
@@ -163,8 +172,12 @@ const searchInput = ref('')
 const inputSearchUsersRef = ref(null)
 const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
-const limit = 10 // Количество пользователей за раз
+const limit = 1 // Количество пользователей за раз
 const hasMore = ref(true) // Флаг для проверки, есть ли еще данные для загрузки
+const orderByOffset = ref(0)
+const orderByLimit = 1
+const orderByHasMore = ref(true)
+const sortByValue = ref(null)
 const showUserRoleFilter = ref(false)
 
 onMounted(() => {
@@ -240,7 +253,9 @@ const clearSearchInput = () => {
   searchInput.value = ''
   users.value = []
   offset.value = 0
+  orderByOffset.value = 0
   hasMore.value = true
+  orderByHasMore.value = true
   fetchUsers()
   inputSearchUsersRef.value?.focus()
 }
@@ -287,19 +302,31 @@ const toggleUserRoleFilter = () => {
 const sortBy = async (value) => {
   loadingSortBy.value = true
   showUserRoleFilter.value = false
+  sortByValue.value = value
   searchInput.value = ''
-  users.value = []
   offset.value = 0
-  hasMore.value = false
+  if (!orderByHasMore.value) {
+    orderByOffset.value = 0
+    users.value = []
+    orderByHasMore.value = true
+  }
+  if (users.value.length && hasMore.value) {
+    users.value = []
+    hasMore.value = false
+  }
   try {
     const response = await axios.get(`${BASE_URL}/admin/users/sort-by`, {
-      params: { sort_by: value },
+      params: { sort_by: value, orderByOffset: orderByOffset.value, orderByLimit },
       ...getConfig(authStore.access_token),
     })
     if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
-      users.value = response.data.users
+      users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
+      orderByOffset.value += orderByLimit // Обновляем смещение
+      if (response.data.users.length < orderByLimit) {
+        orderByHasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
+      }
       toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
         timeout: 5000,
         pauseOnFocusLoss: true,
