@@ -70,5 +70,7 @@
   "User role changed successfully.": "Роль пользователя успешно изменена.",
   "The selected sort by is invalid.": "Выбранная сортировка недействительна.",
   "All": "Все",
-  "Actions": "Действия"
+  "Actions": "Действия",
+  "Verified": "Подтвержден",
+  "Not verified": "Не подтвержден"
 }

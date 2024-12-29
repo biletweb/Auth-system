@@ -70,5 +70,7 @@
   "User role changed successfully.": "Роль користувача змінено успішно.",
   "The selected sort by is invalid.": "Вибране сортування недійсне.",
   "All": "Всі",
-  "Actions": "Дії"
+  "Actions": "Дії",
+  "Verified": "Підтверджено",
+  "Not verified": "Не підтверджено"
 }
