@@ -49,7 +49,7 @@
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">
           <div class="flex items-center">
             {{ $t('Role') }}
-            <div class="relative">
+            <div class="relative" ref="dropdownUserRoleFilterRef">
               <div>
                 <i @click="toggleUserRoleFilter" class="pi pi-filter ms-1 cursor-pointer text-slate-500 hover:text-slate-600"></i>
               </div>
@@ -162,6 +162,7 @@ import { useToast } from 'vue-toastification'
 import { i18n } from '@/main.js'
 import { useRouter } from 'vue-router'
 import Spinner from '@/components/Spinner.vue'
+import { onClickOutside } from '@vueuse/core'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -183,6 +184,7 @@ const sortByLimit = 10
 const sortByHasMore = ref(true)
 const sortByValue = ref(null)
 const showUserRoleFilter = ref(false)
+const dropdownUserRoleFilterRef = ref(null)
 
 onMounted(() => {
   fetchUsers()
@@ -304,6 +306,8 @@ const changeUserRole = async (userId) => {
 const toggleUserRoleFilter = () => {
   showUserRoleFilter.value = !showUserRoleFilter.value
 }
+
+onClickOutside(dropdownUserRoleFilterRef, toggleUserRoleFilter)
 
 const sortBy = async (value) => {
   sortByValue.value = value
