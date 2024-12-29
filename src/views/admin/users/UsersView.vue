@@ -153,7 +153,7 @@
   <div class="mt-4 text-center">
     <button
       v-if="!loading && hasMore && !sortByValue"
-      @click="fetchUsers"
+      @click="getUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
       :disabled="loading"
@@ -208,10 +208,10 @@ const sortByValue = ref(null)
 const showUserRoleFilter = ref(false)
 
 onMounted(() => {
-  fetchUsers()
+  getUsers()
 })
 
-const fetchUsers = async () => {
+const getUsers = async () => {
   loading.value = true
   try {
     const response = await axios.get(`${BASE_URL}/admin/users`, {
@@ -285,7 +285,7 @@ const clearSearchInput = () => {
   sortByOffset.value = 0
   hasMore.value = true
   sortByHasMore.value = true
-  fetchUsers()
+  getUsers()
   searchInputRef.value?.focus()
 }
 
