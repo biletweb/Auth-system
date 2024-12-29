@@ -19,7 +19,7 @@
         <div class="absolute left-2.5 top-2.5 text-gray-400"><i class="pi pi-search"></i></div>
         <input
           v-model="searchInput"
-          ref="inputSearchRef"
+          ref="inputSearchUsersRef"
           type="text"
           name="searchInput"
           :placeholder="$t('Search users...')"
@@ -134,7 +134,7 @@ const loadingFilteringUsersRole = ref(false)
 const users = ref([])
 const changeRoleUserId = ref(null)
 const searchInput = ref('')
-const inputSearchRef = ref(null)
+const inputSearchUsersRef = ref(null)
 const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
 const limit = 10 // Количество пользователей за раз
@@ -215,7 +215,7 @@ const clearSearchInput = () => {
   offset.value = 0
   hasMore.value = true
   fetchUsers()
-  inputSearchRef.value?.focus()
+  inputSearchUsersRef.value?.focus()
 }
 
 const changeRole = async (userId) => {
