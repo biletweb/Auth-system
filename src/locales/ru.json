@@ -68,5 +68,5 @@
   "The search field must be at least 3 characters.": "Поле поиска должно содержать не менее 3 символов.",
   "Too many users satisfy this request. Refine your search query.": "Слишком много пользователей удовлетворяют этот запрос. Уточните ваш поисковый запрос.",
   "User role changed successfully.": "Роль пользователя успешно изменена.",
-  "The selected filter is invalid.": "Выбранный фильтр недействителен."
+  "The selected sort by is invalid.": "Выбранная сортировка недействительна."
 }
