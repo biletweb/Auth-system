@@ -68,5 +68,6 @@
   "The search field must be at least 3 characters.": "The search field must be at least 3 characters.",
   "Too many users satisfy this request. Refine your search query.": "Too many users satisfy this request. Refine your search query.",
   "User role changed successfully.": "User role changed successfully.",
-  "The selected sort by is invalid.": "The selected sort by is invalid."
+  "The selected sort by is invalid.": "The selected sort by is invalid.",
+  "All": "All"
 }
