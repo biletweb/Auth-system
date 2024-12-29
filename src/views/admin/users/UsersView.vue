@@ -51,22 +51,22 @@
             {{ $t('Role') }}
             <div class="relative">
               <div class="inline-flex items-center overflow-hidden">
-                <i
-                  @click="toggleUserRoleFilter"
-                  class="pi pi-filter ms-1 cursor-pointer text-slate-500 hover:text-slate-600"
-                ></i>
+                <i @click="toggleUserRoleFilter" class="pi pi-filter ms-1 cursor-pointer text-slate-500 hover:text-slate-600"></i>
               </div>
-              <div v-if="showUserRoleFilter" class="absolute start-1.5 z-10 mt-2 w-56 rounded-lg border border-gray-100 bg-white shadow">
+              <div
+                v-if="showUserRoleFilter"
+                class="absolute start-1.5 z-10 mt-2 w-56 rounded-lg border border-gray-100 bg-white shadow"
+              >
                 <div class="p-2">
                   <span
-                    class="block cursor-pointer rounded-lg px-4 py-2 text-sm font-normal text-red-500 hover:bg-gray-50 hover:text-red-600"
+                    class="flex cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-red-500 hover:bg-gray-50 hover:text-red-600"
                   >
-                    {{ $t('Administrator') }}
+                    {{ $t('Administrator') }}<i class="pi pi-wrench ms-1"></i>
                   </span>
                   <span
-                    class="block cursor-pointer rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
+                    class="flex cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
                   >
-                    {{ $t('User') }}
+                    {{ $t('User') }}<i class="pi pi-user ms-1"></i>
                   </span>
                 </div>
               </div>
