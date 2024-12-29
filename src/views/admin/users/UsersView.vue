@@ -59,6 +59,7 @@
               >
                 <div class="p-2">
                   <button
+                    v-if="sortByValue !== 'all'"
                     @click="sortBy('all')"
                     type="button"
                     class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
@@ -66,6 +67,7 @@
                     {{ $t('All') }}
                   </button>
                   <button
+                    v-if="sortByValue !== 'admin'"
                     @click="sortBy('admin')"
                     type="button"
                     class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-red-500 hover:bg-gray-50 hover:text-red-600"
@@ -73,6 +75,7 @@
                     {{ $t('Administrator') }}<i class="pi pi-wrench ms-1"></i>
                   </button>
                   <button
+                    v-if="sortByValue !== 'user'"
                     @click="sortBy('user')"
                     type="button"
                     class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
