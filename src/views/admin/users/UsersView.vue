@@ -172,8 +172,8 @@ const fetchUsers = async () => {
 }
 
 const searchUsers = async () => {
-  loadingSearchUsers.value = true
   if (searchInput.value !== '' && searchInput.value.length >= 3) {
+    loadingSearchUsers.value = true
     users.value = []
     offset.value = 0
     hasMore.value = false
