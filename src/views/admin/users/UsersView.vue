@@ -286,7 +286,7 @@ const sortBy = async (value) => {
   hasMore.value = false
   try {
     const response = await axios.get(`${BASE_URL}/admin/users/sort-by`, {
-      params: { sort: value },
+      params: { sortBy: value },
       ...getConfig(authStore.access_token),
     })
     if (response.data.warning) {
