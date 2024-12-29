@@ -40,7 +40,7 @@
     </div>
   </form>
 
-  <table class="w-full border-collapse overflow-hidden border border-slate-400 bg-white text-sm shadow">
+  <table class="w-full border-collapse border border-slate-400 bg-white text-sm shadow">
     <thead class="bg-slate-50">
       <tr>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Name') }}</th>
@@ -59,12 +59,12 @@
               <div class="absolute start-1.5 z-10 mt-2 w-56 rounded-lg border border-gray-100 bg-white shadow">
                 <div class="p-2">
                   <span
-                    class="font-normal block rounded-lg px-4 py-2 text-sm text-red-500 hover:bg-gray-50 hover:text-red-600 cursor-pointer"
+                    class="block cursor-pointer rounded-lg px-4 py-2 text-sm font-normal text-red-500 hover:bg-gray-50 hover:text-red-600"
                   >
                     {{ $t('Administrator') }}
                   </span>
                   <span
-                    class="font-normal block rounded-lg px-4 py-2 text-sm text-slate-500 hover:bg-gray-50 hover:text-slate-600 cursor-pointer"
+                    class="block cursor-pointer rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
                   >
                     {{ $t('User') }}
                   </span>
