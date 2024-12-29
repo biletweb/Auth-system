@@ -221,7 +221,7 @@ const fetchUsers = async () => {
     if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
-      users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
+      users.value = [...users.value, ...response.data.users]
       offset.value += limit // Обновляем смещение
       if (response.data.users.length < limit) {
         hasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
