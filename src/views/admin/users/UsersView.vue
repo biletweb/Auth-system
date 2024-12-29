@@ -47,14 +47,29 @@
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Surname') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Email') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center">
             {{ $t('Role') }}
-            <div class="flex items-center">
-              <i
-                @click="filteringUsersRole('admin')"
-                class="pi pi-filter ms-1 cursor-pointer text-slate-500 hover:text-slate-600"
-              ></i>
-              <span class="ms-1 cursor-default font-normal text-red-500">{{ $t('Administrator') }}</span>
+            <div class="relative">
+              <div class="inline-flex items-center overflow-hidden">
+                <i
+                  @click="filteringUsersRole('admin')"
+                  class="pi pi-filter ms-1 cursor-pointer text-slate-500 hover:text-slate-600"
+                ></i>
+              </div>
+              <div class="absolute start-1.5 z-10 mt-2 w-56 rounded-lg border border-gray-100 bg-white shadow">
+                <div class="p-2">
+                  <span
+                    class="font-normal block rounded-lg px-4 py-2 text-sm text-red-500 hover:bg-gray-50 hover:text-red-600 cursor-pointer"
+                  >
+                    {{ $t('Administrator') }}
+                  </span>
+                  <span
+                    class="font-normal block rounded-lg px-4 py-2 text-sm text-slate-500 hover:bg-gray-50 hover:text-slate-600 cursor-pointer"
+                  >
+                    {{ $t('User') }}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </th>
