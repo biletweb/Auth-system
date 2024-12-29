@@ -162,7 +162,7 @@
     </button>
     <button
       v-if="!loadingSortBy && sortByHasMore && sortByValue && users.length > 0"
-      @click="fetchSortedUsers"
+      @click="getSortedUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
       :disabled="loadingSortBy"
@@ -335,10 +335,10 @@ const sortBy = async (value) => {
   sortByOffset.value = 0
   sortByHasMore.value = true
   users.value = []
-  await fetchSortedUsers()
+  await getSortedUsers()
 }
 
-const fetchSortedUsers = async () => {
+const getSortedUsers = async () => {
   loadingSortBy.value = true
   try {
     const response = await axios.get(`${BASE_URL}/admin/users/sort-by`, {
