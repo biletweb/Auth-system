@@ -55,8 +55,8 @@
                   @click="toggleUserRoleFilter"
                   class="pi pi-filter ms-1 cursor-pointer"
                   :class="{
-                    'text-blue-500 hover:text-blue-600 transition duration-300': showUserRoleFilter,
-                    'text-slate-500 hover:text-slate-600 transition duration-300': !showUserRoleFilter,
+                    'text-blue-500 transition duration-300 hover:text-blue-600': showUserRoleFilter,
+                    'text-slate-500 transition duration-300 hover:text-slate-600': !showUserRoleFilter,
                   }"
                 ></i>
               </div>
@@ -122,14 +122,17 @@
               @click="changeUserRole(user.id)"
               class="pi pi-user cursor-pointer text-slate-500 hover:text-slate-600"
             ></i>
-            <i v-else-if="user.id === authStore.user.id" class="pi pi-minus text-slate-500 hover:text-slate-600"></i>
+            <i
+              v-else-if="user.id === authStore.user.id"
+              class="pi pi-minus text-slate-500 transition duration-300 hover:text-slate-600"
+            ></i>
           </div>
           <div v-if="user.role === 'user'" class="flex items-center">
             <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
             <i
               v-else
               @click="changeUserRole(user.id)"
-              class="pi pi-wrench cursor-pointer text-red-500 opacity-75 hover:text-red-600"
+              class="pi pi-wrench cursor-pointer text-red-500 opacity-75 transition duration-300 hover:text-red-600"
             ></i>
           </div>
         </td>
