@@ -307,7 +307,11 @@ const toggleUserRoleFilter = () => {
   showUserRoleFilter.value = !showUserRoleFilter.value
 }
 
-onClickOutside(dropdownUserRoleFilterRef, toggleUserRoleFilter)
+onClickOutside(dropdownUserRoleFilterRef, () => {
+  if (showUserRoleFilter.value) {
+    showUserRoleFilter.value = false;
+  }
+})
 
 const sortBy = async (value) => {
   sortByValue.value = value
