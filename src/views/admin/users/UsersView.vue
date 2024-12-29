@@ -55,8 +55,8 @@
                   @click="toggleUserRoleFilter"
                   class="pi pi-filter ms-1 cursor-pointer"
                   :class="{
-                    'text-blue-500 hover:text-blue-600': showUserRoleFilter,
-                    'text-slate-500 hover:text-slate-600': !showUserRoleFilter,
+                    'text-blue-500 hover:text-blue-600 transition duration-300': showUserRoleFilter,
+                    'text-slate-500 hover:text-slate-600 transition duration-300': !showUserRoleFilter,
                   }"
                 ></i>
               </div>
