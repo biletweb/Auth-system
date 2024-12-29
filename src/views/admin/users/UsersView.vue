@@ -86,6 +86,7 @@
         </th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Registered') }}</th>
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Actions') }}</th>
       </tr>
     </thead>
     <tbody>
@@ -100,27 +101,30 @@
           </div>
         </td>
         <td class="w-96 border border-slate-300 p-4 text-slate-500">
-          <div v-if="user.role === 'admin'" class="flex items-center text-red-500">
-            {{ $t('Administrator') }}
-            <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
-            <i
-              v-else-if="user.id !== authStore.user.id"
-              @click="changeUserRole(user.id)"
-              class="pi pi-user ms-1 cursor-pointer text-slate-500 hover:text-slate-600"
-            ></i>
-          </div>
-          <div v-if="user.role === 'user'" class="flex items-center">
-            {{ $t('User') }}
-            <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
-            <i
-              v-else
-              @click="changeUserRole(user.id)"
-              class="pi pi-wrench ms-1 cursor-pointer text-red-500 opacity-75 hover:text-red-600"
-            ></i>
-          </div>
+          <div v-if="user.role === 'admin'" class="flex items-center text-red-500">{{ $t('Administrator') }}</div>
+          <div v-if="user.role === 'user'" class="flex items-center">{{ $t('User') }}</div>
         </td>
         <td class="border border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
         <td class="w-96 border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
+        <td class="border border-slate-300 p-4 text-slate-500">
+          <div v-if="user.role === 'admin'" class="flex items-center text-red-500">
+            <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
+            <i
+              v-else-if="user.id !== authStore.user.id"
+              @click="changeUserRole(user.id)"
+              class="pi pi-user cursor-pointer text-slate-500 hover:text-slate-600"
+            ></i>
+            <i v-else-if="user.id === authStore.user.id" class="pi pi-minus text-slate-500 hover:text-slate-600"></i>
+          </div>
+          <div v-if="user.role === 'user'" class="flex items-center">
+            <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
+            <i
+              v-else
+              @click="changeUserRole(user.id)"
+              class="pi pi-wrench cursor-pointer text-red-500 opacity-75 hover:text-red-600"
+            ></i>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>

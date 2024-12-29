@@ -69,5 +69,6 @@
   "Too many users satisfy this request. Refine your search query.": "Надто багато користувачів задовольняють цей запит. Уточніть свій пошуковий запит.",
   "User role changed successfully.": "Роль користувача змінено успішно.",
   "The selected sort by is invalid.": "Вибране сортування недійсне.",
-  "All": "Всі"
+  "All": "Всі",
+  "Actions": "Дії"
 }
