@@ -75,5 +75,6 @@
   "Not verified": "Не подтвержден",
   "Not allowed": "Не разрешено",
   "Assign as user": "Назначить пользователем",
-  "Assign as administrator": "Назначить администратором"
+  "Assign as administrator": "Назначить администратором",
+  "Clear": "Очистить"
 }
