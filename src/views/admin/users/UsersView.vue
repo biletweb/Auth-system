@@ -92,14 +92,14 @@
       <tr v-for="user in users" :key="user.id">
         <td class="border border-slate-300 p-4 text-slate-500">{{ user.name }}</td>
         <td class="border border-slate-300 p-4 text-slate-500">{{ user.surname }}</td>
-        <td class="border border-slate-300 p-4 text-slate-500">
+        <td class="w-96 border border-slate-300 p-4 text-slate-500">
           <div class="flex items-center">
             {{ user.email }}
             <i v-if="user.email_verified_at" class="pi pi-check-circle ms-1 text-green-500"></i>
             <i v-else class="pi pi-times-circle ms-1 text-yellow-500"></i>
           </div>
         </td>
-        <td class="border border-slate-300 p-4 text-slate-500">
+        <td class="w-96 border border-slate-300 p-4 text-slate-500">
           <div v-if="user.role === 'admin'" class="flex items-center text-red-500">
             {{ $t('Administrator') }}
             <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
@@ -120,7 +120,7 @@
           </div>
         </td>
         <td class="border border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
-        <td class="border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
+        <td class="w-96 border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
       </tr>
     </tbody>
   </table>
