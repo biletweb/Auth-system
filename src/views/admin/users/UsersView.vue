@@ -109,7 +109,7 @@
       {{ $t('Load more') }}
     </button>
   </div>
-  <div v-if="loading || loadingSearchUsers || loadingFilteringUsersRole" class="my-4 flex justify-center">
+  <div v-if="loading || loadingSearchUsers || loadingUserRoleByFilter" class="my-4 flex justify-center">
     <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
   </div>
 </template>
@@ -130,7 +130,7 @@ const toast = useToast()
 const loading = ref(false)
 const loadingSearchUsers = ref(false)
 const loadingChangeUserRole = ref(false)
-const loadingFilteringUsersRole = ref(false)
+const loadingUserRoleByFilter = ref(false)
 const users = ref([])
 const changeRoleUserId = ref(null)
 const searchInput = ref('')
@@ -254,7 +254,7 @@ const changeRole = async (userId) => {
 }
 
 const filteringUsersRole = async (role) => {
-  loadingFilteringUsersRole.value = true
+  loadingUserRoleByFilter.value = true
   searchInput.value = ''
   users.value = []
   offset.value = 0
@@ -284,7 +284,7 @@ const filteringUsersRole = async (role) => {
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
-    loadingFilteringUsersRole.value = false
+    loadingUserRoleByFilter.value = false
   }
 }
 </script>
