@@ -98,7 +98,7 @@
             <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
             <i
               v-else-if="user.id !== authStore.user.id"
-              @click="changeRole(user.id)"
+              @click="changeUserRole(user.id)"
               class="pi pi-user ms-1 cursor-pointer text-slate-500 hover:text-slate-600"
             ></i>
           </div>
@@ -107,7 +107,7 @@
             <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="ms-1 w-5 rounded-full bg-blue-500 p-1" />
             <i
               v-else
-              @click="changeRole(user.id)"
+              @click="changeUserRole(user.id)"
               class="pi pi-wrench ms-1 cursor-pointer text-red-500 opacity-75 hover:text-red-600"
             ></i>
           </div>
@@ -238,7 +238,7 @@ const clearSearchInput = () => {
   inputSearchUsersRef.value?.focus()
 }
 
-const changeRole = async (userId) => {
+const changeUserRole = async (userId) => {
   loadingChangeUserRole.value = true
   changeRoleUserId.value = userId
   try {
