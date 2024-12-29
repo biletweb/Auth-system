@@ -152,7 +152,7 @@
   </table>
   <div class="mt-4 text-center">
     <button
-      v-if="!loading && hasMore && !sortByValue"
+      v-if="!loading && hasMore"
       @click="getUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
@@ -161,13 +161,13 @@
       {{ $t('Load more') }}
     </button>
     <button
-      v-if="!loadingSortBy && sortByHasMore && sortByValue && users.length > 0"
+      v-if="!loadingSortBy && sortByHasMore"
       @click="getSortedUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
       :disabled="loadingSortBy"
     >
-      {{ $t('Load more') }}
+      {{ $t('Load more2') }}
     </button>
   </div>
   <div v-if="loading || loadingUserSearch || loadingSortBy" class="my-4 flex justify-center">
@@ -200,10 +200,10 @@ const searchInputRef = ref(null)
 const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
 const limit = 10 // Количество пользователей за раз
-const hasMore = ref(true) // Флаг для проверки, есть ли еще данные для загрузки
+const hasMore = ref(false) // Флаг для проверки, есть ли еще данные для загрузки
 const sortByOffset = ref(0)
 const sortByLimit = 10
-const sortByHasMore = ref(true)
+const sortByHasMore = ref(false)
 const sortByValue = ref(null)
 const showUserRoleFilter = ref(false)
 
@@ -213,6 +213,8 @@ onMounted(() => {
 
 const getUsers = async () => {
   loading.value = true
+  hasMore.value = true
+  sortByHasMore.value = false
   try {
     const response = await axios.get(`${BASE_URL}/admin/users`, {
       params: { offset: offset.value, limit },
@@ -283,8 +285,8 @@ const clearSearchInput = () => {
   users.value = []
   offset.value = 0
   sortByOffset.value = 0
-  hasMore.value = true
-  sortByHasMore.value = true
+  hasMore.value = false
+  sortByHasMore.value = false
   getUsers()
   searchInputRef.value?.focus()
 }
@@ -333,13 +335,14 @@ const sortBy = async (value) => {
   searchInput.value = ''
   showUserRoleFilter.value = false
   sortByOffset.value = 0
-  sortByHasMore.value = true
   users.value = []
   await getSortedUsers()
 }
 
 const getSortedUsers = async () => {
   loadingSortBy.value = true
+  sortByHasMore.value = true
+  hasMore.value = false
   try {
     const response = await axios.get(`${BASE_URL}/admin/users/sort-by`, {
       params: { sort_by: sortByValue.value, sortByOffset: sortByOffset.value, sortByLimit },
