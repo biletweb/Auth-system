@@ -51,7 +51,14 @@
             {{ $t('Role') }}
             <div class="relative">
               <div>
-                <i @click="toggleUserRoleFilter" class="pi pi-filter ms-1 cursor-pointer text-slate-500 hover:text-slate-600"></i>
+                <i
+                  @click="toggleUserRoleFilter"
+                  class="pi pi-filter ms-1 cursor-pointer"
+                  :class="{
+                    'text-blue-500 hover:text-blue-600': showUserRoleFilter,
+                    'text-slate-500 hover:text-slate-600': !showUserRoleFilter,
+                  }"
+                ></i>
               </div>
               <div
                 v-if="showUserRoleFilter"
