@@ -126,7 +126,7 @@
   </table>
   <div class="mt-4 text-center">
     <button
-      v-if="!loading && hasMore"
+      v-if="!loading && hasMore && !sortByValue"
       @click="fetchUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
@@ -135,8 +135,8 @@
       {{ $t('Load more') }}
     </button>
     <button
-      v-if="!loadingSortBy && orderByHasMore && !hasMore && sortByValue"
-      @click="sortBy(sortByValue)"
+      v-if="!loadingSortBy && sortByHasMore && sortByValue"
+      @click="fetchSortedUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
       :disabled="loadingSortBy"
@@ -174,9 +174,9 @@ const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
 const limit = 1 // Количество пользователей за раз
 const hasMore = ref(true) // Флаг для проверки, есть ли еще данные для загрузки
-const orderByOffset = ref(0)
-const orderByLimit = 1
-const orderByHasMore = ref(true)
+const sortByOffset = ref(0)
+const sortByLimit = 1
+const sortByHasMore = ref(true)
 const sortByValue = ref(null)
 const showUserRoleFilter = ref(false)
 
@@ -216,7 +216,9 @@ const searchUsers = async () => {
     loadingSearchUsers.value = true
     users.value = []
     offset.value = 0
+    sortByOffset.value = 0
     hasMore.value = false
+    sortByHasMore.value = false
   }
   try {
     const response = await axios.get(`${BASE_URL}/admin/users/search`, {
@@ -253,9 +255,9 @@ const clearSearchInput = () => {
   searchInput.value = ''
   users.value = []
   offset.value = 0
-  orderByOffset.value = 0
+  sortByOffset.value = 0
   hasMore.value = true
-  orderByHasMore.value = true
+  sortByHasMore.value = true
   fetchUsers()
   inputSearchUsersRef.value?.focus()
 }
@@ -300,32 +302,29 @@ const toggleUserRoleFilter = () => {
 }
 
 const sortBy = async (value) => {
-  loadingSortBy.value = true
-  showUserRoleFilter.value = false
   sortByValue.value = value
   searchInput.value = ''
-  offset.value = 0
-  if (!orderByHasMore.value) {
-    orderByOffset.value = 0
-    users.value = []
-    orderByHasMore.value = true
-  }
-  if (users.value.length && hasMore.value) {
-    users.value = []
-    hasMore.value = false
-  }
+  showUserRoleFilter.value = false
+  sortByOffset.value = 0
+  sortByHasMore.value = true
+  users.value = []
+  await fetchSortedUsers()
+}
+
+const fetchSortedUsers = async () => {
+  loadingSortBy.value = true
   try {
     const response = await axios.get(`${BASE_URL}/admin/users/sort-by`, {
-      params: { sort_by: value, orderByOffset: orderByOffset.value, orderByLimit },
+      params: { sort_by: sortByValue.value, sortByOffset: sortByOffset.value, sortByLimit },
       ...getConfig(authStore.access_token),
     })
     if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
-      orderByOffset.value += orderByLimit // Обновляем смещение
-      if (response.data.users.length < orderByLimit) {
-        orderByHasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
+      sortByOffset.value += sortByLimit // Обновляем смещение
+      if (response.data.users.length < sortByLimit) {
+        sortByHasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
       }
       toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
         timeout: 5000,
