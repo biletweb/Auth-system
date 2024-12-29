@@ -72,5 +72,8 @@
   "All": "Все",
   "Actions": "Действия",
   "Verified": "Подтвержден",
-  "Not verified": "Не подтвержден"
+  "Not verified": "Не подтвержден",
+  "Not allowed": "Не разрешено",
+  "Assign as user": "Назначить пользователем",
+  "Assign as administrator": "Назначить администратором"
 }

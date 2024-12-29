@@ -72,5 +72,8 @@
   "All": "All",
   "Actions": "Actions",
   "Verified": "Verified",
-  "Not verified": "Not verified"
+  "Not verified": "Not verified",
+  "Not allowed": "Not allowed",
+  "Assign as user": "Assign as user",
+  "Assign as administrator": "Assign as admin"
 }

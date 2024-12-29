@@ -104,8 +104,16 @@
         <td class="w-96 border border-slate-300 p-4 text-slate-500">
           <div class="flex items-center">
             {{ user.email }}
-            <i v-if="user.email_verified_at" v-tooltip="{ content: $t('Verified'), distance: 10 }" class="pi pi-check-circle ms-1 text-green-500"></i>
-            <i v-else v-tooltip="{ content: $t('Not verified'), distance: 10 }" class="pi pi-times-circle ms-1 text-yellow-500"></i>
+            <i
+              v-if="user.email_verified_at"
+              v-tooltip="{ content: $t('Verified'), distance: 10 }"
+              class="pi pi-check-circle ms-1 text-green-500"
+            ></i>
+            <i
+              v-else
+              v-tooltip="{ content: $t('Not verified'), distance: 10 }"
+              class="pi pi-times-circle ms-1 text-yellow-500"
+            ></i>
           </div>
         </td>
         <td class="w-96 border border-slate-300 p-4 text-slate-500">
@@ -119,11 +127,13 @@
             <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
             <i
               v-else-if="user.id !== authStore.user.id"
+              v-tooltip="{ content: $t('Assign as user'), distance: 10 }"
               @click="changeUserRole(user.id)"
               class="pi pi-user cursor-pointer text-slate-500 hover:text-slate-600"
             ></i>
             <i
               v-else-if="user.id === authStore.user.id"
+              v-tooltip="{ content: $t('Not allowed'), distance: 10 }"
               class="pi pi-minus text-slate-500 transition duration-300 hover:text-slate-600"
             ></i>
           </div>
@@ -132,6 +142,7 @@
             <i
               v-else
               @click="changeUserRole(user.id)"
+              v-tooltip="{ content: $t('Assign as administrator'), distance: 10 }"
               class="pi pi-wrench cursor-pointer text-red-500 opacity-75 transition duration-300 hover:text-red-600"
             ></i>
           </div>
