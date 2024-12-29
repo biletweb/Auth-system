@@ -19,7 +19,7 @@
         <div class="absolute left-2.5 top-2.5 text-gray-400"><i class="pi pi-search"></i></div>
         <input
           v-model="searchInput"
-          ref="inputSearchUsersRef"
+          ref="searchInputRef"
           type="text"
           name="searchInput"
           :placeholder="$t('Search users...')"
@@ -32,8 +32,8 @@
       <button
         type="submit"
         class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
-        :class="{ 'opacity-50': loadingSearchUsers }"
-        :disabled="loadingSearchUsers"
+        :class="{ 'opacity-50': loadingUserSearch }"
+        :disabled="loadingUserSearch"
       >
         {{ $t('Search') }}
       </button>
@@ -124,7 +124,7 @@
         <td class="w-96 border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
         <td class="border border-slate-300 p-4 text-slate-500">
           <div v-if="user.role === 'admin'" class="flex items-center text-red-500">
-            <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
+            <Spinner v-if="loadingChangeUserRole && changeUserRoleId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
             <i
               v-else-if="user.id !== authStore.user.id"
               v-tooltip="{ content: $t('Assign as user'), distance: 10 }"
@@ -138,7 +138,7 @@
             ></i>
           </div>
           <div v-if="user.role === 'user'" class="flex items-center">
-            <Spinner v-if="loadingChangeUserRole && changeRoleUserId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
+            <Spinner v-if="loadingChangeUserRole && changeUserRoleId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
             <i
               v-else
               @click="changeUserRole(user.id)"
@@ -170,7 +170,7 @@
       {{ $t('Load more') }}
     </button>
   </div>
-  <div v-if="loading || loadingSearchUsers || loadingSortBy" class="my-4 flex justify-center">
+  <div v-if="loading || loadingUserSearch || loadingSortBy" class="my-4 flex justify-center">
     <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
   </div>
 </template>
@@ -190,13 +190,13 @@ const router = useRouter()
 const authStore = useAuthStore()
 const toast = useToast()
 const loading = ref(false)
-const loadingSearchUsers = ref(false)
+const loadingUserSearch = ref(false)
 const loadingChangeUserRole = ref(false)
 const loadingSortBy = ref(false)
 const users = ref([])
-const changeRoleUserId = ref(null)
+const changeUserRoleId = ref(null)
 const searchInput = ref('')
-const inputSearchUsersRef = ref(null)
+const searchInputRef = ref(null)
 const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
 const limit = 10 // Количество пользователей за раз
@@ -240,7 +240,7 @@ const fetchUsers = async () => {
 
 const searchUsers = async () => {
   if (searchInput.value !== '' && searchInput.value.length >= 3) {
-    loadingSearchUsers.value = true
+    loadingUserSearch.value = true
     users.value = []
     offset.value = 0
     sortByOffset.value = 0
@@ -274,7 +274,7 @@ const searchUsers = async () => {
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
-    loadingSearchUsers.value = false
+    loadingUserSearch.value = false
   }
 }
 
@@ -286,12 +286,12 @@ const clearSearchInput = () => {
   hasMore.value = true
   sortByHasMore.value = true
   fetchUsers()
-  inputSearchUsersRef.value?.focus()
+  searchInputRef.value?.focus()
 }
 
 const changeUserRole = async (userId) => {
   loadingChangeUserRole.value = true
-  changeRoleUserId.value = userId
+  changeUserRoleId.value = userId
   try {
     const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id: userId }, getConfig(authStore.access_token))
     if (response.data.warning) {
@@ -319,7 +319,7 @@ const changeUserRole = async (userId) => {
       toast.error(i18n.global.t('Too many requests. Please try again later.'), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
-    changeRoleUserId.value = null
+    changeUserRoleId.value = null
     loadingChangeUserRole.value = false
   }
 }
