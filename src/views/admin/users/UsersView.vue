@@ -139,7 +139,7 @@
       {{ $t('Load more') }}
     </button>
     <button
-      v-if="!loadingSortBy && sortByHasMore && sortByValue"
+      v-if="!loadingSortBy && sortByHasMore && sortByValue && users.length > 0"
       @click="fetchSortedUsers"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
@@ -176,10 +176,10 @@ const searchInput = ref('')
 const inputSearchUsersRef = ref(null)
 const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
-const limit = 10 // Количество пользователей за раз
+const limit = 1 // Количество пользователей за раз
 const hasMore = ref(true) // Флаг для проверки, есть ли еще данные для загрузки
 const sortByOffset = ref(0)
-const sortByLimit = 10
+const sortByLimit = 1
 const sortByHasMore = ref(true)
 const sortByValue = ref(null)
 const showUserRoleFilter = ref(false)
@@ -232,7 +232,7 @@ const searchUsers = async () => {
     if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else if (response.data.users.length === 0) {
-      toast.error(i18n.global.t('No users found.'), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.warning(i18n.global.t('No users found.'), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       users.value = response.data.users
       toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
@@ -330,10 +330,6 @@ const fetchSortedUsers = async () => {
       if (response.data.users.length < sortByLimit) {
         sortByHasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
       }
-      toast.success(i18n.global.t('Users found:', { count: response.data.users.length }), {
-        timeout: 5000,
-        pauseOnFocusLoss: true,
-      })
     }
   } catch (error) {
     if (error.response.status === 422) {
