@@ -104,8 +104,8 @@
         <td class="w-96 border border-slate-300 p-4 text-slate-500">
           <div class="flex items-center">
             {{ user.email }}
-            <i v-if="user.email_verified_at" v-tooltip="$t('Verified')" class="pi pi-check-circle ms-1 text-green-500"></i>
-            <i v-else  v-tooltip="$t('Not verified')" class="pi pi-times-circle ms-1 text-yellow-500"></i>
+            <i v-if="user.email_verified_at" v-tooltip="{ content: $t('Verified'), distance: 10 }" class="pi pi-check-circle ms-1 text-green-500"></i>
+            <i v-else v-tooltip="{ content: $t('Not verified'), distance: 10 }" class="pi pi-times-circle ms-1 text-yellow-500"></i>
           </div>
         </td>
         <td class="w-96 border border-slate-300 p-4 text-slate-500">
