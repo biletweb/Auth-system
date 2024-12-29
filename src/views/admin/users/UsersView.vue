@@ -50,25 +50,25 @@
           <div class="flex items-center">
             {{ $t('Role') }}
             <div class="relative">
-              <div class="inline-flex items-center overflow-hidden">
+              <div>
                 <i @click="toggleUserRoleFilter" class="pi pi-filter ms-1 cursor-pointer text-slate-500 hover:text-slate-600"></i>
               </div>
               <div
                 v-if="showUserRoleFilter"
-                class="absolute start-1.5 z-10 mt-2 rounded-lg border border-gray-100 bg-white shadow"
+                class="absolute start-1.5 top-4 z-10 mt-2 rounded-lg border border-gray-100 bg-white shadow"
               >
                 <div class="p-2">
                   <button
                     @click="sortBy('admin')"
                     type="button"
-                    class="flex cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-red-500 hover:bg-gray-50 hover:text-red-600"
+                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-red-500 hover:bg-gray-50 hover:text-red-600"
                   >
                     {{ $t('Administrator') }}<i class="pi pi-wrench ms-1"></i>
                   </button>
                   <button
                     @click="sortBy('user')"
                     type="button"
-                    class="flex cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
+                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
                   >
                     {{ $t('User') }}<i class="pi pi-user ms-1"></i>
                   </button>
