@@ -66,7 +66,7 @@
                     {{ $t('Administrator') }}<i class="pi pi-wrench ms-1"></i>
                   </button>
                   <button
-                    @click="sortBy('user0')"
+                    @click="sortBy('user')"
                     type="button"
                     class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
                   >
