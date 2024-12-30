@@ -52,12 +52,8 @@ const sendNewPassword = async () => {
   errorField.value = ''
   try {
     const response = await axios.post(`${BASE_URL}/login/forgot-password`, { email })
-    if (response.data.error) {
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    } else {
-      router.push({ name: 'login' })
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
-    }
+    router.push({ name: 'login' })
+    toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
   } catch (error) {
     if (error.response.status === 422) {
       errorField.value = error.response.data.field
