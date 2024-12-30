@@ -133,7 +133,7 @@
             ></i>
             <i
               v-else-if="user.id === authStore.user.id"
-              v-tooltip="{ content: $t('Not allowed'), distance: 10 }"
+              v-tooltip="{ content: $t('Not available'), distance: 10 }"
               class="pi pi-minus text-slate-500 transition duration-300 hover:text-slate-600"
             ></i>
           </div>
