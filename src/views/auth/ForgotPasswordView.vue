@@ -59,6 +59,9 @@ const sendNewPassword = async () => {
       errorField.value = error.response.data.field
       toast.error(i18n.global.t(error.response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
     }
+    if (error.response.status === 429) {
+      toast.error(i18n.global.t('Too many requests. Please try again later.'), { timeout: 5000, pauseOnFocusLoss: true })
+    }
   } finally {
     loading.value = false
   }
