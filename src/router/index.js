@@ -46,6 +46,12 @@ const router = createRouter({
       beforeEnter: isNotLoggedIn,
     },
     {
+      path: '/login/forgot-password',
+      name: 'login.forgot-password',
+      component: () => import('@/views/auth/ForgotPasswordView.vue'),
+      beforeEnter: isNotLoggedIn,
+    },
+    {
       path: '/register',
       name: 'register',
       component: () => import('@/views/auth/RegisterView.vue'),

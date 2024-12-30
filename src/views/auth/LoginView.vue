@@ -29,6 +29,11 @@
             :class="{ 'border-red-500': errorField === 'password' || errorField === 'email, password' }"
           />
         </div>
+        <div class="my-4 flex justify-end">
+          <router-link :to="{ name: 'login.forgot-password' }" class="text-blue-500 hover:underline">
+            {{ $t('Forgot password?') }}
+          </router-link>
+        </div>
         <div class="my-4">
           <button
             type="submit"
