@@ -1,7 +1,7 @@
 <template>
   <div class="card rounded-lg bg-white p-4">
     <span class="text-xl font-bold text-red-500">{{ $t('Deleting an account') }}</span>
-    <div class="my-4 font-bold">
+    <div class="my-4 font-semibold">
       {{
         $t('If you delete your account, all your personal information will be deleted and you will not be able to regain access.')
       }}
