@@ -81,5 +81,6 @@
   "Russian": "Русский",
   "Forgot password?": "Забыли пароль?",
   "Send new password": "Отправить новый пароль",
-  "Enter the email address you used when registering": "Введите адрес электронной почты, указанный при регистрации"
+  "Enter the email address you used when registering": "Введите адрес электронной почты, указанный при регистрации",
+  "The selected email is invalid.": "Выбранный адрес электронной почты недействителен."
 }
