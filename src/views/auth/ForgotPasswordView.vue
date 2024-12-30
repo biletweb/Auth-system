@@ -15,7 +15,7 @@
             class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
             :class="{ 'border-red-500': errorField === 'email' }"
           />
-          <p class="text-xs text-slate-500">{{ $t('Enter the email address you used when registering') }}</p>
+          <p class="text-xs text-slate-500">{{ $t('Enter the email address you used when registering.') }}</p>
         </div>
         <div class="my-4">
           <button

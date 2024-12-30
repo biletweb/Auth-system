@@ -81,7 +81,7 @@
   "Russian": "Російська",
   "Forgot password?": "Забули пароль?",
   "Send new password": "Надіслати новий пароль",
-  "Enter the email address you used when registering": "Введіть адресу електронної пошти, яку ви використовували при реєстрації",
+  "Enter the email address you used when registering.": "Введіть адресу електронної пошти, яку ви використовували при реєстрації.",
   "The selected email is invalid.": "Вибрана електронна адреса недійсна.",
   "A new password has been sent to the email address you provided.": "Новий пароль був надісланий на вказану вами адресу електронної пошти.",
   "Failed to send email with new password, try again later.": "Не вдалося надіслати електронний лист із новим паролем, повторіть спробу пізніше."
