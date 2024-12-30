@@ -32,7 +32,7 @@
         <div class="my-4 flex justify-end">
           <router-link
             :to="{ name: 'login.forgot-password' }"
-            class="text-blue-500 transition duration-300 hover:text-blue-600 hover:underline hover:underline-offset-4"
+            class="font-semibold text-blue-500 transition duration-300 hover:text-blue-600 hover:underline hover:underline-offset-4"
           >
             {{ $t('Forgot password?') }}
           </router-link>

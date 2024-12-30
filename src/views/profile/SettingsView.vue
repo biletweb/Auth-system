@@ -17,7 +17,7 @@
         <button
           @click="resendEmail"
           type="submit"
-          class="font-bold text-blue-500 transition duration-300 hover:text-blue-600 hover:underline hover:underline-offset-4"
+          class="font-semibold text-blue-500 transition duration-300 hover:text-blue-600 hover:underline hover:underline-offset-4"
           :disabled="loadingResendEmail"
         >
           <Spinner v-if="loadingResendEmail" class="flex w-5 items-center rounded-full bg-blue-500 p-1" />
