@@ -76,7 +76,7 @@ const data = reactive({
 watch(
   () => authStore.user,
   (newValue) => {
-    if (newValue) {
+    if (newValue && newValue.name && newValue.surname) {
       data.user.name = newValue.name
       data.user.surname = newValue.surname
     }
