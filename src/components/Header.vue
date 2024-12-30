@@ -26,6 +26,8 @@ import { i18n } from '@/main.js'
 
 const loading = ref(false)
 const router = useRouter()
+const authStore = useAuthStore()
+const toast = useToast()
 
 onMounted(async () => {
   if (authStore.access_token) {
@@ -35,8 +37,6 @@ onMounted(async () => {
   }
 })
 
-const authStore = useAuthStore()
-const toast = useToast()
 const fetchLoggedInUser = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/profile`, getConfig(authStore.access_token))
