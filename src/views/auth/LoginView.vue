@@ -60,7 +60,6 @@ const router = useRouter()
 const authStore = useAuthStore()
 const { locale } = useI18n()
 const errorField = ref('')
-
 const data = reactive({
   loading: false,
   user: {

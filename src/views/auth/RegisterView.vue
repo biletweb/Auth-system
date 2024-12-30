@@ -97,7 +97,6 @@ import { i18n } from '@/main.js'
 const toast = useToast()
 const router = useRouter()
 const errorField = ref('')
-
 const data = reactive({
   loading: false,
   user: {

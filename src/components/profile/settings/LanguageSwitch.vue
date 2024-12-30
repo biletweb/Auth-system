@@ -71,7 +71,6 @@ import { i18n } from '@/main.js'
 const toast = useToast()
 const router = useRouter()
 const authStore = useAuthStore()
-
 const { locale } = useI18n()
 const savedLocale = ref('')
 const loading = ref(false)

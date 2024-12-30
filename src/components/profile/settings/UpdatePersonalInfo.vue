@@ -4,7 +4,7 @@
     <div v-if="!authStore.user" class="my-4 flex justify-center">
       <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
     </div>
-    <form v-else @submit.prevent="update">
+    <form v-else @submit.prevent="updatePersonalInfo">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
           <label for="name">{{ $t('Name') }}<sup class="ms-1 text-red-500">*</sup></label>
@@ -65,7 +65,6 @@ const toast = useToast()
 const router = useRouter()
 const authStore = useAuthStore()
 const errorField = ref('')
-
 const data = reactive({
   loading: false,
   user: {
@@ -85,7 +84,7 @@ watch(
   { immediate: true },
 )
 
-const update = async () => {
+const updatePersonalInfo = async () => {
   data.loading = true
   errorField.value = ''
   try {

@@ -62,7 +62,6 @@ const toast = useToast()
 const router = useRouter()
 const authStore = useAuthStore()
 const errorField = ref('')
-
 const data = reactive({
   loading: false,
   user: {

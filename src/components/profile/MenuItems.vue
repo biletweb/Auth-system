@@ -19,5 +19,6 @@
 
 <script setup>
 import { useAuthStore } from '@/stores/authStore.js'
+
 const authStore = useAuthStore()
 </script>
