@@ -80,5 +80,6 @@
   "English": "Английский",
   "Russian": "Русский",
   "Forgot password?": "Забыли пароль?",
-  "Send new password": "Отправить новый пароль"
+  "Send new password": "Отправить новый пароль",
+  "Enter the email address you used when registering": "Введите адрес электронной почты, указанный при регистрации"
 }
