@@ -231,14 +231,18 @@ const getUsers = async () => {
   }
 }
 
+const resetSettingsToDefault = () => {
+  users.value = []
+  offset.value = 0
+  sortByOffset.value = 0
+  hasMore.value = false
+  sortByHasMore.value = false
+}
+
 const userSearch = async () => {
   if (searchInput.value !== '' && searchInput.value.length >= 3) {
     loadingUserSearch.value = true
-    users.value = []
-    offset.value = 0
-    sortByOffset.value = 0
-    hasMore.value = false
-    sortByHasMore.value = false
+    resetSettingsToDefault()
   }
   try {
     const response = await axios.get(`${BASE_URL}/admin/users/search`, {
@@ -273,11 +277,7 @@ const userSearch = async () => {
 
 const clearSearchInput = () => {
   searchInput.value = ''
-  users.value = []
-  offset.value = 0
-  sortByOffset.value = 0
-  hasMore.value = false
-  sortByHasMore.value = false
+  resetSettingsToDefault()
   getUsers()
   searchInputRef.value?.focus()
 }
