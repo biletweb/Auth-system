@@ -152,20 +152,11 @@
   </table>
   <div class="mt-4 text-center">
     <button
-      v-if="!loading && hasMore"
-      @click="getUsers"
+      v-if="(!loading && hasMore) || (!loadingSortBy && sortByHasMore)"
+      @click="!loading && hasMore ? getUsers() : getSortedUsers()"
       type="submit"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
       :disabled="loading"
-    >
-      {{ $t('Load more') }}
-    </button>
-    <button
-      v-if="!loadingSortBy && sortByHasMore"
-      @click="getSortedUsers"
-      type="submit"
-      class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
-      :disabled="loadingSortBy"
     >
       {{ $t('Load more') }}
     </button>
@@ -199,10 +190,10 @@ const searchInput = ref('')
 const searchInputRef = ref(null)
 const errorField = ref('')
 const offset = ref(0) // Текущий сдвиг
-const limit = 10 // Количество пользователей за раз
+const limit = 1 // Количество пользователей за раз
 const hasMore = ref(false) // Флаг для проверки, есть ли еще данные для загрузки
 const sortByOffset = ref(0)
-const sortByLimit = 10
+const sortByLimit = 1
 const sortByHasMore = ref(false)
 const sortByValue = ref(null)
 const showUserRoleFilter = ref(false)
