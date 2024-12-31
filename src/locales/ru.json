@@ -88,5 +88,6 @@
   "Failed to create account, try again later.": "Не удалось создать учетную запись, повторите попытку позже.",
   "The verification code field is required.": "Поле кода подтверждения обязательно для заполнения.",
   "The verification code field must be 6 digits.": "Поле кода подтверждения должно содержать 6 цифр.",
-  "Failed to send verification code, try again later.": "Не удалось отправить код подтверждения, повторите попытку позже."
+  "Failed to send verification code, try again later.": "Не удалось отправить код подтверждения, повторите попытку позже.",
+  "Network Error": "Ошибка сети."
 }

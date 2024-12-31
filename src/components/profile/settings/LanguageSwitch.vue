@@ -97,7 +97,7 @@ const setLocale = async (newLocale) => {
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
-      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loading.value = false

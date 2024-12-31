@@ -88,5 +88,6 @@
   "Failed to create account, try again later.": "Failed to create account, try again later.",
   "The verification code field is required.": "The verification code field is required.",
   "The verification code field must be 6 digits.": "The verification code field must be 6 digits.",
-  "Failed to send verification code, try again later.": "Failed to send verification code, try again later."
+  "Failed to send verification code, try again later.": "Failed to send verification code, try again later.",
+  "Network Error": "Network Error."
 }

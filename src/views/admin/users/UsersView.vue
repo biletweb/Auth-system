@@ -223,7 +223,7 @@ const getUsers = async () => {
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
-      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loading.value = false
@@ -269,7 +269,7 @@ const userSearch = async () => {
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
-      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loadingUserSearch.value = false
@@ -301,7 +301,7 @@ const changeUserRole = async (userId) => {
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
-      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     changeUserRoleId.value = null
@@ -343,7 +343,7 @@ const getSortedUsers = async () => {
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
-      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loadingSortBy.value = false

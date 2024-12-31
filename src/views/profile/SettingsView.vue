@@ -103,7 +103,7 @@ const confirmEmail = async () => {
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
-      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loadingConfirmEmail.value = false
@@ -121,7 +121,7 @@ const resendEmail = async () => {
       toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } catch (error) {
-    toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
+    toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
   } finally {
     loadingResendEmail.value = false
   }
