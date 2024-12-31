@@ -241,8 +241,9 @@ const resetSettingsToDefault = () => {
 }
 
 const userSearch = async () => {
+  loadingUserSearch.value = true
+  errorField.value = ''
   if (searchInput.value !== '' && searchInput.value.length >= 3) {
-    loadingUserSearch.value = true
     resetSettingsToDefault()
   }
   try {
