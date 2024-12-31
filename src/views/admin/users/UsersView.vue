@@ -341,7 +341,9 @@ const getSortedUsers = async () => {
       params: { sort_by: sortByValue.value, sortByOffset: sortByOffset.value, sortByLimit },
       ...getConfig(authStore.access_token),
     })
-    if (response.data.warning) {
+    if (response.data.error) {
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+    } else if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
@@ -351,14 +353,12 @@ const getSortedUsers = async () => {
       }
     }
   } catch (error) {
-    if (error.response.status === 422) {
-      errorField.value = error.response.data.field
-      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loadingSortBy.value = false
