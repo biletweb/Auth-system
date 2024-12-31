@@ -26,7 +26,7 @@
           class="w-full border p-2 pl-8 pr-8 shadow focus:outline-none"
           :class="{
             'focus:border-blue-500': errorField === '',
-            'border-red-500 focus:border-red-500': errorField === 'search',
+            'border-red-500': errorField === 'search',
           }"
         />
         <div v-if="searchInput" class="absolute right-2.5 top-2.5 text-gray-400 hover:cursor-pointer hover:text-gray-500">
