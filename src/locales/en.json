@@ -85,5 +85,7 @@
   "The selected email is invalid.": "The selected email is invalid.",
   "A new password has been sent to the email address you provided.": "A new password has been sent to the email address you provided.",
   "Failed to send email with new password, try again later.": "Failed to send email with new password, try again later.",
-  "Failed to create account, try again later.": "Failed to create account, try again later."
+  "Failed to create account, try again later.": "Failed to create account, try again later.",
+  "The verification code field is required.": "The verification code field is required.",
+  "The verification code field must be 6 digits.": "The verification code field must be 6 digits."
 }

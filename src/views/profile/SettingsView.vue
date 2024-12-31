@@ -34,6 +34,7 @@
             name="verificationCode"
             :placeholder="$t('Verification code')"
             class="w-44 rounded-lg border p-2 font-normal focus:border-blue-500 focus:outline-none"
+            :class="{ 'border-red-500': errorField === 'verification_code' }"
           />
         </div>
         <div class="align-bottom">
@@ -77,9 +78,11 @@ const loadingConfirmEmail = ref(false)
 const loadingResendEmail = ref(false)
 const toast = useToast()
 const router = useRouter()
+const errorField = ref('')
 
 const confirmEmail = async () => {
   loadingConfirmEmail.value = true
+  errorField.value = ''
   try {
     const response = await axios.post(
       `${BASE_URL}/profile/settings/confirm-email`,
@@ -87,6 +90,7 @@ const confirmEmail = async () => {
       getConfig(authStore.access_token),
     )
     if (response.data.error) {
+      errorField.value = response.data.field
       toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
     } else if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })

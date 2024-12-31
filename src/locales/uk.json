@@ -85,5 +85,7 @@
   "The selected email is invalid.": "Вибрана електронна адреса недійсна.",
   "A new password has been sent to the email address you provided.": "Новий пароль був надісланий на вказану вами адресу електронної пошти.",
   "Failed to send email with new password, try again later.": "Не вдалося надіслати електронний лист із новим паролем, повторіть спробу пізніше.",
-  "Failed to create account, try again later.": "Не вдалося створити обліковий запис, повторіть спробу пізніше."
+  "Failed to create account, try again later.": "Не вдалося створити обліковий запис, повторіть спробу пізніше.",
+  "The verification code field is required.": "Поле кода підтвердження є обов'язковим.",
+  "The verification code field must be 6 digits.": "Поле кода підтвердження має містити 6 цифр."
 }
