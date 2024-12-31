@@ -114,16 +114,14 @@ const register = async () => {
   try {
     const response = await axios.post(`${BASE_URL}/register`, data.user)
     if (response.data.error) {
+      errorField.value = response.data.field
       toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       router.push({ name: 'login' })
       toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } catch (error) {
-    if (error.response.status === 422) {
-      errorField.value = error.response.data.field
-      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    }
+    toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
   } finally {
     data.loading = false
   }
