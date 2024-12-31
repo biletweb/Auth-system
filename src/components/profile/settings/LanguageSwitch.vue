@@ -6,7 +6,7 @@
     </div>
     <div class="my-6 flex gap-2">
       <button
-        v-tooltip="{ content: $t('Ukranian'), distance: 10 }"
+        v-tooltip="{ content: $t('Ukranian'), distance: 10, delay: { show: 2000, hide: 100 } }"
         type="submit"
         @click="setLocale('uk')"
         :disabled="savedLocale === 'uk'"
@@ -22,7 +22,7 @@
         </div>
       </button>
       <button
-        v-tooltip="{ content: $t('Russian'), distance: 10 }"
+        v-tooltip="{ content: $t('Russian'), distance: 10, delay: { show: 2000, hide: 100 } }"
         type="submit"
         @click="setLocale('ru')"
         :disabled="savedLocale === 'ru'"
@@ -38,7 +38,7 @@
         </div>
       </button>
       <button
-        v-tooltip="{ content: $t('English'), distance: 10 }"
+        v-tooltip="{ content: $t('English'), distance: 10, delay: { show: 2000, hide: 100 } }"
         type="submit"
         @click="setLocale('en')"
         :disabled="savedLocale === 'en'"
