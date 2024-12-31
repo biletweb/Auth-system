@@ -17,8 +17,11 @@
             name="name"
             id="name"
             :placeholder="$t('Name')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'name' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'name',
+            }"
           />
         </div>
         <div class="relative my-4">
@@ -32,8 +35,11 @@
             name="surname"
             id="surname"
             :placeholder="$t('Surname')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'surname' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'surname',
+            }"
           />
         </div>
       </div>

@@ -14,8 +14,11 @@
             name="password"
             id="password"
             :placeholder="$t('New password')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'password' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'password',
+            }"
           />
         </div>
         <div class="relative my-4">
@@ -29,8 +32,11 @@
             name="password_confirmation"
             id="password_confirmation"
             :placeholder="$t('New password confirmation')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'password' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'password',
+            }"
           />
         </div>
       </div>
