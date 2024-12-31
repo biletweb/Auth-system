@@ -284,7 +284,6 @@ const clearSearchInput = () => {
 
 const changeUserRole = async (userId) => {
   loadingChangeUserRole.value = true
-  errorField.value = ''
   changeUserRoleId.value = userId
   try {
     const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id: userId }, getConfig(authStore.access_token))
@@ -315,8 +314,6 @@ const toggleUserRoleFilter = () => {
 
 const sortBy = async (value) => {
   sortByValue.value = value
-  searchInput.value = ''
-  errorField.value = ''
   showUserRoleFilter.value = false
   sortByOffset.value = 0
   users.value = []
