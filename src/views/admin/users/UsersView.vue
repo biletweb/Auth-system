@@ -30,7 +30,11 @@
           }"
         />
         <div v-if="searchInput" class="absolute right-2.5 top-2.5 text-gray-400 hover:cursor-pointer hover:text-gray-500">
-          <i v-tooltip="{ content: $t('Clear'), distance: 10, delay: { show: 2000, hide: 100 } }" class="pi pi-eraser" @click="clearSearchInput"></i>
+          <i
+            v-tooltip="{ content: $t('Clear'), distance: 10, delay: { show: 2000, hide: 100 } }"
+            class="pi pi-eraser"
+            @click="clearSearchInput"
+          ></i>
         </div>
       </div>
       <button
