@@ -114,7 +114,12 @@ const resendEmail = async () => {
   loadingResendEmail.value = true
   try {
     const response = await axios.post(`${BASE_URL}/profile/settings/resend-email`, null, getConfig(authStore.access_token))
-    toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    if (response.data.error) {
+      errorField.value = response.data.field
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    }
   } catch (error) {
     toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
   } finally {

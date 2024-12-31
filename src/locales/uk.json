@@ -87,5 +87,6 @@
   "Failed to send email with new password, try again later.": "Не вдалося надіслати електронний лист із новим паролем, повторіть спробу пізніше.",
   "Failed to create account, try again later.": "Не вдалося створити обліковий запис, повторіть спробу пізніше.",
   "The verification code field is required.": "Поле кода підтвердження є обов'язковим.",
-  "The verification code field must be 6 digits.": "Поле кода підтвердження має містити 6 цифр."
+  "The verification code field must be 6 digits.": "Поле кода підтвердження має містити 6 цифр.",
+  "Failed to send verification code, try again later.": "Не вдалося надіслати код підтвердження, повторіть спробу пізніше."
 }
