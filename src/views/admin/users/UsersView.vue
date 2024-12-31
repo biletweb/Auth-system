@@ -212,14 +212,10 @@ const getUsers = async () => {
       params: { offset: offset.value, limit },
       ...getConfig(authStore.access_token),
     })
-    if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
-    } else {
-      users.value = [...users.value, ...response.data.users]
-      offset.value += limit // Обновляем смещение
-      if (response.data.users.length < limit) {
-        hasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
-      }
+    users.value = [...users.value, ...response.data.users]
+    offset.value += limit // Обновляем смещение
+    if (response.data.users.length < limit) {
+      hasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
     }
   } catch (error) {
     if (error.response.status === 401) {
