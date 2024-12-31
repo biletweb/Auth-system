@@ -92,7 +92,7 @@ const setLocale = async (newLocale) => {
     localStorage.setItem('locale', newLocale)
     toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
   } catch (error) {
-    if (error.response.status === 401) {
+    if (error.response && error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })

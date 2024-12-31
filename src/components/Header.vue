@@ -42,7 +42,7 @@ const fetchLoggedInUser = async () => {
     const response = await axios.get(`${BASE_URL}/profile`, getConfig(authStore.access_token))
     authStore.setUser(response.data.user)
   } catch (error) {
-    if (error.response.status === 401) {
+    if (error.response && error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
