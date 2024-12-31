@@ -226,6 +226,8 @@ const getUsers = async () => {
       authStore.clearState()
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loading.value = false
@@ -290,29 +292,20 @@ const changeUserRole = async (userId) => {
   changeUserRoleId.value = userId
   try {
     const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id: userId }, getConfig(authStore.access_token))
-    if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
-    } else {
-      const updatedUser = response.data.user
-      // Ищем пользователя в локальном списке и обновляем его данные
-      const index = users.value.findIndex((user) => user.id === userId)
-      if (index !== -1) {
-        users.value[index] = { ...users.value[index], ...updatedUser }
-      }
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    const updatedUser = response.data.user
+    // Ищем пользователя в локальном списке и обновляем его данные
+    const index = users.value.findIndex((user) => user.id === userId)
+    if (index !== -1) {
+      users.value[index] = { ...users.value[index], ...updatedUser }
     }
+    toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
   } catch (error) {
-    if (error.response.status === 422) {
-      errorField.value = error.response.data.field
-      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
-    }
-    if (error.response.status === 429) {
-      toast.error(i18n.global.t('Too many requests. Please try again later.'), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     changeUserRoleId.value = null
@@ -342,16 +335,10 @@ const getSortedUsers = async () => {
       params: { sort_by: sortByValue.value, sortByOffset: sortByOffset.value, sortByLimit },
       ...getConfig(authStore.access_token),
     })
-    if (response.data.error) {
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    } else if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
-    } else {
-      users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
-      sortByOffset.value += sortByLimit // Обновляем смещение
-      if (response.data.users.length < sortByLimit) {
-        sortByHasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
-      }
+    users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
+    sortByOffset.value += sortByLimit // Обновляем смещение
+    if (response.data.users.length < sortByLimit) {
+      sortByHasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
     }
   } catch (error) {
     if (error.response.status === 401) {
