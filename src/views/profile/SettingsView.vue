@@ -92,8 +92,6 @@ const confirmEmail = async () => {
     if (response.data.error) {
       errorField.value = response.data.field
       toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    } else if (response.data.warning) {
-      toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       authStore.user.email_verified_at = true
       verificationCode.value = ''
@@ -104,9 +102,8 @@ const confirmEmail = async () => {
       authStore.clearState()
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
-    }
-    if (error.response.status === 429) {
-      toast.error(i18n.global.t('Too many requests. Please try again later.'), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loadingConfirmEmail.value = false
