@@ -12,8 +12,11 @@
             name="email"
             id="email"
             :placeholder="$t('Email')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'email' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'email',
+            }"
           />
           <p class="text-xs text-slate-500">{{ $t('Enter the email address you used when registering.') }}</p>
         </div>

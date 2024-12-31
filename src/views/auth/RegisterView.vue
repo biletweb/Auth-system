@@ -13,8 +13,11 @@
               name="name"
               id="name"
               :placeholder="$t('Name')"
-              class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-              :class="{ 'border-red-500': errorField === 'name' }"
+              class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+              :class="{
+                'focus:border-blue-500': errorField === '',
+                'border-red-500': errorField === 'name',
+              }"
             />
           </div>
           <div class="relative">
@@ -26,8 +29,11 @@
               name="surname"
               id="surname"
               :placeholder="$t('Surname')"
-              class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-              :class="{ 'border-red-500': errorField === 'surname' }"
+              class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+              :class="{
+                'focus:border-blue-500': errorField === '',
+                'border-red-500': errorField === 'surname',
+              }"
             />
           </div>
         </div>
@@ -40,8 +46,11 @@
             name="email"
             id="email"
             :placeholder="$t('Email')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'email' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'email',
+            }"
           />
         </div>
         <div class="relative my-4">
@@ -53,8 +62,11 @@
             name="password"
             id="password"
             :placeholder="$t('Password')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'password' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'password',
+            }"
           />
         </div>
         <div class="relative my-4">
@@ -66,8 +78,11 @@
             name="password_confirmation"
             id="password_confirmation"
             :placeholder="$t('Password confirmation')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'password' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'password',
+            }"
           />
         </div>
         <div class="my-4">

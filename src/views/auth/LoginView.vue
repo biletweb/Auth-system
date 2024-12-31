@@ -12,8 +12,11 @@
             name="email"
             id="email"
             :placeholder="$t('Email')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'email' || errorField === 'email, password' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'email' || errorField === 'email, password',
+            }"
           />
         </div>
         <div class="relative my-4">
@@ -25,8 +28,11 @@
             name="password"
             id="password"
             :placeholder="$t('Password')"
-            class="w-full rounded-lg border p-2 pl-8 focus:border-blue-500 focus:outline-none"
-            :class="{ 'border-red-500': errorField === 'password' || errorField === 'email, password' }"
+            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            :class="{
+              'focus:border-blue-500': errorField === '',
+              'border-red-500': errorField === 'password' || errorField === 'email, password',
+            }"
           />
         </div>
         <div class="my-4 flex justify-end">
