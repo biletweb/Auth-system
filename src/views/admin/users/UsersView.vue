@@ -23,7 +23,8 @@
           type="text"
           name="searchInput"
           :placeholder="$t('Search users...')"
-          class="w-full border border-slate-300 p-2 pl-8 pr-8 shadow focus:border-blue-500 focus:outline-none"
+          class="w-full border p-2 pl-8 pr-8 shadow focus:border-blue-500 focus:outline-none"
+          :class="{ 'border-red-500': errorField === 'search' }"
         />
         <div v-if="searchInput" class="absolute right-2.5 top-2.5 text-gray-400 hover:cursor-pointer hover:text-gray-500">
           <i v-tooltip="{ content: $t('Clear'), distance: 10 }" class="pi pi-eraser" @click="clearSearchInput"></i>
@@ -249,7 +250,10 @@ const userSearch = async () => {
       params: { search: searchInput.value },
       ...getConfig(authStore.access_token),
     })
-    if (response.data.warning) {
+    if (response.data.error) {
+      errorField.value = response.data.field
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+    } else if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else if (response.data.users.length === 0) {
       toast.warning(i18n.global.t('No users found.'), { timeout: 5000, pauseOnFocusLoss: true })
@@ -261,14 +265,12 @@ const userSearch = async () => {
       })
     }
   } catch (error) {
-    if (error.response.status === 422) {
-      errorField.value = error.response.data.field
-      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
       toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    } else {
+      toast.error(error.message, { timeout: 5000, pauseOnFocusLoss: true })
     }
   } finally {
     loadingUserSearch.value = false
