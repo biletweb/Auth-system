@@ -93,7 +93,10 @@ const updatePersonalInfo = async () => {
       data.user,
       getConfig(authStore.access_token),
     )
-    if (response.data.warning) {
+    if (response.data.error) {
+      errorField.value = response.data.field
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+    } else if (response.data.warning) {
       toast.warning(i18n.global.t(response.data.warning), { timeout: 5000, pauseOnFocusLoss: true })
     } else {
       authStore.user.name = data.user.name
@@ -101,10 +104,6 @@ const updatePersonalInfo = async () => {
       toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
     }
   } catch (error) {
-    if (error.response.status === 422) {
-      errorField.value = error.response.data.field
-      toast.error(i18n.global.t(error.response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
-    }
     if (error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
