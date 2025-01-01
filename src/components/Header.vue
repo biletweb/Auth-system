@@ -5,7 +5,7 @@
         <div><HeaderLogo /></div>
         <div><HeaderLeftMenuItems /></div>
       </div>
-      <Spinner v-if="loading" class="w-5" />
+      <Spinner v-if="loading" class="w-5 dark:rounded-full dark:bg-indigo-500 dark:p-1" />
       <div v-else><HeaderRightMenuItems /></div>
     </div>
   </header>

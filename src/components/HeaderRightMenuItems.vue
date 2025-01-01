@@ -20,7 +20,7 @@
         <router-link :to="{ name: 'profile' }" class="text-lg"><i class="pi pi-user me-1"></i>{{ $t('Profile') }}</router-link>
       </li>
       <li v-if="loading">
-        <Spinner class="w-5" />
+        <Spinner class="w-5 dark:rounded-full dark:bg-indigo-500 dark:p-1" />
       </li>
       <li v-else-if="authStore.user" class="transition duration-300 hover:text-slate-300 dark:text-slate-400">
         <router-link to="#" @click="logout" class="text-lg"><i class="pi pi-sign-out me-1"></i>{{ $t('Logout') }}</router-link>
