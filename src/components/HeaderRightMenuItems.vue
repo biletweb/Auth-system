@@ -1,6 +1,20 @@
 <template>
   <nav>
     <ul class="flex items-center gap-4">
+      <li>
+        <button @click="toggleDark()" class="flex items-center">
+          <i
+            v-tooltip="{ content: $t('Dark mode'), distance: 10, delay: { show: 2000, hide: 100 } }"
+            v-if="isDark"
+            class="pi pi-moon me-1"
+          ></i>
+          <i
+            v-tooltip="{ content: $t('Light mode'), distance: 10, delay: { show: 2000, hide: 100 } }"
+            v-else
+            class="pi pi-sun me-1"
+          ></i>
+        </button>
+      </li>
       <li v-if="authStore.user" class="transition duration-300 hover:text-gray-300">
         <router-link :to="{ name: 'profile' }" class="text-lg"><i class="pi pi-user me-1"></i>{{ $t('Profile') }}</router-link>
       </li>
@@ -32,12 +46,15 @@ import { ref } from 'vue'
 import Spinner from '@/components/Spinner.vue'
 import { useI18n } from 'vue-i18n'
 import { i18n } from '@/main.js'
+import { useDark, useToggle } from '@vueuse/core'
 
 const authStore = useAuthStore()
 const toast = useToast()
 const router = useRouter()
 const loading = ref(false)
 const { locale } = useI18n()
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 
 const logout = async () => {
   loading.value = true
