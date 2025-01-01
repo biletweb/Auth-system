@@ -1,94 +1,104 @@
 <template>
   <div class="flex min-h-[calc(100vh-164px)] items-center justify-center">
-    <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 shadow lg:w-6/12">
-      <span class="text-3xl font-bold">{{ $t('Register') }}</span>
+    <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 shadow lg:w-6/12 dark:border-slate-600 dark:bg-slate-800">
+      <span class="text-3xl font-bold dark:text-white">{{ $t('Register') }}</span>
       <form @submit.prevent="register">
         <div class="my-4 grid grid-cols-2 gap-4">
           <div class="relative">
-            <label for="name">{{ $t('Name') }}<sup class="ms-1 text-red-500">*</sup></label>
-            <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-user"></i></div>
+            <label for="name" class="dark:text-slate-200">
+              {{ $t('Name') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+            </label>
+            <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-user"></i></div>
             <input
               v-model="data.user.name"
               type="text"
               name="name"
               id="name"
               :placeholder="$t('Name')"
-              class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+              class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
               :class="{
-                'focus:border-blue-500': errorField === '',
-                'border-red-500': errorField === 'name',
+                'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'name',
+                'border-red-500 dark:border-rose-500': errorField === 'name',
               }"
             />
           </div>
           <div class="relative">
-            <label for="surname">{{ $t('Surname') }}<sup class="ms-1 text-red-500">*</sup></label>
-            <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-user"></i></div>
+            <label for="surname" class="dark:text-slate-200">
+              {{ $t('Surname') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+            </label>
+            <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-user"></i></div>
             <input
               v-model="data.user.surname"
               type="text"
               name="surname"
               id="surname"
               :placeholder="$t('Surname')"
-              class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+              class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
               :class="{
-                'focus:border-blue-500': errorField === '',
-                'border-red-500': errorField === 'surname',
+                'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'surname',
+                'border-red-500 dark:border-rose-500': errorField === 'surname',
               }"
             />
           </div>
         </div>
         <div class="relative my-4">
-          <label for="email">{{ $t('Email') }}<sup class="ms-1 text-red-500">*</sup></label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-at"></i></div>
+          <label for="email" class="dark:text-slate-200">
+            {{ $t('Email') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+          </label>
+          <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-at"></i></div>
           <input
             v-model="data.user.email"
             type="text"
             name="email"
             id="email"
             :placeholder="$t('Email')"
-            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
             :class="{
-              'focus:border-blue-500': errorField === '',
-              'border-red-500': errorField === 'email',
+              'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'email',
+              'border-red-500 dark:border-rose-500': errorField === 'email',
             }"
           />
         </div>
         <div class="relative my-4">
-          <label for="password">{{ $t('Password') }}<sup class="ms-1 text-red-500">*</sup></label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-key"></i></div>
+          <label for="password" class="dark:text-slate-200">
+            {{ $t('Password') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+          </label>
+          <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-key"></i></div>
           <input
             v-model="data.user.password"
             type="password"
             name="password"
             id="password"
             :placeholder="$t('Password')"
-            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
             :class="{
-              'focus:border-blue-500': errorField === '',
-              'border-red-500': errorField === 'password',
+              'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'password',
+              'border-red-500 dark:border-rose-500': errorField === 'password',
             }"
           />
         </div>
         <div class="relative my-4">
-          <label for="password_confirmation"> {{ $t('Password confirmation') }}<sup class="ms-1 text-red-500">*</sup> </label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400"><i class="pi pi-key"></i></div>
+          <label for="password_confirmation" class="dark:text-slate-200">
+            {{ $t('Password confirmation') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+          </label>
+          <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-key"></i></div>
           <input
             v-model="data.user.password_confirmation"
             type="password"
             name="password_confirmation"
             id="password_confirmation"
             :placeholder="$t('Password confirmation')"
-            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
             :class="{
-              'focus:border-blue-500': errorField === '',
-              'border-red-500': errorField === 'password',
+              'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'password',
+              'border-red-500 dark:border-rose-500': errorField === 'password',
             }"
           />
         </div>
         <div class="my-4">
           <button
             type="submit"
-            class="flex w-full justify-center rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+            class="flex w-full justify-center rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400"
             :disabled="data.loading"
           >
             <Spinner v-if="data.loading" class="w-6" />
