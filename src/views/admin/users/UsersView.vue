@@ -184,6 +184,7 @@ import { i18n } from '@/main.js'
 import { useRouter } from 'vue-router'
 import Spinner from '@/components/Spinner.vue'
 import { vOnClickOutside } from '@vueuse/components'
+import { onStartTyping } from '@vueuse/core'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -208,6 +209,10 @@ const showUserRoleFilter = ref(false)
 
 onMounted(() => {
   getUsers()
+})
+
+onStartTyping(() => {
+  if (!searchInputRef.value.active) searchInputRef.value.focus()
 })
 
 const getUsers = async () => {
@@ -283,7 +288,6 @@ const userSearch = async () => {
 const clearSearchInput = () => {
   searchInput.value = ''
   errorField.value = ''
-  searchInputRef.value?.focus()
 }
 
 const changeUserRole = async (userId) => {
