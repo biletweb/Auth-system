@@ -52,7 +52,7 @@
   </form>
 
   <table class="w-full bg-white text-sm shadow dark:bg-slate-800">
-    <thead class="bg-slate-50 dark:bg-slate-800">
+    <thead class="bg-slate-50 dark:bg-slate-700">
       <tr>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900 dark:border-slate-600 dark:text-slate-200">
           {{ $t('Name') }}
