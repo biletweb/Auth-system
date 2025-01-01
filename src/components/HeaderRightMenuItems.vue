@@ -6,12 +6,12 @@
           <i
             v-if="isDark"
             v-tooltip="{ content: $t('Dark mode'), distance: 10, delay: { show: 2000, hide: 100 } }"
-            class="pi pi-moon me-1"
+            class="pi pi-moon me-1 text-sky-500"
           ></i>
           <i
             v-else
             v-tooltip="{ content: $t('Light mode'), distance: 10, delay: { show: 2000, hide: 100 } }"
-            class="pi pi-sun me-1"
+            class="pi pi-sun me-1 text-amber-500"
           ></i>
           <span>{{ $t('Theme') }}</span>
         </button>
