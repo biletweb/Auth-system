@@ -94,19 +94,19 @@ const confirmEmail = async () => {
     )
     if (response.data.error) {
       errorField.value = response.data.field
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000 })
     } else {
       authStore.user.email_verified_at = true
       verificationCode.value = ''
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
     }
   } catch (error) {
     if (error.response && error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
-      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
     } else {
-      toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.message), { timeout: 5000 })
     }
   } finally {
     loadingConfirmEmail.value = false
@@ -119,17 +119,17 @@ const resendEmail = async () => {
     const response = await axios.post(`${BASE_URL}/profile/settings/resend-email`, null, getConfig(authStore.access_token))
     if (response.data.error) {
       errorField.value = response.data.field
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000 })
     } else {
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
     }
   } catch (error) {
     if (error.response && error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
-      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
     } else {
-      toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.message), { timeout: 5000 })
     }
   } finally {
     loadingResendEmail.value = false

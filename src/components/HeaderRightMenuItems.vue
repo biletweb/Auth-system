@@ -46,14 +46,14 @@ const logout = async () => {
     authStore.clearState()
     locale.value = 'uk'
     router.push({ name: 'login' })
-    toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+    toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
   } catch (error) {
     if (error.response && error.response.status === 401) {
       authStore.clearState()
       router.push({ name: 'login' })
-      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.response.data.message), { timeout: 5000 })
     } else {
-      toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(error.message), { timeout: 5000 })
     }
   } finally {
     loading.value = false

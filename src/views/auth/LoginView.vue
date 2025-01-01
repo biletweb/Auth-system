@@ -91,17 +91,17 @@ const login = async () => {
     const response = await axios.post(`${BASE_URL}/login`, data.user)
     if (response.data.error) {
       errorField.value = response.data.field
-      toast.error(i18n.global.t(response.data.error), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.error(i18n.global.t(response.data.error), { timeout: 5000 })
     } else {
       authStore.setAccessToken(response.data.access_token)
       authStore.setUser(response.data.user)
       localStorage.setItem('locale', authStore.user.locale)
       locale.value = localStorage.getItem('locale')
       router.push({ name: 'home' })
-      toast.success(i18n.global.t(response.data.message), { timeout: 5000, pauseOnFocusLoss: true })
+      toast.success(i18n.global.t(response.data.message), { timeout: 5000 })
     }
   } catch (error) {
-    toast.error(i18n.global.t(error.message), { timeout: 5000, pauseOnFocusLoss: true })
+    toast.error(i18n.global.t(error.message), { timeout: 5000 })
   } finally {
     data.loading = false
   }
