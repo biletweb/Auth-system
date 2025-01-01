@@ -23,7 +23,7 @@
           type="text"
           name="searchInput"
           :placeholder="$t('Search users...')"
-          class="w-full border p-2 pl-8 pr-8 shadow placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
+          class="w-full rounded-lg border p-2 pl-8 pr-8 shadow placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
           :class="{
             'border-slate-300 focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField === '',
             'border-red-500 dark:border-rose-500': errorField === 'search',
