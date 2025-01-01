@@ -2,7 +2,7 @@
   <div v-if="authStore.user?.role === 'admin'">
     <router-link
       :to="{ name: 'admin' }"
-      class="flex items-center font-semibold text-red-500 transition duration-300 hover:text-red-600"
+      class="flex items-center font-semibold text-red-500 transition duration-300 hover:text-red-600 dark:text-rose-500 dark:hover:text-rose-400"
     >
       <i class="pi pi-wrench me-1"></i>{{ $t('Administration panel') }}
     </router-link>
