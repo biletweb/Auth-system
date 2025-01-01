@@ -128,7 +128,7 @@
           </div>
         </td>
         <td class="w-96 border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">
-          <div v-if="user.role === 'admin'" class="flex items-center text-red-500">{{ $t('Administrator') }}</div>
+          <div v-if="user.role === 'admin'" class="flex items-center text-red-500 dark:text-rose-500">{{ $t('Administrator') }}</div>
           <div v-if="user.role === 'user'" class="flex items-center">{{ $t('User') }}</div>
         </td>
         <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
@@ -154,7 +154,7 @@
               v-else
               @click="changeUserRole(user.id)"
               v-tooltip="{ content: $t('Assign as administrator'), distance: 10, delay: { show: 2000, hide: 100 } }"
-              class="pi pi-wrench cursor-pointer text-red-500 opacity-75 transition duration-300 hover:text-red-600"
+              class="pi pi-wrench cursor-pointer text-red-500 opacity-75 transition duration-300 hover:text-red-600  dark:text-rose-500 dark:hover:text-rose-400"
             ></i>
           </div>
         </td>
