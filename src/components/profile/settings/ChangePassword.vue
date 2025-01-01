@@ -1,5 +1,5 @@
 <template>
-  <div class="card rounded-lg bg-white p-4 dark:bg-slate-800">
+  <div class="card rounded-lg border bg-white p-4 dark:border-slate-600 dark:bg-slate-800">
     <span class="text-xl font-bold dark:text-slate-200">{{ $t('Changing account password') }}</span>
     <form @submit.prevent="changePassword">
       <div class="grid grid-cols-2 gap-4">

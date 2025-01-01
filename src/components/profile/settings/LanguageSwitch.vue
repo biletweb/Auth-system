@@ -1,5 +1,5 @@
 <template>
-  <div class="card rounded-lg bg-white p-4 dark:bg-slate-800">
+  <div class="card rounded-lg border bg-white p-4 dark:border-slate-600 dark:bg-slate-800">
     <div class="flex items-center justify-between">
       <span class="text-xl font-bold dark:text-slate-200">{{ $t('Changing language') }}</span>
       <Spinner v-if="loading" class="w-7 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
