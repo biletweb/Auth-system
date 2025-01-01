@@ -74,27 +74,27 @@
               <div
                 v-if="showUserRoleFilter"
                 v-on-click-outside="toggleUserRoleFilter"
-                class="absolute start-1.5 top-4 z-10 mt-2 rounded-lg border border-gray-100 bg-white shadow"
+                class="absolute start-1.5 top-4 z-10 mt-2 rounded-lg border dark:border-slate-600 dark:bg-slate-800 border-gray-100 bg-white shadow"
               >
                 <div class="p-2">
                   <button
                     @click="sortBy('all')"
                     type="button"
-                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
+                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:text-slate-400 text-slate-500 hover:bg-gray-50 hover:text-slate-600"
                   >
                     {{ $t('All') }}
                   </button>
                   <button
                     @click="sortBy('admin')"
                     type="button"
-                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-red-500 hover:bg-gray-50 hover:text-red-600"
+                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal dark:hover:bg-slate-700 dark:hover:text-rose-400 dark:text-rose-500 text-red-500 hover:bg-gray-50 hover:text-red-600"
                   >
                     {{ $t('Administrator') }}<i class="pi pi-wrench ms-1"></i>
                   </button>
                   <button
                     @click="sortBy('user')"
                     type="button"
-                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600"
+                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:text-slate-400 text-slate-500 hover:bg-gray-50 hover:text-slate-600"
                   >
                     {{ $t('User') }}<i class="pi pi-user ms-1"></i>
                   </button>
