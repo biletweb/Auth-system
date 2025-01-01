@@ -10,7 +10,7 @@
   <div>
     <router-link
       :to="{ name: 'profile.settings' }"
-      class="flex items-center font-semibold text-blue-500 transition duration-300 hover:text-blue-600"
+      class="flex items-center font-semibold text-blue-500 transition duration-300 hover:text-blue-600 dark:text-indigo-500 dark:hover:text-indigo-400"
     >
       <i class="pi pi-cog me-1"></i>{{ $t('Settings') }}
     </router-link>
