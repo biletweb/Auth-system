@@ -19,7 +19,7 @@
             name="name"
             id="name"
             :placeholder="$t('Name')"
-            class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-700 dark:text-slate-400"
+            class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
             :class="{
               'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'name',
               'border-red-500 dark:border-rose-500': errorField === 'name',
