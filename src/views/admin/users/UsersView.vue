@@ -25,7 +25,7 @@
           :placeholder="$t('Search users...')"
           class="w-full border p-2 pl-8 pr-8 shadow focus:outline-none dark:bg-slate-800 dark:text-gray-400"
           :class="{
-            'focus:border-blue-500 dark:focus:border-indigo-500 dark:border-slate-600': errorField === '',
+            'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField === '',
             'border-red-500 dark:border-rose-500': errorField === 'search',
           }"
         />
@@ -51,13 +51,19 @@
     </div>
   </form>
 
-  <table class="w-full bg-white dark:bg-slate-800 text-sm shadow">
+  <table class="w-full bg-white text-sm shadow dark:bg-slate-800">
     <thead class="bg-slate-50 dark:bg-slate-800">
       <tr>
-        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Name') }}</th>
-        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Surname') }}</th>
-        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Email') }}</th>
-        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900 dark:border-slate-600 dark:text-slate-200">
+          {{ $t('Name') }}
+        </th>
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900 dark:border-slate-600 dark:text-slate-200">
+          {{ $t('Surname') }}
+        </th>
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900 dark:border-slate-600 dark:text-slate-200">
+          {{ $t('Email') }}
+        </th>
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900 dark:border-slate-600 dark:text-slate-200">
           <div class="flex items-center">
             {{ $t('Role') }}
             <div class="relative">
@@ -67,34 +73,34 @@
                   class="pi pi-filter ms-1 cursor-pointer"
                   :class="{
                     'text-blue-500 dark:text-indigo-500': showUserRoleFilter,
-                    'text-slate-500 dark:hover:text-slate-400 transition duration-300 hover:text-slate-600': !showUserRoleFilter,
+                    'text-slate-500 transition duration-300 hover:text-slate-600 dark:hover:text-slate-400': !showUserRoleFilter,
                   }"
                 ></i>
               </div>
               <div
                 v-if="showUserRoleFilter"
                 v-on-click-outside="toggleUserRoleFilter"
-                class="absolute start-1.5 top-4 z-10 mt-2 rounded-lg border dark:border-slate-600 dark:bg-slate-800 border-gray-100 bg-white shadow"
+                class="absolute start-1.5 top-4 z-10 mt-2 rounded-lg border border-gray-100 bg-white shadow dark:border-slate-600 dark:bg-slate-800"
               >
                 <div class="p-2">
                   <button
                     @click="sortBy('all')"
                     type="button"
-                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:text-slate-400 text-slate-500 hover:bg-gray-50 hover:text-slate-600"
+                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300"
                   >
                     {{ $t('All') }}
                   </button>
                   <button
                     @click="sortBy('admin')"
                     type="button"
-                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal dark:hover:bg-slate-700 dark:hover:text-rose-400 dark:text-rose-500 text-red-500 hover:bg-gray-50 hover:text-red-600"
+                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-red-500 hover:bg-gray-50 hover:text-red-600 dark:text-rose-500 dark:hover:bg-slate-700 dark:hover:text-rose-400"
                   >
                     {{ $t('Administrator') }}<i class="pi pi-wrench ms-1"></i>
                   </button>
                   <button
                     @click="sortBy('user')"
                     type="button"
-                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:text-slate-400 text-slate-500 hover:bg-gray-50 hover:text-slate-600"
+                    class="flex w-full cursor-pointer items-center rounded-lg px-4 py-2 text-sm font-normal text-slate-500 hover:bg-gray-50 hover:text-slate-600 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300"
                   >
                     {{ $t('User') }}<i class="pi pi-user ms-1"></i>
                   </button>
@@ -103,16 +109,22 @@
             </div>
           </div>
         </th>
-        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
-        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Registered') }}</th>
-        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Actions') }}</th>
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900 dark:border-slate-600 dark:text-slate-200">
+          {{ $t('Locale') }}
+        </th>
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900 dark:border-slate-600 dark:text-slate-200">
+          {{ $t('Registered') }}
+        </th>
+        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900 dark:border-slate-600 dark:text-slate-200">
+          {{ $t('Actions') }}
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="user in users" :key="user.id">
-        <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">{{ user.name }}</td>
-        <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">{{ user.surname }}</td>
-        <td class="w-96 border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">
+        <td class="border border-slate-300 p-4 text-slate-500 dark:border-slate-600 dark:text-slate-400">{{ user.name }}</td>
+        <td class="border border-slate-300 p-4 text-slate-500 dark:border-slate-600 dark:text-slate-400">{{ user.surname }}</td>
+        <td class="w-96 border border-slate-300 p-4 text-slate-500 dark:border-slate-600 dark:text-slate-400">
           <div class="flex items-center">
             {{ user.email }}
             <i
@@ -127,15 +139,24 @@
             ></i>
           </div>
         </td>
-        <td class="w-96 border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">
-          <div v-if="user.role === 'admin'" class="flex items-center text-red-500 dark:text-rose-500">{{ $t('Administrator') }}</div>
+        <td class="w-96 border border-slate-300 p-4 text-slate-500 dark:border-slate-600 dark:text-slate-400">
+          <div v-if="user.role === 'admin'" class="flex items-center text-red-500 dark:text-rose-500">
+            {{ $t('Administrator') }}
+          </div>
           <div v-if="user.role === 'user'" class="flex items-center">{{ $t('User') }}</div>
         </td>
-        <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
-        <td class="w-96 border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
-        <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">
+        <td class="border border-slate-300 p-4 uppercase text-slate-500 dark:border-slate-600 dark:text-slate-400">
+          {{ user.locale }}
+        </td>
+        <td class="w-96 border border-slate-300 p-4 text-slate-500 dark:border-slate-600 dark:text-slate-400">
+          {{ user.created_at }}
+        </td>
+        <td class="border border-slate-300 p-4 text-slate-500 dark:border-slate-600 dark:text-slate-400">
           <div v-if="user.role === 'admin'" class="flex items-center">
-            <Spinner v-if="loadingChangeUserRole && changeUserRoleId === user.id" class="w-5 rounded-full bg-blue-500 dark:bg-indigo-500 p-1" />
+            <Spinner
+              v-if="loadingChangeUserRole && changeUserRoleId === user.id"
+              class="w-5 rounded-full bg-blue-500 p-1 dark:bg-indigo-500"
+            />
             <i
               v-else-if="user.id !== authStore.user.id"
               v-tooltip="{ content: $t('Assign as user'), distance: 10, delay: { show: 2000, hide: 100 } }"
@@ -149,12 +170,15 @@
             ></i>
           </div>
           <div v-if="user.role === 'user'" class="flex items-center">
-            <Spinner v-if="loadingChangeUserRole && changeUserRoleId === user.id" class="w-5 rounded-full bg-blue-500  dark:bg-indigo-500 p-1" />
+            <Spinner
+              v-if="loadingChangeUserRole && changeUserRoleId === user.id"
+              class="w-5 rounded-full bg-blue-500 p-1 dark:bg-indigo-500"
+            />
             <i
               v-else
               @click="changeUserRole(user.id)"
               v-tooltip="{ content: $t('Assign as administrator'), distance: 10, delay: { show: 2000, hide: 100 } }"
-              class="pi pi-wrench cursor-pointer text-red-500 opacity-75 transition duration-300 hover:text-red-600  dark:text-rose-500 dark:hover:text-rose-400"
+              class="pi pi-wrench cursor-pointer text-red-500 opacity-75 transition duration-300 hover:text-red-600 dark:text-rose-500 dark:hover:text-rose-400"
             ></i>
           </div>
         </td>
@@ -166,14 +190,14 @@
       v-if="(!loading && hasMore) || (!loadingSortBy && sortByHasMore)"
       @click="!loading && hasMore ? getUsers() : getSortedUsers()"
       type="submit"
-      class="rounded-lg dark:bg-indigo-500 dark:hover:bg-indigo-400 bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
+      class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300 dark:bg-indigo-500 dark:hover:bg-indigo-400"
       :disabled="loading"
     >
       {{ $t('Load more') }}
     </button>
   </div>
   <div v-if="loading || loadingUserSearch || loadingSortBy" class="my-4 flex justify-center">
-    <Spinner class="w-10 rounded-full bg-blue-500 dark:bg-indigo-500 p-1" />
+    <Spinner class="w-10 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
   </div>
 </template>
 
