@@ -91,5 +91,6 @@
   "Failed to send verification code, try again later.": "Не вдалося надіслати код підтвердження, повторіть спробу пізніше.",
   "Network Error": "Помилка мережі.",
   "Dark mode": "Темний режим",
-  "Light mode": "Світлий режим"
+  "Light mode": "Світлий режим",
+  "Theme": "Тема"
 }

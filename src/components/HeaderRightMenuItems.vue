@@ -1,21 +1,19 @@
 <template>
   <nav>
     <ul class="flex items-center gap-4">
-      <li>
-        <button
-          @click="toggleDark()"
-          class="flex items-center transition duration-300 hover:text-slate-300 dark:text-slate-400 dark:hover:text-slate-300"
-        >
+      <li class="transition duration-300 hover:text-slate-300 dark:text-slate-400 dark:hover:text-slate-300">
+        <button @click="toggleDark()">
           <i
-            v-tooltip="{ content: $t('Dark mode'), distance: 10, delay: { show: 2000, hide: 100 } }"
             v-if="isDark"
+            v-tooltip="{ content: $t('Dark mode'), distance: 10, delay: { show: 2000, hide: 100 } }"
             class="pi pi-moon me-1"
           ></i>
           <i
-            v-tooltip="{ content: $t('Light mode'), distance: 10, delay: { show: 2000, hide: 100 } }"
             v-else
+            v-tooltip="{ content: $t('Light mode'), distance: 10, delay: { show: 2000, hide: 100 } }"
             class="pi pi-sun me-1"
           ></i>
+          {{ $t('Theme') }}
         </button>
       </li>
       <li
