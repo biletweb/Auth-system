@@ -178,7 +178,7 @@
               v-else
               @click="changeUserRole(user.id)"
               v-tooltip="{ content: $t('Assign as administrator'), distance: 10, delay: { show: 2000, hide: 100 } }"
-              class="pi pi-wrench cursor-pointer text-red-500 opacity-75 transition duration-300 hover:text-red-600 dark:text-rose-500 dark:hover:text-rose-400"
+              class="pi pi-wrench cursor-pointer text-red-500 transition duration-300 hover:text-red-600 dark:text-rose-500 dark:hover:text-rose-400"
             ></i>
           </div>
         </td>
