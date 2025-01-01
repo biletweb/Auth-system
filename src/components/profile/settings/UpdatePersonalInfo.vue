@@ -2,7 +2,7 @@
   <div class="card rounded-lg bg-white p-4 dark:bg-slate-800">
     <span class="text-xl font-bold dark:text-slate-200">{{ $t('Updating personal information') }}</span>
     <div v-if="!authStore.user" class="my-4 flex justify-center">
-      <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
+      <Spinner class="w-10 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
     </div>
     <form v-else @submit.prevent="updatePersonalInfo">
       <div class="grid grid-cols-2 gap-4">

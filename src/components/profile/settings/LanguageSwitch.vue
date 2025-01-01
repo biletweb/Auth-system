@@ -1,8 +1,8 @@
 <template>
-  <div class="card rounded-lg bg-white p-4">
+  <div class="card rounded-lg bg-white p-4 dark:bg-slate-800">
     <div class="flex items-center justify-between">
-      <span class="text-xl font-bold">{{ $t('Changing language') }}</span>
-      <Spinner v-if="loading" class="w-7 rounded-full bg-blue-500 p-1" />
+      <span class="text-xl font-bold dark:text-slate-200">{{ $t('Changing language') }}</span>
+      <Spinner v-if="loading" class="w-7 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
     </div>
     <div class="my-6 flex gap-2">
       <button
@@ -14,8 +14,9 @@
         <div
           class="rounded-lg p-2 text-white"
           :class="{
-            'bg-blue-600 underline underline-offset-4': savedLocale === 'uk',
-            'bg-blue-500 transition duration-300 hover:bg-blue-600': savedLocale !== 'uk',
+            'bg-blue-600 underline underline-offset-4 dark:bg-indigo-400': savedLocale === 'uk',
+            'bg-blue-500 transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400':
+              savedLocale !== 'uk',
           }"
         >
           UK
@@ -30,8 +31,9 @@
         <div
           class="rounded-lg p-2 text-white"
           :class="{
-            'bg-blue-600 underline underline-offset-4': savedLocale === 'ru',
-            'bg-blue-500 transition duration-300 hover:bg-blue-600': savedLocale !== 'ru',
+            'bg-blue-600 underline underline-offset-4 dark:bg-indigo-400': savedLocale === 'ru',
+            'bg-blue-500 transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400':
+              savedLocale !== 'ru',
           }"
         >
           RU
@@ -46,8 +48,9 @@
         <div
           class="rounded-lg p-2 text-white"
           :class="{
-            'bg-blue-600 underline underline-offset-4': savedLocale === 'en',
-            'bg-blue-500 transition duration-300 hover:bg-blue-600': savedLocale !== 'en',
+            'bg-blue-600 underline underline-offset-4 dark:bg-indigo-400': savedLocale === 'en',
+            'bg-blue-500 transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400':
+              savedLocale !== 'en',
           }"
         >
           EN
