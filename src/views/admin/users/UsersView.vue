@@ -67,7 +67,7 @@
                   class="pi pi-filter ms-1 cursor-pointer"
                   :class="{
                     'text-blue-500 transition duration-300 hover:text-blue-600': showUserRoleFilter,
-                    'text-slate-500 transition duration-300 hover:text-slate-600': !showUserRoleFilter,
+                    'text-slate-500 dark:hover:text-slate-400 transition duration-300 hover:text-slate-600': !showUserRoleFilter,
                   }"
                 ></i>
               </div>
@@ -140,12 +140,12 @@
               v-else-if="user.id !== authStore.user.id"
               v-tooltip="{ content: $t('Assign as user'), distance: 10, delay: { show: 2000, hide: 100 } }"
               @click="changeUserRole(user.id)"
-              class="pi pi-user cursor-pointer text-slate-500 hover:text-slate-600"
+              class="pi pi-user cursor-pointer text-slate-500 hover:text-slate-600 dark:hover:text-slate-400"
             ></i>
             <i
               v-else-if="user.id === authStore.user.id"
               v-tooltip="{ content: $t('Not available'), distance: 10, delay: { show: 2000, hide: 100 } }"
-              class="pi pi-minus text-slate-500 transition duration-300 hover:text-slate-600"
+              class="pi pi-minus text-slate-500"
             ></i>
           </div>
           <div v-if="user.role === 'user'" class="flex items-center">
