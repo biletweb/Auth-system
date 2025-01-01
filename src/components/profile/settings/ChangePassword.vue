@@ -1,11 +1,13 @@
 <template>
-  <div class="card rounded-lg bg-white p-4">
-    <span class="text-xl font-bold">{{ $t('Changing account password') }}</span>
+  <div class="card rounded-lg bg-white p-4 dark:bg-slate-800">
+    <span class="text-xl font-bold dark:text-slate-200">{{ $t('Changing account password') }}</span>
     <form @submit.prevent="changePassword">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="password"> {{ $t('New password') }}<sup class="ms-1 text-red-500">*</sup></label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400">
+          <label for="password" class="dark:text-slate-400">
+            {{ $t('New password') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup></label
+          >
+          <div class="absolute left-2.5 top-[34px] text-slate-400">
             <i class="pi pi-key"></i>
           </div>
           <input
@@ -14,16 +16,18 @@
             name="password"
             id="password"
             :placeholder="$t('New password')"
-            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
             :class="{
-              'focus:border-blue-500': errorField === '',
-              'border-red-500': errorField === 'password',
+              'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'password',
+              'border-red-500 dark:border-rose-500': errorField === 'password',
             }"
           />
         </div>
         <div class="relative my-4">
-          <label for="password_confirmation"> {{ $t('New password confirmation') }}<sup class="ms-1 text-red-500">*</sup></label>
-          <div class="absolute left-2.5 top-[34px] text-gray-400">
+          <label for="password_confirmation" class="dark:text-slate-400">
+            {{ $t('New password confirmation') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+          </label>
+          <div class="absolute left-2.5 top-[34px] text-slate-400">
             <i class="pi pi-key"></i>
           </div>
           <input
@@ -32,10 +36,10 @@
             name="password_confirmation"
             id="password_confirmation"
             :placeholder="$t('New password confirmation')"
-            class="w-full rounded-lg border p-2 pl-8 focus:outline-none"
+            class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
             :class="{
-              'focus:border-blue-500': errorField === '',
-              'border-red-500': errorField === 'password',
+              'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'password',
+              'border-red-500 dark:border-rose-500': errorField === 'password',
             }"
           />
         </div>
@@ -43,7 +47,7 @@
       <div class="flex justify-end">
         <button
           type="submit"
-          class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+          class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400"
           :disabled="data.loading"
         >
           <Spinner v-if="data.loading" class="w-6" />
