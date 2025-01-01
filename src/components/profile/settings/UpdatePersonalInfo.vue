@@ -1,13 +1,15 @@
 <template>
-  <div class="card rounded-lg bg-white p-4">
-    <span class="text-xl font-bold">{{ $t('Updating personal information') }}</span>
+  <div class="card rounded-lg bg-white p-4 dark:bg-slate-800">
+    <span class="text-xl font-bold dark:text-slate-200">{{ $t('Updating personal information') }}</span>
     <div v-if="!authStore.user" class="my-4 flex justify-center">
       <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
     </div>
     <form v-else @submit.prevent="updatePersonalInfo">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="name">{{ $t('Name') }}<sup class="ms-1 text-red-500">*</sup></label>
+          <label for="name" class="dark:text-slate-400"
+            >{{ $t('Name') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup></label
+          >
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-user"></i>
           </div>
@@ -25,7 +27,9 @@
           />
         </div>
         <div class="relative my-4">
-          <label for="surname">{{ $t('Surname') }}<sup class="ms-1 text-red-500">*</sup> </label>
+          <label for="surname" class="dark:text-slate-400"
+            >{{ $t('Surname') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+          </label>
           <div class="absolute left-2.5 top-[34px] text-gray-400">
             <i class="pi pi-user"></i>
           </div>
@@ -46,7 +50,7 @@
       <div class="flex justify-end">
         <button
           type="submit"
-          class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+          class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400"
           :disabled="data.loading"
         >
           <Spinner v-if="data.loading" class="w-6" />
