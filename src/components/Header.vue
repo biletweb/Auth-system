@@ -1,5 +1,5 @@
 <template>
-  <header class="rounded-b-lg bg-blue-500 p-4 text-white dark:bg-slate-800 dark:text-slate-400">
+  <header class="rounded-b-lg bg-blue-500 p-4 dark:bg-slate-800">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-4">
         <div><HeaderLogo /></div>
