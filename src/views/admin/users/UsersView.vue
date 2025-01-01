@@ -23,10 +23,10 @@
           type="text"
           name="searchInput"
           :placeholder="$t('Search users...')"
-          class="w-full border p-2 pl-8 pr-8 shadow focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-gray-400 dark:focus:border-indigo-500"
+          class="w-full border p-2 pl-8 pr-8 shadow focus:outline-none dark:bg-slate-800 dark:text-gray-400"
           :class="{
-            'focus:border-blue-500': errorField === '',
-            'border-red-500': errorField === 'search',
+            'focus:border-blue-500 dark:focus:border-indigo-500 dark:border-slate-600': errorField === '',
+            'border-red-500 dark:border-rose-500': errorField === 'search',
           }"
         />
         <div
