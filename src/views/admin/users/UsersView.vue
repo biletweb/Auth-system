@@ -134,8 +134,8 @@
         <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
         <td class="w-96 border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
         <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">
-          <div v-if="user.role === 'admin'" class="flex items-center text-red-500">
-            <Spinner v-if="loadingChangeUserRole && changeUserRoleId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
+          <div v-if="user.role === 'admin'" class="flex items-center">
+            <Spinner v-if="loadingChangeUserRole && changeUserRoleId === user.id" class="w-5 rounded-full bg-blue-500 dark:bg-indigo-500 p-1" />
             <i
               v-else-if="user.id !== authStore.user.id"
               v-tooltip="{ content: $t('Assign as user'), distance: 10, delay: { show: 2000, hide: 100 } }"
@@ -149,7 +149,7 @@
             ></i>
           </div>
           <div v-if="user.role === 'user'" class="flex items-center">
-            <Spinner v-if="loadingChangeUserRole && changeUserRoleId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
+            <Spinner v-if="loadingChangeUserRole && changeUserRoleId === user.id" class="w-5 rounded-full bg-blue-500  dark:bg-indigo-500 p-1" />
             <i
               v-else
               @click="changeUserRole(user.id)"
@@ -166,14 +166,14 @@
       v-if="(!loading && hasMore) || (!loadingSortBy && sortByHasMore)"
       @click="!loading && hasMore ? getUsers() : getSortedUsers()"
       type="submit"
-      class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
+      class="rounded-lg dark:bg-indigo-500 dark:hover:bg-indigo-400 bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300"
       :disabled="loading"
     >
       {{ $t('Load more') }}
     </button>
   </div>
   <div v-if="loading || loadingUserSearch || loadingSortBy" class="my-4 flex justify-center">
-    <Spinner class="w-10 rounded-full bg-blue-500 p-1" />
+    <Spinner class="w-10 rounded-full bg-blue-500 dark:bg-indigo-500 p-1" />
   </div>
 </template>
 
