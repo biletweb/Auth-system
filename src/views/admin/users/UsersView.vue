@@ -161,12 +161,12 @@
               v-else-if="user.id !== authStore.user.id"
               v-tooltip="{ content: $t('Assign as user'), distance: 10, delay: { show: 2000, hide: 100 } }"
               @click="changeUserRole(user.id)"
-              class="pi pi-user cursor-pointer text-slate-500 hover:text-slate-600 dark:hover:text-slate-400"
+              class="pi pi-user cursor-pointer text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
             ></i>
             <i
               v-else-if="user.id === authStore.user.id"
               v-tooltip="{ content: $t('Not available'), distance: 10, delay: { show: 2000, hide: 100 } }"
-              class="pi pi-minus text-slate-500"
+              class="pi pi-minus text-slate-500 dark:text-slate-400"
             ></i>
           </div>
           <div v-if="user.role === 'user'" class="flex items-center">
