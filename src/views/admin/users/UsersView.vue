@@ -23,13 +23,16 @@
           type="text"
           name="searchInput"
           :placeholder="$t('Search users...')"
-          class="w-full border p-2 pl-8 pr-8 shadow focus:outline-none"
+          class="w-full border p-2 pl-8 pr-8 shadow focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-gray-400 dark:focus:border-indigo-500"
           :class="{
             'focus:border-blue-500': errorField === '',
             'border-red-500': errorField === 'search',
           }"
         />
-        <div v-if="searchInput" class="absolute right-2.5 top-2.5 text-gray-400 hover:cursor-pointer hover:text-gray-500">
+        <div
+          v-if="searchInput"
+          class="absolute right-2.5 top-2.5 text-gray-400 hover:cursor-pointer hover:text-gray-500 dark:hover:text-gray-300"
+        >
           <i
             v-tooltip="{ content: $t('Clear'), distance: 10, delay: { show: 2000, hide: 100 } }"
             class="pi pi-eraser"
