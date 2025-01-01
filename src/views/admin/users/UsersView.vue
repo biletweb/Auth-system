@@ -51,13 +51,13 @@
     </div>
   </form>
 
-  <table class="w-full border-collapse border border-slate-400 bg-white text-sm shadow">
-    <thead class="bg-slate-50">
+  <table class="w-full bg-white dark:bg-slate-800 text-sm shadow">
+    <thead class="bg-slate-50 dark:bg-slate-800">
       <tr>
-        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Name') }}</th>
-        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Surname') }}</th>
-        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Email') }}</th>
-        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">
+        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Name') }}</th>
+        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Surname') }}</th>
+        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Email') }}</th>
+        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">
           <div class="flex items-center">
             {{ $t('Role') }}
             <div class="relative">
@@ -103,16 +103,16 @@
             </div>
           </div>
         </th>
-        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
-        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Registered') }}</th>
-        <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Actions') }}</th>
+        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Locale') }}</th>
+        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Registered') }}</th>
+        <th class="border dark:border-slate-600 dark:text-slate-200 border-slate-300 p-4 text-left font-semibold text-slate-900">{{ $t('Actions') }}</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="user in users" :key="user.id">
-        <td class="border border-slate-300 p-4 text-slate-500">{{ user.name }}</td>
-        <td class="border border-slate-300 p-4 text-slate-500">{{ user.surname }}</td>
-        <td class="w-96 border border-slate-300 p-4 text-slate-500">
+        <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">{{ user.name }}</td>
+        <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">{{ user.surname }}</td>
+        <td class="w-96 border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">
           <div class="flex items-center">
             {{ user.email }}
             <i
@@ -127,13 +127,13 @@
             ></i>
           </div>
         </td>
-        <td class="w-96 border border-slate-300 p-4 text-slate-500">
+        <td class="w-96 border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">
           <div v-if="user.role === 'admin'" class="flex items-center text-red-500">{{ $t('Administrator') }}</div>
           <div v-if="user.role === 'user'" class="flex items-center">{{ $t('User') }}</div>
         </td>
-        <td class="border border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
-        <td class="w-96 border border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
-        <td class="border border-slate-300 p-4 text-slate-500">
+        <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 uppercase text-slate-500">{{ user.locale }}</td>
+        <td class="w-96 border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">{{ user.created_at }}</td>
+        <td class="border dark:border-slate-600 dark:text-slate-400 border-slate-300 p-4 text-slate-500">
           <div v-if="user.role === 'admin'" class="flex items-center text-red-500">
             <Spinner v-if="loadingChangeUserRole && changeUserRoleId === user.id" class="w-5 rounded-full bg-blue-500 p-1" />
             <i
