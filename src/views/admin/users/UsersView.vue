@@ -42,7 +42,7 @@
       </div>
       <button
         type="submit"
-        class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+        class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400"
         :class="{ 'opacity-50': loadingUserSearch }"
         :disabled="loadingUserSearch"
       >
