@@ -16,14 +16,14 @@
   <form @submit.prevent="userSearch">
     <div class="my-4 flex items-center gap-4">
       <div class="relative w-full">
-        <div class="absolute left-2.5 top-2.5 text-gray-400"><i class="pi pi-search"></i></div>
+        <div class="absolute left-2.5 top-2.5 text-slate-400"><i class="pi pi-search"></i></div>
         <input
           v-model="searchInput"
           ref="searchInputRef"
           type="text"
           name="searchInput"
           :placeholder="$t('Search users...')"
-          class="w-full border p-2 pl-8 pr-8 shadow focus:outline-none dark:bg-slate-800 dark:text-gray-400"
+          class="w-full border p-2 pl-8 pr-8 shadow placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
           :class="{
             'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField === '',
             'border-red-500 dark:border-rose-500': errorField === 'search',
@@ -31,7 +31,7 @@
         />
         <div
           v-if="searchInput"
-          class="absolute right-2.5 top-2.5 text-gray-400 hover:cursor-pointer hover:text-gray-500 dark:hover:text-gray-300"
+          class="absolute right-2.5 top-2.5 text-slate-400 hover:cursor-pointer hover:text-slate-500 dark:hover:text-slate-300"
         >
           <i
             v-tooltip="{ content: $t('Clear'), distance: 10, delay: { show: 2000, hide: 100 } }"
@@ -73,7 +73,8 @@
                   class="pi pi-filter ms-1 cursor-pointer"
                   :class="{
                     'text-blue-500 dark:text-indigo-500': showUserRoleFilter,
-                    'text-slate-500 transition duration-300 hover:text-slate-600 dark:hover:text-slate-400': !showUserRoleFilter,
+                    'text-slate-500 transition duration-300 hover:text-slate-400 dark:text-slate-400 dark:hover:text-slate-300':
+                      !showUserRoleFilter,
                   }"
                 ></i>
               </div>
