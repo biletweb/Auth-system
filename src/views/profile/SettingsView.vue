@@ -1,7 +1,7 @@
 <template>
   <div class="mb-4 flex items-center justify-between">
     <span class="text-3xl font-bold dark:text-white">{{ $t('Settings') }}</span>
-    <Spinner v-if="!authStore.user" class="w-7 rounded-full bg-blue-500 p-1" />
+    <Spinner v-if="!authStore.user" class="w-7 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
     <span v-else class="text-xl font-semibold text-slate-400">{{ authStore.user.email }}</span>
   </div>
   <div
