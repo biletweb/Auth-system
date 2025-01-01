@@ -1,7 +1,7 @@
 <template>
-  <div class="card rounded-lg bg-white p-4">
-    <span class="text-xl font-bold text-red-500">{{ $t('Deleting an account') }}</span>
-    <div class="my-4 font-semibold">
+  <div class="card rounded-lg bg-white p-4 dark:bg-slate-800">
+    <span class="text-xl font-bold text-red-500 dark:text-rose-500">{{ $t('Deleting an account') }}</span>
+    <div class="my-4 font-semibold dark:text-slate-400">
       {{
         $t('If you delete your account, all your personal information will be deleted and you will not be able to regain access.')
       }}
@@ -10,7 +10,7 @@
       <button
         @click="deleteAccount"
         type="button"
-        class="rounded-lg bg-red-500 px-4 py-2 text-white transition duration-300 hover:bg-red-600"
+        class="rounded-lg bg-red-500 dark:bg-rose-500 dark:hover:bg-rose-400 px-4 py-2 text-white transition duration-300 hover:bg-red-600"
         :disabled="loading"
       >
         <Spinner v-if="loading" class="w-6" />
