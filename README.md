@@ -4,19 +4,19 @@ The project is a web application with user registration and authentication funct
 
 To configure the project, you need to specify the BASE_URL for API communication in the configuration file located at helpers/config.
 
-## Project Setup
+## Project setup
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Start your local development server
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Compile and minify for production
 
 ```sh
 npm run build
