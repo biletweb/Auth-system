@@ -15,9 +15,3 @@ npm install
 ```sh
 npm run dev
 ```
-
-### Compile and minify for production
-
-```sh
-npm run build
-```
