@@ -5,7 +5,7 @@
       <form @submit.prevent="login">
         <div class="relative my-4">
           <label for="email" class="dark:text-slate-200">
-            {{ $t('Email') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+            {{ $t('Email') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
           </label>
           <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-at"></i></div>
           <input
@@ -24,7 +24,7 @@
         </div>
         <div class="relative my-4">
           <label for="password" class="dark:text-slate-200">
-            {{ $t('Password') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+            {{ $t('Password') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
           </label>
           <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-key"></i></div>
           <input
