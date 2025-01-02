@@ -8,11 +8,11 @@
     </div>
   </div>
   <div class="my-4 grid grid-cols-3 gap-4">
-    <Dashboard />
+    <DashboardInfo />
   </div>
 </template>
 
 <script setup>
 import MenuItems from '@/components/admin/MenuItems.vue'
-import Dashboard from '@/components/admin/Dashboard.vue'
+import DashboardInfo from '@/components/admin/DashboardInfo.vue'
 </script>
