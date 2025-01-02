@@ -12,7 +12,6 @@
       </router-link>
     </div>
   </div>
-
   <form @submit.prevent="userSearch">
     <div class="my-4 flex items-center gap-4">
       <div class="relative w-full">
@@ -50,7 +49,6 @@
       </button>
     </div>
   </form>
-
   <table class="w-full bg-white text-sm shadow dark:bg-slate-800">
     <thead class="bg-slate-50 dark:bg-slate-700">
       <tr>
@@ -70,18 +68,17 @@
               <div>
                 <i
                   @click="toggleUserRoleFilter"
-                  class="pi pi-filter ms-1 cursor-pointer"
+                  class="pi pi-filter ms-1 cursor-pointer transition duration-300"
                   :class="{
                     'text-blue-500 dark:text-indigo-500': showUserRoleFilter,
-                    'text-slate-500 transition duration-300 hover:text-blue-500 dark:text-slate-400 dark:hover:text-indigo-500':
-                      !showUserRoleFilter,
+                    'text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-indigo-500': !showUserRoleFilter,
                   }"
                 ></i>
               </div>
               <div
                 v-if="showUserRoleFilter"
                 v-on-click-outside="toggleUserRoleFilter"
-                class="absolute start-1.5 top-4 z-10 mt-2 rounded-lg border border-gray-100 bg-white shadow dark:border-slate-600 dark:bg-slate-800"
+                class="absolute start-1.5 top-4 z-10 mt-2 rounded-lg border border-slate-300 bg-white shadow dark:border-slate-600 dark:bg-slate-800"
               >
                 <div class="p-2">
                   <button
@@ -136,7 +133,7 @@
             <i
               v-else
               v-tooltip="{ content: $t('Not verified'), distance: 10, delay: { show: 2000, hide: 100 } }"
-              class="pi pi-times-circle ms-1 text-yellow-500"
+              class="pi pi-times-circle ms-1 text-amber-300"
             ></i>
           </div>
         </td>
