@@ -3,21 +3,21 @@
     <div>
       <p class="dark:text-slate-200">{{ $t('Users') }}</p>
       <Spinner v-if="loading" class="my-1 w-6 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
-      <p v-else class="text-2xl font-medium dark:text-cyan-500">{{ totalUsers }}</p>
+      <p v-else class="text-2xl font-medium dark:text-sky-500">{{ totalUsers }}</p>
     </div>
   </div>
   <div class="card rounded-lg border bg-white p-4 dark:border-slate-600 dark:bg-slate-800">
     <div>
       <p class="dark:text-slate-200">{{ $t('Administrators') }}</p>
       <Spinner v-if="loading" class="my-1 w-6 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
-      <p v-else class="text-2xl font-medium dark:text-cyan-500">{{ totalAdminUsers }}</p>
+      <p v-else class="text-2xl font-medium dark:text-sky-500">{{ totalAdminUsers }}</p>
     </div>
   </div>
   <div class="card rounded-lg border bg-white p-4 dark:border-slate-600 dark:bg-slate-800">
     <div>
       <p class="dark:text-slate-200">{{ $t('Unconfirmed email addresses') }}</p>
       <Spinner v-if="loading" class="my-1 w-6 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
-      <div v-else class="flex items-center justify-between text-2xl font-medium dark:text-cyan-500">
+      <div v-else class="flex items-center justify-between text-2xl font-medium dark:text-sky-500">
         {{ totalUnverifiedEmailUsers }}
         <span
           v-if="unverifiedEmailPercentage !== 0"
