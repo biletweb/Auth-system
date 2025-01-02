@@ -13,6 +13,7 @@ import ru from './locales/ru.json'
 import uk from './locales/uk.json'
 import FloatingVue from 'floating-vue'
 
+const app = createApp(App)
 const savedLocale = ref('uk')
 
 if (localStorage.getItem('locale')) {
@@ -26,10 +27,6 @@ const i18n = createI18n({
   globalInjection: true,
 })
 
-export { i18n }
-
-const app = createApp(App)
-
 app.use(createPinia())
 app.use(router)
 app.use(Toast)
@@ -37,3 +34,5 @@ app.use(i18n)
 app.use(FloatingVue)
 
 app.mount('#app')
+
+export { i18n }
