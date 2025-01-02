@@ -59,41 +59,43 @@
             }"
           />
         </div>
-        <div class="relative my-4">
-          <label for="password" class="dark:text-slate-200">
-            {{ $t('Password') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
-          </label>
-          <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-key"></i></div>
-          <input
-            v-model="data.user.password"
-            type="password"
-            name="password"
-            id="password"
-            :placeholder="$t('Password')"
-            class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
-            :class="{
-              'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'password',
-              'border-red-500 dark:border-rose-500': errorField === 'password',
-            }"
-          />
-        </div>
-        <div class="relative my-4">
-          <label for="password_confirmation" class="dark:text-slate-200">
-            {{ $t('Password confirmation') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
-          </label>
-          <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-key"></i></div>
-          <input
-            v-model="data.user.password_confirmation"
-            type="password"
-            name="password_confirmation"
-            id="password_confirmation"
-            :placeholder="$t('Password confirmation')"
-            class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
-            :class="{
-              'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'password',
-              'border-red-500 dark:border-rose-500': errorField === 'password',
-            }"
-          />
+        <div class="my-4 grid grid-cols-2 gap-4">
+          <div class="relative">
+            <label for="password" class="dark:text-slate-200">
+              {{ $t('Password') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+            </label>
+            <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-key"></i></div>
+            <input
+              v-model="data.user.password"
+              type="password"
+              name="password"
+              id="password"
+              :placeholder="$t('Password')"
+              class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
+              :class="{
+                'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'password',
+                'border-red-500 dark:border-rose-500': errorField === 'password',
+              }"
+            />
+          </div>
+          <div class="relative">
+            <label for="password_confirmation" class="dark:text-slate-200">
+              {{ $t('Password confirmation') }}<sup class="ms-1 text-red-500 dark:text-rose-500">*</sup>
+            </label>
+            <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-key"></i></div>
+            <input
+              v-model="data.user.password_confirmation"
+              type="password"
+              name="password_confirmation"
+              id="password_confirmation"
+              :placeholder="$t('Password confirmation')"
+              class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
+              :class="{
+                'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'password',
+                'border-red-500 dark:border-rose-500': errorField === 'password',
+              }"
+            />
+          </div>
         </div>
         <div class="my-4">
           <button
