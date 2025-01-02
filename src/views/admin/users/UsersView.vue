@@ -64,7 +64,7 @@
           {{ $t('Email') }}
         </th>
         <th class="border border-slate-300 p-4 text-left font-semibold text-slate-900 dark:border-slate-600 dark:text-slate-200">
-          <div class="flex items-center">
+          <div class="flex">
             {{ $t('Role') }}
             <div class="relative">
               <div>
