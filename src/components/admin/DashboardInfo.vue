@@ -20,7 +20,7 @@
       <div v-else class="flex items-center justify-between text-2xl font-medium dark:text-cyan-500">
         {{ totalUnverifiedEmailUsers }}
         <span class="rounded-lg bg-rose-500 px-2 py-1 text-sm font-semibold text-slate-200">
-          -{{ unverifiedEmailPercentage }}%
+          {{ unverifiedEmailPercentage }}%
         </span>
       </div>
     </div>
