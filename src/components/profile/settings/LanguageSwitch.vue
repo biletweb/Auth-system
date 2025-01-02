@@ -12,11 +12,10 @@
         :disabled="savedLocale === 'uk'"
       >
         <div
-          class="rounded-lg p-2 text-white"
+          class="rounded-lg p-2 text-white transition duration-300"
           :class="{
             'bg-blue-600 underline underline-offset-4 dark:bg-indigo-400': savedLocale === 'uk',
-            'bg-blue-500 transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400':
-              savedLocale !== 'uk',
+            'bg-blue-500 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400': savedLocale !== 'uk',
           }"
         >
           UK
@@ -29,11 +28,10 @@
         :disabled="savedLocale === 'ru'"
       >
         <div
-          class="rounded-lg p-2 text-white"
+          class="rounded-lg p-2 text-white transition duration-300"
           :class="{
             'bg-blue-600 underline underline-offset-4 dark:bg-indigo-400': savedLocale === 'ru',
-            'bg-blue-500 transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400':
-              savedLocale !== 'ru',
+            'bg-blue-500 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400': savedLocale !== 'ru',
           }"
         >
           RU
@@ -46,11 +44,10 @@
         :disabled="savedLocale === 'en'"
       >
         <div
-          class="rounded-lg p-2 text-white"
+          class="rounded-lg p-2 text-white transition duration-300"
           :class="{
             'bg-blue-600 underline underline-offset-4 dark:bg-indigo-400': savedLocale === 'en',
-            'bg-blue-500 transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400':
-              savedLocale !== 'en',
+            'bg-blue-500 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400': savedLocale !== 'en',
           }"
         >
           EN
