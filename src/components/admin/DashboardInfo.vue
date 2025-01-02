@@ -17,13 +17,18 @@
     <div>
       <p class="dark:text-slate-200">{{ $t('Unconfirmed email addresses') }}</p>
       <Spinner v-if="loading" class="my-1 w-6 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
-      <p v-else class="text-2xl font-medium dark:text-cyan-500">{{ totalUnverifiedEmailUsers }}</p>
+      <div v-else class="flex items-center justify-between text-2xl font-medium dark:text-cyan-500">
+        {{ totalUnverifiedEmailUsers }}
+        <span class="rounded-lg bg-rose-500 px-2 py-1 text-sm font-semibold text-slate-200">
+          -{{ unverifiedEmailPercentage }}%
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import axios from 'axios'
 import { BASE_URL, getConfig } from '@/helpers/config.js'
 import { useAuthStore } from '@/stores/authStore.js'
@@ -39,9 +44,14 @@ const loading = ref(false)
 const authStore = useAuthStore()
 const router = useRouter()
 const toast = useToast()
+const unverifiedEmailPercentage = ref(0)
 
 onMounted(() => {
   getStatistics()
+})
+
+watch([totalUsers, totalAdminUsers, totalUnverifiedEmailUsers], () => {
+  unverifiedEmailPercentage.value = (totalUnverifiedEmailUsers.value / totalUsers.value) * 100
 })
 
 const getStatistics = async () => {
