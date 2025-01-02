@@ -92,5 +92,7 @@
   "Network Error": "Ошибка сети.",
   "Dark mode": "Темный режим",
   "Light mode": "Светлый режим",
-  "Theme": "Тема"
+  "Theme": "Тема",
+  "Version:": "Версия:",
+  "Copyright": "Copyright"
 }
