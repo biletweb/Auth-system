@@ -19,7 +19,10 @@
       <Spinner v-if="loading" class="my-1 w-6 rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
       <div v-else class="flex items-center justify-between text-2xl font-medium dark:text-cyan-500">
         {{ totalUnverifiedEmailUsers }}
-        <span class="rounded-lg bg-rose-500 px-2 py-1 text-sm font-semibold text-slate-200">
+        <span
+          v-if="unverifiedEmailPercentage !== 0"
+          class="rounded-lg bg-rose-500 px-2 py-1 text-sm font-semibold text-slate-200"
+        >
           {{ unverifiedEmailPercentage }}%
         </span>
       </div>
@@ -51,7 +54,7 @@ onMounted(() => {
 })
 
 watch([totalUsers, totalAdminUsers, totalUnverifiedEmailUsers], () => {
-  unverifiedEmailPercentage.value = (totalUnverifiedEmailUsers.value / totalUsers.value) * 100
+  unverifiedEmailPercentage.value = Math.round((totalUnverifiedEmailUsers.value / totalUsers.value) * 100)
 })
 
 const getStatistics = async () => {
