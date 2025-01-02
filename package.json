@@ -1,6 +1,6 @@
 {
-  "name": "shop-vue",
-  "version": "0.0.0",
+  "name": "auth-system",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
