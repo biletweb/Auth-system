@@ -7,7 +7,7 @@
     <form v-else @submit.prevent="updatePersonalInfo">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="name" class="dark:text-slate-200">
+          <label for="name" class="text-sm dark:text-slate-200">
             {{ $t('Name') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
           </label>
           <div class="absolute left-2.5 top-[34px] text-slate-400">
@@ -27,7 +27,7 @@
           />
         </div>
         <div class="relative my-4">
-          <label for="surname" class="dark:text-slate-200">
+          <label for="surname" class="text-sm dark:text-slate-200">
             {{ $t('Surname') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
           </label>
           <div class="absolute left-2.5 top-[34px] text-slate-400">

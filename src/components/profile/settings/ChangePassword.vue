@@ -4,7 +4,7 @@
     <form @submit.prevent="changePassword">
       <div class="grid grid-cols-2 gap-4">
         <div class="relative my-4">
-          <label for="password" class="dark:text-slate-200">
+          <label for="password" class="text-sm dark:text-slate-200">
             {{ $t('New password') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
           </label>
           <div class="absolute left-2.5 top-[34px] text-slate-400">
@@ -24,7 +24,7 @@
           />
         </div>
         <div class="relative my-4">
-          <label for="password_confirmation" class="dark:text-slate-200">
+          <label for="password_confirmation" class="text-sm dark:text-slate-200">
             {{ $t('New password confirmation') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
           </label>
           <div class="absolute left-2.5 top-[34px] text-slate-400">

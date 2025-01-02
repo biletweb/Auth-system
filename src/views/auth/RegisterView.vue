@@ -5,7 +5,7 @@
       <form @submit.prevent="register">
         <div class="my-4 grid grid-cols-2 gap-4">
           <div class="relative">
-            <label for="name" class="dark:text-slate-200">
+            <label for="name" class="text-sm dark:text-slate-200">
               {{ $t('Name') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
             </label>
             <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-user"></i></div>
@@ -23,7 +23,7 @@
             />
           </div>
           <div class="relative">
-            <label for="surname" class="dark:text-slate-200">
+            <label for="surname" class="text-sm dark:text-slate-200">
               {{ $t('Surname') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
             </label>
             <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-user"></i></div>
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="relative my-4">
-          <label for="email" class="dark:text-slate-200">
+          <label for="email" class="text-sm dark:text-slate-200">
             {{ $t('Email') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
           </label>
           <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-at"></i></div>
@@ -61,7 +61,7 @@
         </div>
         <div class="my-4 grid grid-cols-2 gap-4">
           <div class="relative">
-            <label for="password" class="dark:text-slate-200">
+            <label for="password" class="text-sm dark:text-slate-200">
               {{ $t('Password') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
             </label>
             <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-key"></i></div>
@@ -79,7 +79,7 @@
             />
           </div>
           <div class="relative">
-            <label for="password_confirmation" class="dark:text-slate-200">
+            <label for="password_confirmation" class="text-sm dark:text-slate-200">
               {{ $t('Password confirmation') }}<sup class="text-red-500 dark:text-rose-500">*</sup>
             </label>
             <div class="absolute left-2.5 top-[34px] text-slate-400"><i class="pi pi-key"></i></div>
