@@ -5,6 +5,7 @@ export const useAuthStore = defineStore('auth', {
     user: null,
     access_token: localStorage.getItem('access_token'),
   }),
+
   actions: {
     setUser(user) {
       this.user = user
