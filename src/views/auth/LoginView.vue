@@ -17,7 +17,7 @@
             class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
             :class="{
               'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500':
-                errorField !== 'email' || errorField !== 'email, password',
+                errorField !== 'email' && errorField !== 'email, password',
               'border-red-500 dark:border-rose-500': errorField === 'email' || errorField === 'email, password',
             }"
           />
@@ -36,7 +36,7 @@
             class="w-full rounded-lg border p-2 pl-8 placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
             :class="{
               'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500':
-                errorField !== 'password' || errorField !== 'email, password',
+                errorField !== 'password' && errorField !== 'email, password',
               'border-red-500 dark:border-rose-500': errorField === 'password' || errorField === 'email, password',
             }"
           />
