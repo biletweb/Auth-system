@@ -6,10 +6,10 @@
   </div>
   <div
     v-if="authStore.user && !authStore.user.email_verified_at && authStore.user.email !== 'test@example.com'"
-    class="my-4 rounded-lg bg-amber-300 p-4 shadow"
+    class="my-4 rounded-lg border bg-amber-300 p-4 shadow dark:border-slate-600 dark:bg-slate-800"
   >
     <div class="flex items-center justify-between">
-      <div class="flex items-center text-blue-500">
+      <div class="flex items-center text-blue-500 dark:text-amber-300">
         <i class="pi pi-info-circle me-2" style="font-size: 1.5rem"></i>
         {{ $t('Please confirm your email. We have sent a verification code to the address you provided.') }}
       </div>
@@ -17,10 +17,10 @@
         <button
           @click="resendEmail"
           type="submit"
-          class="font-semibold text-blue-500 transition duration-300 hover:text-blue-600 hover:underline hover:underline-offset-4"
+          class="font-semibold text-blue-500 transition duration-300 hover:text-blue-600 hover:underline hover:underline-offset-4 dark:text-amber-300 dark:hover:text-amber-200"
           :disabled="loadingResendEmail"
         >
-          <Spinner v-if="loadingResendEmail" class="flex w-5 items-center rounded-full bg-blue-500 p-1" />
+          <Spinner v-if="loadingResendEmail" class="flex w-5 items-center rounded-full bg-blue-500 p-1 dark:bg-indigo-500" />
           <span v-else>{{ $t('Resend verification code') }}</span>
         </button>
       </div>
@@ -33,17 +33,17 @@
             type="text"
             name="verificationCode"
             :placeholder="$t('Verification code')"
-            class="w-44 rounded-lg border p-2 font-normal focus:outline-none"
+            class="w-44 rounded-lg border p-2 font-normal placeholder:text-slate-400 focus:outline-none dark:bg-slate-800 dark:text-slate-400"
             :class="{
-              'focus:border-blue-500': errorField === '',
-              'border-red-500': errorField === 'verification_code',
+              'focus:border-blue-500 dark:border-slate-600 dark:focus:border-indigo-500': errorField !== 'verification_code',
+              'border-red-500 dark:border-rose-500': errorField === 'verification_code',
             }"
           />
         </div>
         <div class="align-bottom">
           <button
             type="submit"
-            class="rounded-lg bg-blue-500 px-4 py-2 font-normal text-white transition duration-300 hover:bg-blue-600"
+            class="rounded-lg bg-blue-500 px-4 py-2 font-normal text-white transition duration-300 hover:bg-blue-600 dark:bg-indigo-500 dark:hover:bg-indigo-400"
             :disabled="loadingConfirmEmail"
           >
             <Spinner v-if="loadingConfirmEmail" class="w-6" />
