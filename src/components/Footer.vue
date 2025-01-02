@@ -1,5 +1,5 @@
 <template>
-  <footer class="rounded-t-lg bg-blue-500 py-4 text-white dark:bg-slate-800 dark:text-slate-400">
+  <footer class="rounded-t-lg bg-slate-500 py-4 text-white dark:bg-slate-800 dark:text-slate-400">
     <div class="text-center text-lg">© {{ currentYear }}, {{ $t('All rights reserved') }}</div>
   </footer>
 </template>
