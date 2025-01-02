@@ -1,6 +1,6 @@
 <template>
   <div class="flex min-h-[calc(100vh-164px)] items-center justify-center">
-    <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 shadow lg:w-6/12 dark:border-slate-600 dark:bg-slate-800">
+    <div class="card sm:w-12/12 mx-auto rounded-lg border bg-white p-4 lg:w-6/12 dark:border-slate-600 dark:bg-slate-800">
       <span class="text-3xl font-bold dark:text-white">{{ $t('Forgot password?') }}</span>
       <form @submit.prevent="sendNewPassword">
         <div class="relative my-4">

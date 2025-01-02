@@ -7,6 +7,15 @@
       <MenuItems />
     </div>
   </div>
+  <div>
+    <div class="card rounded-lg border bg-white p-4 dark:border-slate-600 dark:bg-slate-800">
+      <div>
+        <p class="dark:text-slate-400">Profit</p>
+
+        <p class="text-2xl font-medium text-gray-900">$240.94</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
