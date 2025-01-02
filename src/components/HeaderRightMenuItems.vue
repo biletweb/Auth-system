@@ -2,7 +2,7 @@
   <nav>
     <ul class="flex items-center gap-4">
       <li class="transition duration-300 hover:text-slate-300 dark:text-slate-400">
-        <button @click="toggleDark()" type="button" class="text-lg">
+        <button @click="toggleDark()" type="button" class="flex items-center text-lg">
           <i
             v-if="isDark"
             v-tooltip="{ content: $t('Dark mode'), distance: 10, delay: { show: 2000, hide: 100 } }"
@@ -17,19 +17,25 @@
         </button>
       </li>
       <li v-if="authStore.user" class="transition duration-300 hover:text-slate-300 dark:text-slate-400">
-        <router-link :to="{ name: 'profile' }" class="text-lg"><i class="pi pi-user me-1"></i>{{ $t('Profile') }}</router-link>
+        <router-link :to="{ name: 'profile' }" class="flex items-center text-lg"
+          ><i class="pi pi-user me-1"></i>{{ $t('Profile') }}</router-link
+        >
       </li>
       <li v-if="loading">
         <Spinner class="w-5 dark:rounded-full dark:bg-indigo-500 dark:p-1" />
       </li>
       <li v-else-if="authStore.user" class="transition duration-300 hover:text-slate-300 dark:text-slate-400">
-        <router-link to="#" @click="logout" class="text-lg"><i class="pi pi-sign-out me-1"></i>{{ $t('Logout') }}</router-link>
+        <router-link to="#" @click="logout" class="flex items-center text-lg"
+          ><i class="pi pi-sign-out me-1"></i>{{ $t('Logout') }}</router-link
+        >
       </li>
       <li v-if="!authStore.user" class="transition duration-300 hover:text-slate-300 dark:text-slate-400">
-        <router-link :to="{ name: 'login' }" class="text-lg"><i class="pi pi-sign-in me-1"></i>{{ $t('Login') }}</router-link>
+        <router-link :to="{ name: 'login' }" class="flex items-center text-lg"
+          ><i class="pi pi-sign-in me-1"></i>{{ $t('Login') }}</router-link
+        >
       </li>
       <li v-if="!authStore.user" class="transition duration-300 hover:text-slate-300 dark:text-slate-400">
-        <router-link :to="{ name: 'register' }" class="text-lg">
+        <router-link :to="{ name: 'register' }" class="flex items-center text-lg">
           <i class="pi pi-user-plus me-1"></i>{{ $t('Register') }}
         </router-link>
       </li>
