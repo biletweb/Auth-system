@@ -95,5 +95,6 @@
   "Theme": "Theme",
   "Version:": "Version:",
   "Administrators": "Administrators",
-  "Unconfirmed email addresses": "Unconfirmed email addresses"
+  "Unconfirmed email addresses": "Unconfirmed email addresses",
+  "Request failed with status code 404": "Request failed with status code 404."
 }

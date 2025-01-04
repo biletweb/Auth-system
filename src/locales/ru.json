@@ -95,5 +95,6 @@
   "Theme": "Тема",
   "Version:": "Версия:",
   "Administrators": "Администраторы",
-  "Unconfirmed email addresses": "Неподтвержденные адреса электронной почты"
+  "Unconfirmed email addresses": "Неподтвержденные адреса электронной почты",
+  "Request failed with status code 404": "Запрос не выполнен, код состояния 404."
 }
