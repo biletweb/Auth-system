@@ -16,7 +16,7 @@
       <div>
         <button
           @click="resendEmail"
-          type="submit"
+          type="button"
           class="font-semibold text-blue-500 transition duration-300 hover:text-blue-600 hover:underline hover:underline-offset-4 dark:text-amber-300 dark:hover:text-amber-200"
           :disabled="loadingResendEmail"
         >
