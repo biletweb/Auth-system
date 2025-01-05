@@ -49,20 +49,10 @@ const router = useRouter()
 const toast = useToast()
 const unverifiedEmailPercentage = ref(0)
 
-onMounted(() => {
-  getStatistics()
-})
-
-watch([totalUsers, totalAdminUsers, totalUnverifiedEmailUsers], () => {
-  unverifiedEmailPercentage.value = Math.round((totalUnverifiedEmailUsers.value / totalUsers.value) * 100)
-})
-
 const getStatistics = async () => {
   loading.value = true
   try {
-    const response = await axios.get(`${BASE_URL}/admin/dashboard`, {
-      ...getConfig(authStore.access_token),
-    })
+    const response = await axios.get(`${BASE_URL}/admin/dashboard`, { ...getConfig(authStore.access_token) })
     totalUsers.value = response.data.totalUsers
     totalAdminUsers.value = response.data.totalAdminUsers
     totalUnverifiedEmailUsers.value = response.data.totalUnverifiedEmailUsers
@@ -78,4 +68,12 @@ const getStatistics = async () => {
     loading.value = false
   }
 }
+
+onMounted(async () => {
+  await getStatistics()
+})
+
+watch([totalUsers, totalAdminUsers, totalUnverifiedEmailUsers], () => {
+  unverifiedEmailPercentage.value = Math.round((totalUnverifiedEmailUsers.value / totalUsers.value) * 100)
+})
 </script>
