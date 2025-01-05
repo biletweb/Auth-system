@@ -83,17 +83,6 @@ const data = reactive({
   },
 })
 
-watch(
-  () => authStore.user,
-  (newValue) => {
-    if (newValue && newValue.name && newValue.surname) {
-      data.user.name = newValue.name
-      data.user.surname = newValue.surname
-    }
-  },
-  { immediate: true },
-)
-
 const updatePersonalInfo = async () => {
   data.loading = true
   errorField.value = ''
@@ -125,4 +114,15 @@ const updatePersonalInfo = async () => {
     data.loading = false
   }
 }
+
+watch(
+  () => authStore.user,
+  (newValue) => {
+    if (newValue && newValue.name && newValue.surname) {
+      data.user.name = newValue.name
+      data.user.surname = newValue.surname
+    }
+  },
+  { immediate: true },
+)
 </script>
