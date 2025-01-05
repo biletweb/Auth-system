@@ -7,7 +7,7 @@
     <div class="my-6 flex gap-2">
       <button
         v-tooltip="{ content: $t('Ukranian'), distance: 10, delay: { show: 2000, hide: 100 } }"
-        type="submit"
+        type="button"
         @click="setLocale('uk')"
         :disabled="savedLocale === 'uk'"
       >
@@ -23,7 +23,7 @@
       </button>
       <button
         v-tooltip="{ content: $t('Russian'), distance: 10, delay: { show: 2000, hide: 100 } }"
-        type="submit"
+        type="button"
         @click="setLocale('ru')"
         :disabled="savedLocale === 'ru'"
       >
@@ -39,7 +39,7 @@
       </button>
       <button
         v-tooltip="{ content: $t('English'), distance: 10, delay: { show: 2000, hide: 100 } }"
-        type="submit"
+        type="button"
         @click="setLocale('en')"
         :disabled="savedLocale === 'en'"
       >
@@ -75,10 +75,6 @@ const { locale } = useI18n()
 const savedLocale = ref('')
 const loading = ref(false)
 
-onMounted(() => {
-  savedLocale.value = localStorage.getItem('locale')
-})
-
 const setLocale = async (newLocale) => {
   loading.value = true
   try {
@@ -103,6 +99,10 @@ const setLocale = async (newLocale) => {
     loading.value = false
   }
 }
+
+onMounted(() => {
+  savedLocale.value = localStorage.getItem('locale')
+})
 
 watch(locale, (newValue) => {
   savedLocale.value = newValue
