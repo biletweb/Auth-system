@@ -29,14 +29,6 @@ const router = useRouter()
 const authStore = useAuthStore()
 const toast = useToast()
 
-onMounted(async () => {
-  if (authStore.access_token) {
-    loading.value = true
-    await fetchLoggedInUser()
-    loading.value = false
-  }
-})
-
 const fetchLoggedInUser = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/profile`, getConfig(authStore.access_token))
@@ -51,4 +43,12 @@ const fetchLoggedInUser = async () => {
     }
   }
 }
+
+onMounted(async () => {
+  if (authStore.access_token) {
+    loading.value = true
+    await fetchLoggedInUser()
+    loading.value = false
+  }
+})
 </script>
