@@ -187,7 +187,7 @@
     <button
       v-if="(!loading && hasMore) || (!loadingSortBy && sortByHasMore)"
       @click="!loading && hasMore ? getUsers() : getSortedUsers()"
-      type="submit"
+      type="button"
       class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-slate-300 dark:bg-indigo-500 dark:hover:bg-indigo-400"
       :disabled="loading"
     >
@@ -223,22 +223,14 @@ const changeUserRoleId = ref(null)
 const searchInput = ref('')
 const searchInputRef = ref(null)
 const errorField = ref('')
-const offset = ref(0) // Текущий сдвиг
-const limit = 10 // Количество пользователей за раз
-const hasMore = ref(false) // Флаг для проверки, есть ли еще данные для загрузки
+const offset = ref(0)
+const limit = 10
+const hasMore = ref(false)
 const sortByOffset = ref(0)
 const sortByLimit = 10
 const sortByHasMore = ref(false)
 const sortByValue = ref(null)
 const showUserRoleFilter = ref(false)
-
-onMounted(() => {
-  getUsers()
-})
-
-onStartTyping(() => {
-  if (!searchInputRef.value.active) searchInputRef.value.focus()
-})
 
 const getUsers = async () => {
   loading.value = true
@@ -250,9 +242,9 @@ const getUsers = async () => {
       ...getConfig(authStore.access_token),
     })
     users.value = [...users.value, ...response.data.users]
-    offset.value += limit // Обновляем смещение
+    offset.value += limit
     if (response.data.users.length < limit) {
-      hasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
+      hasMore.value = false
     }
   } catch (error) {
     if (error.response && error.response.status === 401) {
@@ -265,14 +257,6 @@ const getUsers = async () => {
   } finally {
     loading.value = false
   }
-}
-
-const resetSettingsToDefault = () => {
-  users.value = []
-  offset.value = 0
-  sortByOffset.value = 0
-  hasMore.value = false
-  sortByHasMore.value = false
 }
 
 const userSearch = async () => {
@@ -310,18 +294,12 @@ const userSearch = async () => {
   }
 }
 
-const clearSearchInput = () => {
-  searchInput.value = ''
-  errorField.value = ''
-}
-
 const changeUserRole = async (userId) => {
   loadingChangeUserRole.value = true
   changeUserRoleId.value = userId
   try {
     const response = await axios.post(`${BASE_URL}/admin/users/change/role`, { id: userId }, getConfig(authStore.access_token))
     const updatedUser = response.data.user
-    // Ищем пользователя в локальном списке и обновляем его данные
     const index = users.value.findIndex((user) => user.id === userId)
     if (index !== -1) {
       users.value[index] = { ...users.value[index], ...updatedUser }
@@ -341,18 +319,6 @@ const changeUserRole = async (userId) => {
   }
 }
 
-const toggleUserRoleFilter = () => {
-  showUserRoleFilter.value = !showUserRoleFilter.value
-}
-
-const sortBy = async (value) => {
-  sortByValue.value = value
-  showUserRoleFilter.value = false
-  sortByOffset.value = 0
-  users.value = []
-  await getSortedUsers()
-}
-
 const getSortedUsers = async () => {
   loadingSortBy.value = true
   sortByHasMore.value = true
@@ -362,10 +328,10 @@ const getSortedUsers = async () => {
       params: { sort_by: sortByValue.value, sortByOffset: sortByOffset.value, sortByLimit },
       ...getConfig(authStore.access_token),
     })
-    users.value = [...users.value, ...response.data.users] // Обновляем список пользователей
-    sortByOffset.value += sortByLimit // Обновляем смещение
+    users.value = [...users.value, ...response.data.users]
+    sortByOffset.value += sortByLimit
     if (response.data.users.length < sortByLimit) {
-      sortByHasMore.value = false // Если загружено меньше, чем лимит, значит, больше нет данных
+      sortByHasMore.value = false
     }
   } catch (error) {
     if (error.response && error.response.status === 401) {
@@ -379,4 +345,37 @@ const getSortedUsers = async () => {
     loadingSortBy.value = false
   }
 }
+
+onStartTyping(() => {
+  if (!searchInputRef.value.active) searchInputRef.value.focus()
+})
+
+const clearSearchInput = () => {
+  searchInput.value = ''
+  errorField.value = ''
+}
+
+const sortBy = async (value) => {
+  sortByValue.value = value
+  showUserRoleFilter.value = false
+  sortByOffset.value = 0
+  users.value = []
+  await getSortedUsers()
+}
+
+const toggleUserRoleFilter = () => {
+  showUserRoleFilter.value = !showUserRoleFilter.value
+}
+
+const resetSettingsToDefault = () => {
+  users.value = []
+  offset.value = 0
+  sortByOffset.value = 0
+  hasMore.value = false
+  sortByHasMore.value = false
+}
+
+onMounted(async () => {
+  await getUsers()
+})
 </script>
