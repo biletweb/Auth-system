@@ -188,7 +188,7 @@
       v-if="(!loading && hasMore) || (!loadingSortBy && sortByHasMore)"
       @click="!loading && hasMore ? getUsers() : getSortedUsers()"
       type="submit"
-      class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-gray-300 dark:bg-indigo-500 dark:hover:bg-indigo-400"
+      class="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600 disabled:bg-slate-300 dark:bg-indigo-500 dark:hover:bg-indigo-400"
       :disabled="loading"
     >
       {{ $t('Load more') }}
